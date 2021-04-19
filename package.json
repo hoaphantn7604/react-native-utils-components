@@ -1,6 +1,6 @@
 {
-  "name": "react-native-utils-component",
-  "title": "React Native Utils Component",
+  "name": "react-native-utils-components",
+  "title": "React Native Utils Components",
   "version": "0.1.0",
   "description": "TODO",
   "main": "index.ts",
@@ -9,8 +9,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hoaphantn7604/react-native-utils-component.git",
-    "baseUrl": "https://github.com/hoaphantn7604/react-native-utils-component"
+    "url": "git+https://github.com/hoaphantn7604/react-native-utils-components.git",
+    "baseUrl": "https://github.com/hoaphantn7604/react-native-utils-components"
   },
   "keywords": [
     "react-native"
