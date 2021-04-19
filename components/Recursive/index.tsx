@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ScrollView, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { dimensionsScale } from 'react-native-utils-scale';
 import Fontisto from 'react-native-vector-icons/Fontisto';
-import { CButton } from '../index';
+import { CButton } from '../../index';
 
 export interface Props {
   listData?: any;
