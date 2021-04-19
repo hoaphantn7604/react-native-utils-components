@@ -1,7 +1,7 @@
 {
   "name": "react-native-utils-components",
   "title": "React Native Utils Components",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "TODO",
   "main": "index.ts",
   "scripts": {

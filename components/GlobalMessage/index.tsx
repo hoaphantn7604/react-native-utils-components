@@ -1,4 +1,4 @@
-import { CButton, CText } from 'components';
+import { CButton, CText } from '../../index';
 import React, { useImperativeHandle, useState } from 'react';
 import { Modal, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
 import { dimensionsScale, isTablet } from 'react-native-utils-scale';

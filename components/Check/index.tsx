@@ -1,4 +1,4 @@
-import { CText } from 'components';
+import { CText } from '../../index';
 import React from 'react';
 import { StyleSheet, TouchableWithoutFeedback, View, ViewStyle } from 'react-native';
 import { dimensionsScale } from 'react-native-utils-scale';
@@ -23,7 +23,7 @@ const defaultProps = {
   size: 25,
   bgcolor: undefined,
   title: undefined,
-  onPress: () => {},
+  onPress: () => { },
 };
 
 const CheckComponent: React.FC<Props> = (props) => {
@@ -49,8 +49,8 @@ const CheckComponent: React.FC<Props> = (props) => {
                 ? 'check-box'
                 : 'check-box-outline-blank'
               : check
-              ? 'radio-button-checked'
-              : 'radio-button-unchecked'
+                ? 'radio-button-checked'
+                : 'radio-button-unchecked'
           }
         />
         {title && <CText style={[styles.text, { fontSize: size ? size - 8 : 16 }]}>{title}</CText>}
