@@ -1,8 +1,8 @@
-# react-native-utils-component
+# react-native-utils-components
 
 ## Getting started
 
-`$ yarn add react-native-utils-component`
+`$ yarn add react-native-utils-components`
 
 ### Dependencies
 
@@ -10,6 +10,6 @@
 
 ## Usage
 ```javascript
-import {} from 'react-native-utils-component';
+import {} from 'react-native-utils-components';
 
 ```
