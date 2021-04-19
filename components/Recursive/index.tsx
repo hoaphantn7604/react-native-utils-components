@@ -8,7 +8,7 @@ export interface Props {
   listData?: any;
   textField: string;
   childField: string;
-  buttonName: string;
+  buttonName?: string;
   selected: (data: any) => void;
 }
 
@@ -127,7 +127,7 @@ const RecursiveComponent: React.FC<Props> = (props) => {
       </ScrollView>
       <CButton
         style={styles.btn}
-        title={props.buttonName}
+        title={props.buttonName ? props.buttonName : 'Button'}
         onPress={() => {
           props.selected(selectItem);
         }}
