@@ -2,7 +2,7 @@
 
 ## Getting started
 
-`$ yarn add react-native-utils-component --save`
+`$ yarn add react-native-utils-component`
 
 ### Dependencies
 
