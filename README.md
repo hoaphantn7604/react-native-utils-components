@@ -2,16 +2,14 @@
 
 ## Getting started
 
-`$ npm install react-native-utils-component --save`
+`$ yarn add react-native-utils-component --save`
 
-### Mostly automatic installation
+### Dependencies
 
-`$ react-native link react-native-utils-component`
+`$ yarn add react-native-vector-icons`
 
 ## Usage
 ```javascript
-import UtilsComponent from 'react-native-utils-component';
+import {} from 'react-native-utils-component';
 
-// TODO: What to do with the module?
-UtilsComponent;
 ```
