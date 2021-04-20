@@ -5,11 +5,11 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export interface Props {
   data: Item[];
-  activeColor: string;
-  inActiveColor: string;
-  selectIndex: number;
-  selectColor: string;
-  textSize: number;
+  activeColor?: string;
+  inActiveColor?: string;
+  selectIndex?: number;
+  selectColor?: string;
+  textSize?: number;
 }
 
 export interface Item {
