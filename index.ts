@@ -2,5 +2,6 @@ import GlobalLoading, { globalLoading, globalLoadingRef } from './components/Glo
 import GlobalMessage, { globalMessage, globalMessageRef } from './components/GlobalMessage';
 import CRecursive from './components/Recursive';
 import Timer from './components/Timer';
+import SliderStep from './components/SliderTabview';
 
-export { Timer, CRecursive, globalLoading, GlobalLoading, globalLoadingRef, globalMessage, GlobalMessage, globalMessageRef };
+export { Timer, CRecursive, globalLoading, GlobalLoading, globalLoadingRef, globalMessage, GlobalMessage, globalMessageRef, SliderStep };
