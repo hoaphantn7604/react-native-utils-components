@@ -9,7 +9,5 @@
 `$ yarn add react-native-vector-icons`
 
 ## Usage
-```javascript
-import {} from 'react-native-utils-components';
 
-```
+Source example: https://github.com/hoaphantn7604/react-native-typescript-template-hooks
