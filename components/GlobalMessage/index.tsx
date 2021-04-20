@@ -2,7 +2,6 @@ import { CButton, CText } from '../../index';
 import React, { useImperativeHandle, useState } from 'react';
 import { Modal, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
 import { dimensionsScale, isTablet } from 'react-native-utils-scale';
-import { translate } from 'shared/language';
 
 export const globalMessageRef = React.createRef<any>();
 export const globalMessage = {
@@ -40,7 +39,7 @@ const GlobalMessage = React.forwardRef((props, ref) => {
               <CText style={styles.messgae}>{content}</CText>
               <CButton
                 style={styles.button}
-                title={translate('common:ok')}
+                title="Ok"
                 onPress={() => {
                   setVisible(false);
                 }}
