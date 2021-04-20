@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { ScrollView, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { dimensionsScale } from 'react-native-utils-scale';
 import Fontisto from 'react-native-vector-icons/Fontisto';
-import { CButton } from '../../index';
 
 export interface Props {
   listData?: any;
@@ -125,13 +124,11 @@ const RecursiveComponent: React.FC<Props> = (props) => {
       <ScrollView style={styles.container} key={key}>
         {data.map((item: any, index: number) => renderList(item, item[props.childField], index))}
       </ScrollView>
-      <CButton
-        style={styles.btn}
-        title={props.buttonName ? props.buttonName : 'Button'}
-        onPress={() => {
-          props.selected(selectItem);
-        }}
-      />
+      <TouchableOpacity style={styles.btn} onPress={() => {
+        props.selected(selectItem);
+      }}>
+        <Text style={styles.btnName}>{props.buttonName ? props.buttonName : 'Button'}</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -163,6 +160,10 @@ const styles = StyleSheet.create({
     width: dimensionsScale.scale(150),
     height: dimensionsScale.scale(50),
     alignSelf: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'black',
+    borderRadius: dimensionsScale.scale(25),
   },
   btnName: {
     fontSize: dimensionsScale.fontScale(20),
