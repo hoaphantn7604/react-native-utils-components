@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ScrollView, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, TouchableOpacity, FlatList } from 'react-native';
 import { dimensionsScale } from 'react-native-utils-scale';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 
@@ -121,9 +121,13 @@ const RecursiveComponent: React.FC<Props> = (props) => {
 
   return (
     <View style={styles.container}>
-      <ScrollView style={styles.container} key={key}>
-        {data.map((item: any, index: number) => renderList(item, item[props.childField], index))}
-      </ScrollView>
+      <FlatList
+        data={data}
+        renderItem={({ item, index }) => renderList(item, item[props.childField], index)}
+        keyExtractor={(item, index) => index.toString()}
+        showsVerticalScrollIndicator={false}
+        extraData={key}
+      />
       <TouchableOpacity style={styles.btn} onPress={() => {
         props.selected(selectItem);
       }}>
@@ -138,6 +142,7 @@ export default RecursiveComponent;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: '100%'
   },
   row: {
     flexDirection: 'row',
