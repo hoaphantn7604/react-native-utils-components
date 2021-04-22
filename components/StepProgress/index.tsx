@@ -33,7 +33,7 @@ const defaultProps = {
   textSize: 16,
 };
 
-const SliderStepComponent: React.FC<Props> = (props) => {
+const StepProgress: React.FC<Props> = (props) => {
   const { data, activeColor, inActiveColor, selectIndex, textSize, selectColor } = props;
 
   const renderItem = (item: Item, index: number) => {
@@ -105,13 +105,12 @@ const SliderStepComponent: React.FC<Props> = (props) => {
   );
 };
 
-SliderStepComponent.defaultProps = defaultProps;
+StepProgress.defaultProps = defaultProps;
 
-export default SliderStepComponent;
+export default StepProgress;
 
 const styles = StyleSheet.create({
   container: {
-    paddingLeft: dimensionsScale.scale(10),
   },
   radius: {
     width: dimensionsScale.scale(30),
