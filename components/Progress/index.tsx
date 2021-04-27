@@ -35,7 +35,7 @@ const ProgressComponent: React.FC<Props> = (props) => {
   }, [percent, color]);
 
   return (
-    <View style={{ justifyContent: 'flex-end' }}>
+    <View style={{ justifyContent: 'flex-end', minHeight: dimensionsScale.scale(30) }}>
       <View
         style={[
           {

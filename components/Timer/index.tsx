@@ -3,13 +3,13 @@ import { StyleSheet, Text, View, ViewStyle } from 'react-native';
 import { dimensionsScale } from 'react-native-utils-scale';
 
 export interface Props {
-  containerStyle?: ViewStyle;
+  style?: ViewStyle;
   textStyle?: ViewStyle;
   start: boolean;
 }
 
 const defaulProps = {
-  containerStyle: {},
+  style: {},
   textStyle: {},
 };
 
@@ -46,7 +46,7 @@ const TimerComponent: React.FC<Props> = (props) => {
   }, [props.start]);
 
   return (
-    <View style={styles.container} key={key}>
+    <View style={[styles.container, props.style]} key={key}>
       <Text style={styles.text}>{`${hours}:${minute.toString().length === 1 ? '0' : ''}${minute}:${
         second.toString().length === 1 ? '0' : ''
       }${second}`}</Text>
