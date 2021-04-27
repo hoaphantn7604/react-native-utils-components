@@ -35,10 +35,17 @@ const TimerComponent: React.FC<Props> = (props) => {
       }
       setKey(Math.random());
     }, 1000);
+
   };
 
   useEffect(() => {
     if (props.start) {
+      if(interval){
+        clearInterval(interval);
+      }
+      hours = 0;
+      minute = 0;
+      second = 0;
       timer();
     } else {
       clearInterval(interval);
@@ -47,9 +54,8 @@ const TimerComponent: React.FC<Props> = (props) => {
 
   return (
     <View style={[styles.container, props.style]} key={key}>
-      <Text style={styles.text}>{`${hours}:${minute.toString().length === 1 ? '0' : ''}${minute}:${
-        second.toString().length === 1 ? '0' : ''
-      }${second}`}</Text>
+      <Text style={[styles.text, props.textStyle]}>{`${hours}:${minute.toString().length === 1 ? '0' : ''}${minute}:${second.toString().length === 1 ? '0' : ''
+        }${second}`}</Text>
     </View>
   );
 };
