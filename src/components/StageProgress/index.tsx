@@ -15,18 +15,19 @@ export interface Props {
 }
 
 export interface Item {
+  stage: string;
   text: string;
   status: boolean;
 }
 
 const defaultProps = {
   data: [
-    { text: 'Step 1', status: false },
-    { text: 'Step 2', status: false },
-    { text: 'Step 3', status: false },
-    { text: 'Step 4', status: false },
-    { text: 'Step 5', status: false },
-    { text: 'Step 6', status: false },
+    { stage: 'S1', text: 'S1', status: false },
+    { stage: 'S2', text: 'S2', status: false },
+    { stage: 'S3', text: 'S3', status: false },
+    { stage: 'S4', text: 'S4', status: false },
+    { stage: 'S5', text: 'S5', status: false },
+    { stage: 'S6', text: 'S6', status: false },
   ],
   activeColor: '#32C5FF',
   inActiveColor: '#C6CDD8',
@@ -78,20 +79,23 @@ const StepProgress: React.FC<Props> = (props) => {
               style={[
                 styles.radius,
                 {
-                  borderColor:
+                  backgroundColor:
                     index === selectIndex ? selectColor : item.status ? activeColor : inActiveColor,
                 },
               ]}>
-              {item.status && (
-                <Image
-                  style={[
-                    styles.icon,
-                    { tintColor: index === selectIndex ? selectColor : activeColor },
-                  ]}
-                  source={require('./icon/check.png')}
-                />
-              )}
+              <Text
+                style={[
+                  {
+                    fontSize: fontScale(textSize),
+                    color: item.status || index === selectIndex ? 'white' : 'gray',
+                  },
+                ]}>
+                {item.stage}
+              </Text>
             </View>
+            {index === selectIndex && (
+              <View style={[styles.triangle, { borderBottomColor: activeColor }]} />
+            )}
           </TouchableOpacity>
         </View>
       </View>
@@ -100,14 +104,13 @@ const StepProgress: React.FC<Props> = (props) => {
 
   const renderText = (item: Item, index: number) => {
     return (
-      <View
-        style={[
-          index !== 0 && {
-            flex: 1,
-            alignItems: 'flex-end',
-          },
-        ]}>
-        <Text style={[styles.text, { fontSize: fontScale(textSize) }]}>{item.text}</Text>
+      <View style={{ flex: 1 }}>
+        {index === selectIndex && (
+          <View
+            style={[styles.tag, { backgroundColor: activeColor }, index === data.length - 1 && {}]}>
+            <Text style={styles.text}>{item.text}</Text>
+          </View>
+        )}
       </View>
     );
   };
@@ -138,7 +141,6 @@ const styles = StyleSheet.create({
     width: scale(30),
     height: scale(30),
     borderRadius: scale(15),
-    borderWidth: scale(2),
     backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
@@ -148,11 +150,32 @@ const styles = StyleSheet.create({
     height: scale(3),
     marginTop: scale(15),
   },
-  text: {
-    marginTop: scale(15),
-  },
+  text: { color: 'white', fontSize: fontScale(16) },
   icon: {
     width: scale(20),
     height: scale(20),
+  },
+  tag: {
+    paddingHorizontal: scale(12),
+    paddingVertical: scale(6),
+    borderRadius: scale(5),
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  triangle: {
+    marginTop: scale(10),
+    marginLeft: scale(10),
+    width: 0,
+    height: 0,
+    backgroundColor: 'transparent',
+    borderStyle: 'solid',
+    borderTopWidth: 0,
+    borderRightWidth: 5,
+    borderBottomWidth: 10,
+    borderLeftWidth: 5,
+    borderRightColor: 'transparent',
+    borderTopColor: 'transparent',
+    borderLeftColor: 'transparent',
+    opacity: 1,
   },
 });

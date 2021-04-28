@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, ScrollView, Text } from 'react-native';
-import { CRecursive, CTimer, CStepProgress, CProgress } from 'react-native-utils-components';
+import { CRecursive, CTimer, CStepProgress, CStageProgress, CProgress } from 'react-native-utils-components';
 import { dimensionsScale } from 'react-native-utils-scale';
 
 const { scale } = dimensionsScale;
@@ -62,8 +62,7 @@ const recursiveData = [{
             shopCode: 'HCM_0099999',
             shopType: '4',
             shopId: 8,
-            shopName: 'Q.09',
-           
+            shopName: 'Q.09',     
           },
         ],
       }
@@ -76,7 +75,8 @@ export interface Props {
 }
 
 const MainScreen: React.FC<Props> = (props) => {
-  const [index, setIndex] = useState<number>(0);
+  const [step, setStep] = useState<number>(1);
+  const [stage, setStage] = useState<number>(2);
 
   return (
     <ScrollView>
@@ -101,15 +101,36 @@ const MainScreen: React.FC<Props> = (props) => {
             data={[
               { text: 'Step 1', status: true },
               { text: 'Step 2', status: true },
-              { text: 'Step 3', status: true },
+              { text: 'Step 3', status: false },
               { text: 'Step 4', status: false },
             ]}
-            selectIndex={index}
-            onSelectIndex={(index: number) => { setIndex(index) }}
+            selectIndex={step}
+            onSelectIndex={(index: number) => { setStep(index) }}
             activeColor='#32C5FF'
             inActiveColor='#C6CDD8'
             selectColor='#FF9900'
             textSize={16}
+          />
+        </View>
+
+        <View style={styles.row}>
+          <Text style={styles.title}>Stage Progress</Text>
+          <CStageProgress
+            data={[
+              { stage: 'S1', text: 'Hello S1', status: true },
+              { stage: 'S2', text: 'Hello S2', status: true },
+              { stage: 'S3', text: 'Hello S3', status: true },
+              { stage: 'S4', text: 'Hello S4', status: false },
+              { stage: 'S5', text: 'Hello S5', status: false },
+              { stage: 'S6', text: 'Hello S6', status: false },
+            ]}
+            activeColor="#32C5FF"
+            inActiveColor="#C6CDD8"
+            selectColor="#32C5FF"
+            selectIndex={stage}
+            onSelectIndex={(index: number) => {
+              setStage(index);
+            }}
           />
         </View>
 
