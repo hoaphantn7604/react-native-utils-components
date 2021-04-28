@@ -6,6 +6,7 @@ const { scale, fontScale } = dimensionsScale;
 
 export interface Props {
   style?: StyleProp<ViewStyle>;
+  buttonStyle?: StyleProp<ViewStyle>;
   data: any[];
   textField: string;
   childField: string;
@@ -128,7 +129,7 @@ const HierarchyComponent: React.FC<Props> = (props) => {
         showsVerticalScrollIndicator={false}
         extraData={key}
       />
-      <TouchableOpacity style={styles.btn} onPress={() => {
+      <TouchableOpacity style={[styles.btn, props.buttonStyle]} onPress={() => {
         props.selected(selectItem);
       }}>
         <Text style={styles.btnName}>{props.buttonName ? props.buttonName : 'Button'}</Text>
