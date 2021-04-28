@@ -1,10 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ViewStyle, StyleProp } from 'react-native';
 import { dimensionsScale } from 'react-native-utils-scale';
 
 const { scale, fontScale } = dimensionsScale;
 
 export interface Props {
+  style?: StyleProp<ViewStyle>;
   data: Item[];
   activeColor?: string;
   inActiveColor?: string;
@@ -21,6 +22,7 @@ export interface Item {
 }
 
 const defaultProps = {
+  style: {},
   data: [
     { stage: 'S1', text: 'S1', status: false },
     { stage: 'S2', text: 'S2', status: false },
@@ -34,11 +36,12 @@ const defaultProps = {
   selectColor: '#FF9900',
   selectIndex: 0,
   textSize: 16,
-  onSelectIndex: (index: number) => {},
+  onSelectIndex: (index: number) => { },
 };
 
 const CTooltipProgressComponent: React.FC<Props> = (props) => {
   const {
+    style,
     data,
     activeColor,
     inActiveColor,
@@ -116,7 +119,7 @@ const CTooltipProgressComponent: React.FC<Props> = (props) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
       <View
         style={{
           flexDirection: 'row',

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { StyleSheet, ViewStyle, Text, View, TouchableOpacity, FlatList } from 'react-native';
+import { StyleSheet, ViewStyle, Text, View, TouchableOpacity, FlatList, StyleProp } from 'react-native';
 import { dimensionsScale } from 'react-native-utils-scale';
 
 const { scale, fontScale } = dimensionsScale;
 
 export interface Props {
-  style: ViewStyle;
-  listData?: any;
+  style?: StyleProp<ViewStyle>;
+  data: any[];
   textField: string;
   childField: string;
   buttonName?: string;
@@ -16,12 +16,14 @@ export interface Props {
 let selectItem: any = [];
 
 const HierarchyComponent: React.FC<Props> = (props) => {
-  const [data] = useState<any>(props.listData);
+  const {data, textField, childField} = props;
+
+  const [listData] = useState<any>(data);
   const [key, setKey] = useState(Math.random());
 
   const parent = (item: any) => {
-    if (item && item[props.childField]) {
-      const check = item[props.childField].filter((child: any) => !child.tick);
+    if (item && item[childField]) {
+      const check = item[childField].filter((child: any) => !child.tick);
       if (check.length === 0) {
         item.tick = true;
       } else {
@@ -35,8 +37,8 @@ const HierarchyComponent: React.FC<Props> = (props) => {
   const onTick = (item: any) => {
     item.tick = true;
     parent(item.parent);
-    if (item[props.childField]) {
-      item[props.childField].map((child: any) => onTick(child));
+    if (item[childField]) {
+      item[childField].map((child: any) => onTick(child));
     }
     reload();
   };
@@ -44,8 +46,8 @@ const HierarchyComponent: React.FC<Props> = (props) => {
   const onUnTick = (item: any) => {
     item.tick = false;
     parent(item.parent);
-    if (item[props.childField]) {
-      item[props.childField].map((child: any) => onUnTick(child));
+    if (item[childField]) {
+      item[childField].map((child: any) => onUnTick(child));
     }
     reload();
   };
@@ -58,7 +60,7 @@ const HierarchyComponent: React.FC<Props> = (props) => {
   const reload = () => {
     setKey(Math.random());
     selectItem = [];
-    selectItemTick(data);
+    selectItemTick(listData);
   };
 
   const selectItemTick = (data: any) => {
@@ -66,8 +68,8 @@ const HierarchyComponent: React.FC<Props> = (props) => {
       if (item.tick) {
         selectItem.push(item);
       }
-      if (item[props.childField]) {
-        selectItemTick(item[props.childField]);
+      if (item[childField]) {
+        selectItemTick(item[childField]);
       }
     });
   };
@@ -100,7 +102,7 @@ const HierarchyComponent: React.FC<Props> = (props) => {
             }}>
             <View style={{ flexDirection: 'row' }}>
               {item.tick ? <Text style={styles.tick}>☑</Text> : <Text style={styles.unTick}>☐</Text>}
-              <Text style={styles.name} numberOfLines={1}>{item[props.textField]}</Text>
+              <Text style={styles.name} numberOfLines={1}>{item[textField]}</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -110,7 +112,7 @@ const HierarchyComponent: React.FC<Props> = (props) => {
               if (!data.parent) {
                 data.parent = item;
               }
-              return renderList(data, data[props.childField], index);
+              return renderList(data, data[childField], index);
             })}
         </View>
       </View>
@@ -120,8 +122,8 @@ const HierarchyComponent: React.FC<Props> = (props) => {
   return (
     <View style={[styles.container, props.style]}>
       <FlatList
-        data={data}
-        renderItem={({ item, index }) => renderList(item, item[props.childField], index)}
+        data={listData}
+        renderItem={({ item, index }) => renderList(item, item[childField], index)}
         keyExtractor={(item, index) => index.toString()}
         showsVerticalScrollIndicator={false}
         extraData={key}

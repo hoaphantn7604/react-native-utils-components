@@ -1,43 +1,46 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ViewStyle, StyleProp } from 'react-native';
 import { dimensionsScale } from 'react-native-utils-scale';
 
 const { scale } = dimensionsScale;
 
 export interface Props {
+  style?: StyleProp<ViewStyle>;
   percent: number;
-  color: { color: string; percent: number }[];
+  data: { color: string; percent: number }[];
   border?: boolean;
   height?: number;
 }
 
 const defaultProps = {
-  color: [
+  style: {},
+  data: [
     { color: 'red', percent: 33.33 },
     { color: 'gray', percent: 33.33 },
     { color: 'green', percent: 33.33 },
   ],
   border: false,
   height: dimensionsScale.scale(6),
+
 };
 
 let iPercent = 100;
 
 const ProgressComponent: React.FC<Props> = (props) => {
-  const { percent, color, height, border } = props;
+  const { percent, data, height, border, style } = props;
   const [controlColor, setControlColor] = useState<string>('black');
 
   useEffect(() => {
-    if (color) {
-      iPercent = 100 / color.length;
+    if (data) {
+      iPercent = 100 / data.length;
       const index = Math.ceil(percent / iPercent);
-      const findColor = color[index - 1].color;
+      const findColor = data[index - 1].color;
       setControlColor(findColor);
     }
-  }, [percent, color]);
+  }, [percent, data]);
 
   return (
-    <View style={{ justifyContent: 'flex-end', minHeight: scale(44) }}>
+    <View style={[styles.main, style]}>
       <View
         style={[
           {
@@ -52,14 +55,14 @@ const ProgressComponent: React.FC<Props> = (props) => {
         <View style={[styles.tick, { backgroundColor: controlColor }]} />
       </View>
       <View style={[styles.container, { height: height }]}>
-        {color &&
-          color.map((item, index) => (
+        {data &&
+          data.map((item, index) => (
             <View
               style={[
                 { backgroundColor: item.color, width: `${item.percent}%` },
                 border && index === 0 && { borderTopLeftRadius: 5, borderBottomLeftRadius: 5 },
                 border &&
-                index === color.length - 1 && {
+                index === data.length - 1 && {
                   borderTopRightRadius: scale(5),
                   borderBottomRightRadius: scale(5),
                 },
@@ -76,6 +79,10 @@ ProgressComponent.defaultProps = defaultProps;
 export default ProgressComponent;
 
 const styles = StyleSheet.create({
+  main:{
+     justifyContent: 'flex-end', 
+     minHeight: scale(44) 
+  },
   container: {
     width: '100%',
     backgroundColor: 'white',

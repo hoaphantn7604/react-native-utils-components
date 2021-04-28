@@ -1,10 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, StyleProp, ViewStyle } from 'react-native';
 import { dimensionsScale } from 'react-native-utils-scale';
 
 const { scale, fontScale } = dimensionsScale;
 
 export interface Props {
+  style?: StyleProp<ViewStyle>;
   data: Item[];
   activeColor?: string;
   inActiveColor?: string;
@@ -20,6 +21,7 @@ export interface Item {
 }
 
 const defaultProps = {
+  style: {},
   data: [
     { text: 'Step 1', status: false },
     { text: 'Step 2', status: false },
@@ -38,6 +40,7 @@ const defaultProps = {
 
 const StepProgress: React.FC<Props> = (props) => {
   const {
+    style,
     data,
     activeColor,
     inActiveColor,
@@ -113,7 +116,7 @@ const StepProgress: React.FC<Props> = (props) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
       <View
         style={{
           flexDirection: 'row',

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, ViewStyle } from 'react-native';
+import { StyleSheet, Text, View, ViewStyle, StyleProp, TextStyle } from 'react-native';
 import { dimensionsScale } from 'react-native-utils-scale';
 
 export interface Props {
-  style?: ViewStyle;
-  textStyle?: ViewStyle;
+  style?: StyleProp<ViewStyle>;
+  textStyle?: StyleProp<TextStyle>;
   start: boolean;
 }
 
