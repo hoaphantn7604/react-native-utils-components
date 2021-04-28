@@ -4,9 +4,19 @@
 
 `$ yarn add react-native-utils-components`
 
-### Dependencies
+## Dependencies
 
-`$ yarn add react-native-vector-icons`
+    yarn add react-native-vector-icons
+    yarn add react-native-utils-scale
+
+## IOS Setup
+    cd ios && pod install && cd ../
+
+## Demo
+![Alt text](./document/demo1.png?raw=true "Demo")
+![Alt text](./document/demo2.png?raw=true "Demo")
+![Alt text](./document/demo3.png?raw=true "Demo")
+![Alt text](./document/demo4.png?raw=true "Demo")
 
 ## Code example
 ```js
@@ -90,8 +100,6 @@
                     textSize= {16}
                 />
 
-                <CTimer start={true} />
-
                 <CProgress
                     color={[
                         { color: 'red', percent: 33.33 },
@@ -101,6 +109,8 @@
                     percent={20}
                     border
                 />
+
+                <CTimer start={true} />
             </View>
         );
     };
