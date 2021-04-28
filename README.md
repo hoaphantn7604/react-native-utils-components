@@ -13,10 +13,10 @@
     cd ios && pod install && cd ../
 
 ## Demo
-![Alt text](./document/demo1.png?raw=true "Demo")
-![Alt text](./document/demo2.png?raw=true "Demo")
-![Alt text](./document/demo3.png?raw=true "Demo")
-![Alt text](./document/demo4.png?raw=true "Demo")
+![](./document/demo1.png?raw=true "Demo")
+![](./document/demo2.png?raw=true "Demo")
+![](./document/demo3.png?raw=true "Demo")
+![](./document/demo4.png?raw=true "Demo")
 
 ## Code example
 ```js
