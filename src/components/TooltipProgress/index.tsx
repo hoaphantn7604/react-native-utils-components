@@ -37,7 +37,7 @@ const defaultProps = {
   onSelectIndex: (index: number) => {},
 };
 
-const StepProgress: React.FC<Props> = (props) => {
+const CTooltipProgressComponent: React.FC<Props> = (props) => {
   const {
     data,
     activeColor,
@@ -131,9 +131,9 @@ const StepProgress: React.FC<Props> = (props) => {
   );
 };
 
-StepProgress.defaultProps = defaultProps;
+CTooltipProgressComponent.defaultProps = defaultProps;
 
-export default StepProgress;
+export default CTooltipProgressComponent;
 
 const styles = StyleSheet.create({
   container: {},

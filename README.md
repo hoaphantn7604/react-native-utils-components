@@ -18,7 +18,7 @@
 ```js
     import React, { useState } from 'react';
     import { StyleSheet, View, ScrollView, Text } from 'react-native';
-    import { CRecursive, CTimer, CStepProgress, CProgress } from 'react-native-utils-components';
+    import { CHierarchy, CTimer, CStepProgress, CTooltipProgress, CProgress } from 'react-native-utils-components';
     import { dimensionsScale } from 'react-native-utils-scale';
 
     const { scale } = dimensionsScale;
@@ -80,8 +80,7 @@
                 shopCode: 'HCM_0099999',
                 shopType: '4',
                 shopId: 8,
-                shopName: 'Q.09',
-            
+                shopName: 'Q.09',     
             },
             ],
         }
@@ -94,91 +93,113 @@
     }
 
     const MainScreen: React.FC<Props> = (props) => {
-    const [index, setIndex] = useState<number>(0);
+        const [step, setStep] = useState<number>(1);
+        const [stage, setStage] = useState<number>(2);
 
-    return (
-        <ScrollView>
-        <View style={styles.container}>
-            <View style={styles.row}>
-            <Text style={styles.title}>Recursive</Text>
-            <CRecursive
-                listData={recursiveData}
-                buttonName="Continute"
-                textField="shopCode"
-                childField="childs"
-                selected={(item) => {
-                console.log(`Selected ${item.length} item`);
-                alert(`Selected ${item.length} item`);
-                }}
-            />
-            </View>
+        return (
+            <ScrollView>
+            <View style={styles.container}>
+                <View style={styles.row}>
+                <Text style={styles.title}>Hierarchy</Text>
+                <CHierarchy
+                    listData={recursiveData}
+                    buttonName="Continute"
+                    textField="shopCode"
+                    childField="childs"
+                    selected={(item) => {
+                    console.log(`Selected ${item.length} item`);
+                    alert(`Selected ${item.length} item`);
+                    }}
+                />
+                </View>
 
-            <View style={styles.row}>
-            <Text style={styles.title}>Step Progress</Text>
-            <CStepProgress
-                data={[
-                { text: 'Step 1', status: true },
-                { text: 'Step 2', status: true },
-                { text: 'Step 3', status: true },
-                { text: 'Step 4', status: false },
-                ]}
-                selectIndex={index}
-                onSelectIndex={(index: number) => { setIndex(index) }}
-                activeColor='#32C5FF'
-                inActiveColor='#C6CDD8'
-                selectColor='#FF9900'
-                textSize={16}
-            />
-            </View>
+                <View style={styles.row}>
+                <Text style={styles.title}>Step Progress</Text>
+                <CStepProgress
+                    data={[
+                    { text: 'Step 1', status: true },
+                    { text: 'Step 2', status: true },
+                    { text: 'Step 3', status: false },
+                    { text: 'Step 4', status: false },
+                    ]}
+                    selectIndex={step}
+                    onSelectIndex={(index: number) => { setStep(index) }}
+                    activeColor='#32C5FF'
+                    inActiveColor='#C6CDD8'
+                    selectColor='#FF9900'
+                    textSize={16}
+                />
+                </View>
 
-            <View style={styles.row}>
-            <Text style={styles.title}>Progress</Text>
-            <CProgress
-                color={[
-                { color: 'red', percent: 33.33 },
-                { color: 'gray', percent: 33.33 },
-                { color: 'green', percent: 33.33 },
-                ]}
-                percent={20}
-                border
-            />
-            </View>
+                <View style={styles.row}>
+                <Text style={styles.title}>Tooltip Progress</Text>
+                <CTooltipProgress
+                    data={[
+                    { stage: 'S1', text: 'Hello S1', status: true },
+                    { stage: 'S2', text: 'Hello S2', status: true },
+                    { stage: 'S3', text: 'Hello S3', status: true },
+                    { stage: 'S4', text: 'Hello S4', status: false },
+                    { stage: 'S5', text: 'Hello S5', status: false },
+                    { stage: 'S6', text: 'Hello S6', status: false },
+                    ]}
+                    activeColor="#32C5FF"
+                    inActiveColor="#C6CDD8"
+                    selectColor="#32C5FF"
+                    selectIndex={stage}
+                    onSelectIndex={(index: number) => {
+                    setStage(index);
+                    }}
+                />
+                </View>
 
-            <View style={styles.row}>
-            <Text style={styles.title}>Timer</Text>
-            <CTimer style={styles.timer} textStyle={styles.timerText} start={true} />
+                <View style={styles.row}>
+                <Text style={styles.title}>Progress</Text>
+                <CProgress
+                    color={[
+                    { color: 'red', percent: 33.33 },
+                    { color: 'gray', percent: 33.33 },
+                    { color: 'green', percent: 33.33 },
+                    ]}
+                    percent={20}
+                    border
+                />
+                </View>
+
+                <View style={styles.row}>
+                <Text style={styles.title}>Timer</Text>
+                <CTimer style={styles.timer} textStyle={styles.timerText} start={true} />
+                </View>
             </View>
-        </View>
-        </ScrollView>
-    );
+            </ScrollView>
+        );
     };
 
     export default MainScreen;
 
     const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 20,
-    },
-    row: {
-        marginVertical: scale(20),
-    },
-    title: {
-        fontSize: 18,
-        marginBottom: 16
-    },
-    timer: {
-        backgroundColor: 'black',
-        width: scale(100),
-        height: scale(50),
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: scale(50),
-        borderWidth: scale(3),
-        borderColor: 'white',
-    },
-    timerText: {
-        color: 'white'
-    }
+        container: {
+            flex: 1,
+            padding: 20,
+        },
+        row: {
+            marginVertical: scale(20),
+        },
+        title: {
+            fontSize: 18,
+            marginBottom: 16
+        },
+        timer: {
+            backgroundColor: 'black',
+            width: scale(100),
+            height: scale(50),
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: scale(50),
+            borderWidth: scale(3),
+            borderColor: 'white',
+        },
+        timerText: {
+            color: 'white'
+        }
     });
 ```

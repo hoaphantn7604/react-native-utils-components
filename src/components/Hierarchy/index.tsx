@@ -15,7 +15,7 @@ export interface Props {
 
 let selectItem: any = [];
 
-const RecursiveComponent: React.FC<Props> = (props) => {
+const HierarchyComponent: React.FC<Props> = (props) => {
   const [data] = useState<any>(props.listData);
   const [key, setKey] = useState(Math.random());
 
@@ -135,7 +135,7 @@ const RecursiveComponent: React.FC<Props> = (props) => {
   );
 };
 
-export default RecursiveComponent;
+export default HierarchyComponent;
 
 const styles = StyleSheet.create({
   container: {

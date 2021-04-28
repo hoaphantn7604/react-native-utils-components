@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, ScrollView, Text } from 'react-native';
-import { CRecursive, CTimer, CStepProgress, CStageProgress, CProgress } from 'react-native-utils-components';
+import { CHierarchy, CTimer, CStepProgress, CTooltipProgress, CProgress } from 'react-native-utils-components';
 import { dimensionsScale } from 'react-native-utils-scale';
 
 const { scale } = dimensionsScale;
@@ -82,8 +82,8 @@ const MainScreen: React.FC<Props> = (props) => {
     <ScrollView>
       <View style={styles.container}>
         <View style={styles.row}>
-          <Text style={styles.title}>Recursive</Text>
-          <CRecursive
+          <Text style={styles.title}>Hierarchy</Text>
+          <CHierarchy
             listData={recursiveData}
             buttonName="Continute"
             textField="shopCode"
@@ -114,8 +114,8 @@ const MainScreen: React.FC<Props> = (props) => {
         </View>
 
         <View style={styles.row}>
-          <Text style={styles.title}>Stage Progress</Text>
-          <CStageProgress
+          <Text style={styles.title}>Tooltip Progress</Text>
+          <CTooltipProgress
             data={[
               { stage: 'S1', text: 'Hello S1', status: true },
               { stage: 'S2', text: 'Hello S2', status: true },
