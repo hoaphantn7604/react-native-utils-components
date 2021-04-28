@@ -33,52 +33,55 @@
         shopReportName: 'LQTĐ',
         shopCode: '2MFH10038',
         shopType: '3',
-        shopId: 28,
+        shopId: 2,
         shopName: 'MBF Liên Quận Thủ Đức: Q.TĐ, Q.2, Q9, Q.Bình Thạnh',
         childs: [
         {
             shopReportName: 'Q.TĐức',
             shopCode: 'HCM_TDU',
             shopType: '4',
-            shopId: 23,
+            shopId: 3,
             shopName: 'Q.Thủ Đức',
             childs: [
             {
                 shopReportName: 'Q.BThạnh',
                 shopCode: 'HCM_BTH',
                 shopType: '4',
-                shopId: 13,
+                shopId: 4,
                 shopName: 'Q.Bình Thạnh',
-                childs: [
-                {
-                    shopReportName: 'Q.02',
-                    shopCode: 'HCM_002',
-                    shopType: '4',
-                    shopId: 7,
-                    shopName: 'Q.02',
-                },
-                {
-                    shopReportName: 'Q.09',
-                    shopCode: 'HCM_009',
-                    shopType: '4',
-                    shopId: 15,
-                    shopName: 'Q.09',
-                },
-                ],
             },
             {
                 shopReportName: 'Q.02',
                 shopCode: 'HCM_002',
                 shopType: '4',
-                shopId: 7,
+                shopId: 5,
                 shopName: 'Q.02',
+                childs: [
+                {
+                    shopReportName: 'Q.09',
+                    shopCode: 'HCM_0099',
+                    shopType: '4',
+                    shopId: 7,
+                    shopName: 'Q.09',
+                    childs: [
+                    {
+                        shopReportName: 'Q.09',
+                        shopCode: 'HCM_00999',
+                        shopType: '4',
+                        shopId: 7,
+                        shopName: 'Q.09',
+                    },
+                    ],
+                },
+                ],
             },
             {
                 shopReportName: 'Q.09',
-                shopCode: 'HCM_009',
+                shopCode: 'HCM_0099999',
                 shopType: '4',
-                shopId: 15,
+                shopId: 8,
                 shopName: 'Q.09',
+            
             },
             ],
         }
