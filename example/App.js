@@ -130,7 +130,7 @@ const MainScreen = props => {
               {stage: 'S2', text: 'Hello S2', status: true},
               {stage: 'S3', text: 'Hello S3', status: true},
               {stage: 'S4', text: 'Hello S4', status: true},
-              {stage: 'S5', text: 'Hello S5', status: false},
+              {stage: 'S5', text: 'Hello S5', status: true},
               {stage: 'S6', text: 'Hello S6', status: false},
             ]}
             activeColor="#32C5FF"
