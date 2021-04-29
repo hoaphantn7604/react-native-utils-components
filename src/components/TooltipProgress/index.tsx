@@ -97,7 +97,7 @@ const CTooltipProgressComponent: React.FC<Props> = (props) => {
               </Text>
             </View>
             {index === selectIndex && (
-              <View style={[styles.triangle, { borderBottomColor: activeColor }]} />
+              <View style={[styles.triangle, { borderBottomColor: selectColor }]} />
             )}
           </TouchableOpacity>
         </View>
@@ -110,7 +110,7 @@ const CTooltipProgressComponent: React.FC<Props> = (props) => {
       <View style={{ flex: 1 }}>
         {index === selectIndex && (
           <View
-            style={[styles.tag, { backgroundColor: activeColor }, index === data.length - 1 && {}]}>
+            style={[styles.tag, { backgroundColor: selectColor }, index === data.length - 1 && {}]}>
             <Text style={styles.text}>{item.text}</Text>
           </View>
         )}

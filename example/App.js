@@ -129,7 +129,7 @@ const MainScreen = props => {
               {stage: 'S1', text: 'Hello S1', status: true},
               {stage: 'S2', text: 'Hello S2', status: true},
               {stage: 'S3', text: 'Hello S3', status: true},
-              {stage: 'S4', text: 'Hello S4', status: false},
+              {stage: 'S4', text: 'Hello S4', status: true},
               {stage: 'S5', text: 'Hello S5', status: false},
               {stage: 'S6', text: 'Hello S6', status: false},
             ]}
