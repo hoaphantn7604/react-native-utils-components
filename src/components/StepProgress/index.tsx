@@ -55,8 +55,12 @@ const StepProgress: React.FC<Props> = (props) => {
 
   const renderItem = (item: Item, index: number) => {
     return (
-      <View style={[index !== 0 && { flex: 1 }]}>
-        <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+      <View style={
+        [index !== 0 && { flex: 1 },
+        index === 0 && { marginLeft: scale(25) },
+        index === data.length - 1 && { marginRight: scale(25) }
+        ]}>
+        <View style={styles.row}>
           {index !== 0 && (
             <View
               style={[
@@ -106,14 +110,8 @@ const StepProgress: React.FC<Props> = (props) => {
 
   const renderText = (item: Item, index: number) => {
     return (
-      <View
-        style={[
-          index !== 0 && {
-            flex: 1,
-            alignItems: 'flex-end',
-          },
-        ]}>
-        <Text style={[styles.text, { fontSize: fontScale(textSize), color: index === selectIndex ? selectColor : textColor, fontWeight: '500' }]}>{item.text}</Text>
+      <View style={{width: scale(80) }}>
+        <Text style={[styles.text, { fontSize: fontScale(textSize), color: index === selectIndex ? selectColor : textColor }]}>{item.text}</Text>
       </View>
     );
   };
@@ -121,13 +119,10 @@ const StepProgress: React.FC<Props> = (props) => {
   return (
     <View style={[styles.container, style]}>
       <View
-        style={{
-          flexDirection: 'row',
-          marginLeft: scale(5),
-        }}>
+        style={styles.wrapTick}>
         {data.map((item, index) => renderItem(item, index))}
       </View>
-      <View style={{ flexDirection: 'row' }}>
+      <View style={styles.wrapText}>
         {data.map((item, index) => renderText(item, index))}
       </View>
     </View>
@@ -154,8 +149,22 @@ const styles = StyleSheet.create({
     height: scale(3),
     marginTop: scale(15),
   },
+  wrapTick: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'center'
+  },
+  wrapText: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
   text: {
-    marginTop: scale(15),
+    marginTop: scale(10),
+    textAlign: 'center',
+    fontWeight: '500'
   },
   icon: {
     width: scale(20),
