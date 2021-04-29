@@ -135,7 +135,8 @@
                     activeColor="#32C5FF"
                     inActiveColor="#C6CDD8"
                     selectColor="#FF9900"
-                    textSize={16}
+                    textColor="gray"
+                    textSize={15}
                 />
                 </View>
 

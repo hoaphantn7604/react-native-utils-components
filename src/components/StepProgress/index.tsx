@@ -9,6 +9,7 @@ export interface Props {
   data: Item[];
   activeColor?: string;
   inActiveColor?: string;
+  textColor?: string;
   selectIndex?: number;
   onSelectIndex?: (index: number) => void;
   selectColor?: string;
@@ -33,9 +34,10 @@ const defaultProps = {
   activeColor: '#32C5FF',
   inActiveColor: '#C6CDD8',
   selectColor: '#FF9900',
+  textColor: '#C6CDD8',
   selectIndex: 0,
   textSize: 16,
-  onSelectIndex: (index: number) => {},
+  onSelectIndex: (index: number) => { },
 };
 
 const StepProgress: React.FC<Props> = (props) => {
@@ -44,6 +46,7 @@ const StepProgress: React.FC<Props> = (props) => {
     data,
     activeColor,
     inActiveColor,
+    textColor,
     selectIndex,
     textSize,
     selectColor,
@@ -85,7 +88,7 @@ const StepProgress: React.FC<Props> = (props) => {
                     index === selectIndex ? selectColor : item.status ? activeColor : inActiveColor,
                 },
               ]}>
-              {item.status && (
+              {item.status ? (
                 <Image
                   style={[
                     styles.icon,
@@ -93,7 +96,7 @@ const StepProgress: React.FC<Props> = (props) => {
                   ]}
                   source={require('./icon/check.png')}
                 />
-              )}
+              ) : <Text style={{ fontSize: fontScale(textSize), color: inActiveColor, fontWeight: 'bold' }}>{index + 1}</Text>}
             </View>
           </TouchableOpacity>
         </View>
@@ -110,7 +113,7 @@ const StepProgress: React.FC<Props> = (props) => {
             alignItems: 'flex-end',
           },
         ]}>
-        <Text style={[styles.text, { fontSize: fontScale(textSize) }]}>{item.text}</Text>
+        <Text style={[styles.text, { fontSize: fontScale(textSize), color: index === selectIndex ? selectColor : textColor, fontWeight: '500' }]}>{item.text}</Text>
       </View>
     );
   };
