@@ -107,9 +107,9 @@ const HierarchyComponent: React.FC<Props> = (props) => {
                 onUnTick(item);
               }
             }}>
-            <View style={{ flexDirection: 'row' }}>
+            <View style={styles.itemRow}>
               {item.tick ? <Text style={[styles.tick, { color: iconColor }]}>☑</Text> : <Text style={[styles.unTick, { color: iconColor }]}>☐</Text>}
-              <Text style={[styles.name, textStyle]} numberOfLines={1}>{item[textField]}</Text>
+              <Text style={[styles.name, textStyle]} numberOfLines={2}>{item[textField]}</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -159,15 +159,17 @@ const styles = StyleSheet.create({
     marginVertical: scale(4),
     alignItems: 'center',
   },
+  itemRow:{
+    flexDirection: 'row', alignItems:'center',
+  },
   showIcon: {
     fontSize: scale(30),
     marginBottom: scale(5),
     width: scale(15),
   },
   name: {
-    marginHorizontal: scale(10),
+    marginLeft: scale(10),
     fontSize: fontScale(16),
-    marginTop: scale(5)
   },
   tick: {
     marginLeft: scale(10),
