@@ -89,8 +89,8 @@ const HierarchyComponent: React.FC<Props> = (props) => {
       item.tick = false;
     }
     return (
-      <View style={{ marginLeft: scale(30) }} key={index}>
-        <View style={styles.row}>
+      <View style={styles.item} key={index}>
+        <View style={styles.rowItem}>
           {childs && childs.length > 0 ? (
             <TouchableOpacity
               onPress={() => {
@@ -100,6 +100,7 @@ const HierarchyComponent: React.FC<Props> = (props) => {
             </TouchableOpacity>
           ) : <Text style={styles.showIcon}>{`  `}</Text>}
           <TouchableOpacity
+            style={{ flex: 1 }}
             onPress={() => {
               if (!item.tick) {
                 onTick(item);
@@ -107,9 +108,9 @@ const HierarchyComponent: React.FC<Props> = (props) => {
                 onUnTick(item);
               }
             }}>
-            <View style={styles.itemRow}>
+            <View style={styles.center}>
               {item.tick ? <Text style={[styles.tick, { color: iconColor }]}>☑</Text> : <Text style={[styles.unTick, { color: iconColor }]}>☐</Text>}
-              <Text style={[styles.name, textStyle]} numberOfLines={2}>{item[textField]}</Text>
+              <Text style={[styles.name, textStyle]} numberOfLines={3}>{item[textField]}</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -150,17 +151,20 @@ export default HierarchyComponent;
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
     marginLeft: - scale(20)
   },
-  row: {
+  item: {
+    marginLeft: scale(30),
+  },
+  rowItem: {
     flexDirection: 'row',
     marginHorizontal: scale(5),
     marginVertical: scale(4),
     alignItems: 'center',
   },
-  itemRow:{
-    flexDirection: 'row', alignItems:'center',
+  center: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   showIcon: {
     fontSize: scale(30),
@@ -168,15 +172,15 @@ const styles = StyleSheet.create({
     width: scale(15),
   },
   name: {
-    marginLeft: scale(10),
     fontSize: fontScale(16),
+    flex:1
   },
   tick: {
-    marginLeft: scale(10),
+    marginHorizontal: scale(10),
     fontSize: scale(25),
   },
   unTick: {
-    marginLeft: scale(10),
+    marginHorizontal: scale(10),
     fontSize: scale(30),
     marginTop: 3
   },
