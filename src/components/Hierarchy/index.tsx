@@ -160,6 +160,8 @@ const styles = StyleSheet.create({
   },
   showIcon: {
     fontSize: scale(30),
+    marginBottom: scale(5),
+    width: scale(15),
   },
   name: {
     marginHorizontal: scale(10),

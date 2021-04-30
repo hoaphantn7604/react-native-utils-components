@@ -153,7 +153,7 @@ const MainScreen = props => {
               {color: 'gray', percent: 33.33},
               {color: 'green', percent: 33.33},
             ]}
-            percent={20}
+            percent={70}
             border
           />
         </View>
