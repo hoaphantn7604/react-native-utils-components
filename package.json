@@ -1,7 +1,7 @@
 {
   "name": "react-native-utils-components",
   "title": "React Native Utils Components",
-  "version": "0.1.34",
+  "version": "0.1.35",
   "description": "Hierarchy, Progress, Tooltip Progress, Step Progress Components",
   "main": "index.ts",
   "scripts": {
@@ -35,7 +35,6 @@
     "react-native": "^0.61.5"
   },
   "dependencies": {
-    "react-native-utils-scale": "^0.2.2",
-    "react-native-vector-icons": "^8.1.0"
+    "react-native-utils-scale": "^0.2.2"
   }
 }
