@@ -89,7 +89,7 @@ const HierarchyComponent: React.FC<Props> = (props) => {
       item.tick = false;
     }
     return (
-      <View style={{ marginLeft: 20 }} key={index}>
+      <View style={{ marginLeft: scale(30) }} key={index}>
         <View style={styles.row}>
           {childs && childs.length > 0 ? (
             <TouchableOpacity
@@ -169,11 +169,11 @@ const styles = StyleSheet.create({
     marginTop: scale(5)
   },
   tick: {
-    marginLeft: scale(16),
+    marginLeft: scale(10),
     fontSize: scale(25),
   },
   unTick: {
-    marginLeft: scale(15),
+    marginLeft: scale(10),
     fontSize: scale(30),
     marginTop: 3
   },
