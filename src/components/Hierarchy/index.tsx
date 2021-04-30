@@ -151,6 +151,7 @@ export default HierarchyComponent;
 const styles = StyleSheet.create({
   container: {
     width: '100%',
+    marginLeft: - scale(20)
   },
   row: {
     flexDirection: 'row',
