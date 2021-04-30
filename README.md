@@ -112,9 +112,11 @@
                     buttonName="Continute"
                     textField="shopCode"
                     childField="childs"
+                    textStyle={{color: 'black'}}
+                    iconColor="black"
                     selected={item => {
-                    console.log(`Selected ${item.length} item`);
-                    alert(`Selected ${item.length} item`);
+                        console.log(`Selected ${item.length} item`);
+                        alert(`Selected ${item.length} item`);
                     }}
                 />
                 </View>
@@ -123,14 +125,14 @@
                 <Text style={styles.title}>Step Progress</Text>
                 <CStepProgress
                     data={[
-                    {text: 'Step 1', status: true},
-                    {text: 'Step 2', status: true},
-                    {text: 'Step 3', status: false},
-                    {text: 'Step 4', status: false},
+                        {text: 'Step 1', status: true},
+                        {text: 'Step 2', status: true},
+                        {text: 'Step 3', status: false},
+                        {text: 'Step 4', status: false},
                     ]}
                     selectIndex={step}
                     onSelectIndex={index => {
-                    setStep(index);
+                        setStep(index);
                     }}
                     activeColor="#32C5FF"
                     inActiveColor="#C6CDD8"
@@ -144,19 +146,19 @@
                 <Text style={styles.title}>Tooltip Progress</Text>
                 <CTooltipProgress
                     data={[
-                    {stage: 'S1', text: 'Hello S1', status: true},
-                    {stage: 'S2', text: 'Hello S2', status: true},
-                    {stage: 'S3', text: 'Hello S3', status: true},
-                    {stage: 'S4', text: 'Hello S4', status: false},
-                    {stage: 'S5', text: 'Hello S5', status: false},
-                    {stage: 'S6', text: 'Hello S6', status: false},
+                        {stage: 'S1', text: 'Hello S1', status: true},
+                        {stage: 'S2', text: 'Hello S2', status: true},
+                        {stage: 'S3', text: 'Hello S3', status: true},
+                        {stage: 'S4', text: 'Hello S4', status: false},
+                        {stage: 'S5', text: 'Hello S5', status: false},
+                        {stage: 'S6', text: 'Hello S6', status: false},
                     ]}
                     activeColor="#32C5FF"
                     inActiveColor="#C6CDD8"
                     selectColor="#32C5FF"
                     selectIndex={stage}
                     onSelectIndex={index => {
-                    setStage(index);
+                        setStage(index);
                     }}
                 />
                 </View>
@@ -165,9 +167,9 @@
                 <Text style={styles.title}>Progress</Text>
                 <CProgress
                     data={[
-                    {color: 'red', percent: 33.33},
-                    {color: 'gray', percent: 33.33},
-                    {color: 'green', percent: 33.33},
+                        {color: 'red', percent: 33.33},
+                        {color: 'gray', percent: 33.33},
+                        {color: 'green', percent: 33.33},
                     ]}
                     percent={20}
                     border

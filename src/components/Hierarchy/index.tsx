@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { StyleSheet, ViewStyle, Text, View, TouchableOpacity, FlatList, StyleProp } from 'react-native';
+import { StyleSheet, ViewStyle, Text, View, TouchableOpacity, FlatList, StyleProp, TextStyle } from 'react-native';
 import { dimensionsScale } from 'react-native-utils-scale';
 
 const { scale, fontScale } = dimensionsScale;
 
 export interface Props {
   style?: StyleProp<ViewStyle>;
-  buttonStyle?: StyleProp<ViewStyle>;
+  textStyle: StyleProp<TextStyle>;
+  iconColor: string;
   data: any[];
   textField: string;
   childField: string;
@@ -14,10 +15,15 @@ export interface Props {
   selected: (data: any) => void;
 }
 
+const defaultProps = {
+  textStyle: {},
+  iconColor: 'black'
+}
+
 let selectItem: any = [];
 
 const HierarchyComponent: React.FC<Props> = (props) => {
-  const {data, textField, childField} = props;
+  const { data, textField, childField, textStyle, iconColor } = props;
 
   const [listData] = useState<any>(data);
   const [key, setKey] = useState(Math.random());
@@ -90,7 +96,7 @@ const HierarchyComponent: React.FC<Props> = (props) => {
               onPress={() => {
                 showChild(item);
               }}>
-              <Text style={styles.showIcon}>{item.show ? '+' : '-'}</Text>
+              <Text style={[styles.showIcon, { color: iconColor }]}>{item.show ? '+' : '-'}</Text>
             </TouchableOpacity>
           ) : <Text style={styles.showIcon}>{`  `}</Text>}
           <TouchableOpacity
@@ -102,8 +108,8 @@ const HierarchyComponent: React.FC<Props> = (props) => {
               }
             }}>
             <View style={{ flexDirection: 'row' }}>
-              {item.tick ? <Text style={styles.tick}>☑</Text> : <Text style={styles.unTick}>☐</Text>}
-              <Text style={styles.name} numberOfLines={1}>{item[textField]}</Text>
+              {item.tick ? <Text style={[styles.tick, { color: iconColor }]}>☑</Text> : <Text style={[styles.unTick, { color: iconColor }]}>☐</Text>}
+              <Text style={[styles.name, textStyle]} numberOfLines={1}>{item[textField]}</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -129,7 +135,7 @@ const HierarchyComponent: React.FC<Props> = (props) => {
         showsVerticalScrollIndicator={false}
         extraData={key}
       />
-      <TouchableOpacity style={[styles.btn, props.buttonStyle]} onPress={() => {
+      <TouchableOpacity style={styles.btn} onPress={() => {
         props.selected(selectItem);
       }}>
         <Text style={styles.btnName}>{props.buttonName ? props.buttonName : 'Button'}</Text>
@@ -137,6 +143,8 @@ const HierarchyComponent: React.FC<Props> = (props) => {
     </View>
   );
 };
+
+HierarchyComponent.defaultProps = defaultProps;
 
 export default HierarchyComponent;
 

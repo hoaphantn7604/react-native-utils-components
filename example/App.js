@@ -94,6 +94,8 @@ const MainScreen = props => {
             buttonName="Continute"
             textField="shopCode"
             childField="childs"
+            textStyle={{color: 'black'}}
+            iconColor="black"
             selected={item => {
               console.log(`Selected ${item.length} item`);
               alert(`Selected ${item.length} item`);
