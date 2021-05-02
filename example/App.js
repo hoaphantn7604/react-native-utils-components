@@ -91,11 +91,13 @@ const MainScreen = props => {
           <Text style={styles.title}>Hierarchy</Text>
           <CHierarchy
             data={recursiveData}
-            buttonName="Continute"
             textField="shopCode"
             childField="childs"
             textStyle={{color: 'black'}}
             iconColor="black"
+            buttonName="Continute"
+            buttonStyle={{backgroundColor: 'black'}}
+            buttonTextStyle={{color: 'white'}}
             selected={item => {
               console.log(`Selected ${item.length} item`);
               alert(`Selected ${item.length} item`);

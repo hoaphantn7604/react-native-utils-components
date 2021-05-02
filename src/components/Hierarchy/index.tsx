@@ -6,6 +6,8 @@ const { scale, fontScale } = dimensionsScale;
 
 export interface Props {
   style?: StyleProp<ViewStyle>;
+  buttonStyle?: StyleProp<ViewStyle>;
+  buttonTextStyle: StyleProp<TextStyle>;
   textStyle: StyleProp<TextStyle>;
   iconColor: string;
   data: any[];
@@ -16,14 +18,17 @@ export interface Props {
 }
 
 const defaultProps = {
+  style: {},
   textStyle: {},
+  buttonStyle: {},
+  buttonTextStyle: {},
   iconColor: 'black'
 }
 
 let selectItem: any = [];
 
 const HierarchyComponent: React.FC<Props> = (props) => {
-  const { data, textField, childField, textStyle, iconColor } = props;
+  const { data, textField, childField, style, textStyle, buttonStyle, iconColor, buttonTextStyle } = props;
 
   const [listData] = useState<any>(data);
   const [key, setKey] = useState(Math.random());
@@ -128,7 +133,7 @@ const HierarchyComponent: React.FC<Props> = (props) => {
   };
 
   return (
-    <View style={[styles.container, props.style]}>
+    <View style={[styles.container, style]}>
       <FlatList
         data={listData}
         renderItem={({ item, index }) => renderList(item, item[childField], index)}
@@ -136,10 +141,10 @@ const HierarchyComponent: React.FC<Props> = (props) => {
         showsVerticalScrollIndicator={false}
         extraData={key}
       />
-      <TouchableOpacity style={styles.btn} onPress={() => {
+      <TouchableOpacity style={[styles.btn, buttonStyle]} onPress={() => {
         props.selected(selectItem);
       }}>
-        <Text style={styles.btnName}>{props.buttonName ? props.buttonName : 'Button'}</Text>
+        <Text style={[styles.btnName, buttonTextStyle]}>{props.buttonName ? props.buttonName : 'Button'}</Text>
       </TouchableOpacity>
     </View>
   );
