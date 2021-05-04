@@ -110,7 +110,11 @@ const StepProgress: React.FC<Props> = (props) => {
 
   const renderText = (item: Item, index: number) => {
     return (
-      <View style={{width: scale(80) }}>
+      <View style={
+        [index !== 0 && { flex: 1, alignItems: 'flex-end' },
+        index === 0 && { marginLeft: scale(18) },
+        index === data.length - 1 && { marginRight: scale(18) }
+        ]}>
         <Text style={[styles.text, { fontSize: fontScale(textSize), color: index === selectIndex ? selectColor : textColor }]}>{item.text}</Text>
       </View>
     );
