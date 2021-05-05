@@ -1,7 +1,7 @@
 {
   "name": "react-native-utils-components",
   "title": "React Native Utils Components",
-  "version": "0.1.37",
+  "version": "0.1.38",
   "description": "Hierarchy, Progress, Tooltip Progress, Step Progress Components",
   "main": "index.ts",
   "scripts": {
@@ -18,7 +18,11 @@
     "progress",
     "tooltip-progress",
     "step-progress",
-    "timer"
+    "timer",
+    "dropdown-modal",
+    "input-currency",
+    "input-password",
+    "input-numeric"
   ],
   "author": {
     "name": "Hoa Phan",
