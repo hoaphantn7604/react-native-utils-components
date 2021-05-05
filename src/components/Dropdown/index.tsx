@@ -1,25 +1,24 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, StyleProp, ViewStyle, Modal, SafeAreaView, Image, TouchableOpacity, FlatList, TouchableWithoutFeedback, ImageStyle } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, StyleSheet, StyleProp, TextStyle, ViewStyle, Modal, SafeAreaView, Image, TouchableOpacity, FlatList, TouchableWithoutFeedback, ImageStyle } from 'react-native';
 import { dimensionsScale } from 'react-native-utils-scale';
 
-const { scale } = dimensionsScale;
-
-interface Item {
-  label: string;
-  value: any;
-}
+const { scale, fontScale } = dimensionsScale;
 
 interface Props {
-  data: Item[];
-  onChange: (item: Item) => void;
-  value?: Item | null;
+  data: any[];
+  onChange: (item: any) => void;
+  value?: any | null;
   style?: StyleProp<ViewStyle>;
   iconStyle?: StyleProp<ImageStyle>;
   iconTickStyle?: StyleProp<ImageStyle>;
   headerStyle?: StyleProp<ViewStyle>;
   labelStyle?: StyleProp<ViewStyle>;
-  label?: string | undefined;
-  placeholder?: string | undefined
+  textErrorStyle?: StyleProp<TextStyle>;
+  textError?: string;
+  label?: string;
+  placeholder?: string;
+  labelField: string;
+  valueField: string;
 }
 
 const defaultProps = {
@@ -31,7 +30,40 @@ const defaultProps = {
 const Dropdown: React.FC<Props> = (props) => {
 
   const [visible, setVisible] = useState<boolean>(false);
-  const { onChange, data, label, value, style, iconStyle, headerStyle, iconTickStyle, labelStyle, placeholder } = props;
+  const [currentValue, setCurrentValue] = useState(null);
+  const {
+    onChange,
+    data,
+    label,
+    value,
+    style,
+    labelField,
+    valueField,
+    textErrorStyle,
+    textError,
+    iconStyle,
+    headerStyle,
+    iconTickStyle,
+    labelStyle,
+    placeholder
+  } = props;
+
+  useEffect(() => {
+    getValue();
+  }, []);
+
+  const getValue = ()=> {
+    const getItem = data.filter(e => value === e[valueField]);
+    if (getItem.length > 0) {
+      setCurrentValue(e => e = getItem[0]);
+    }
+  }
+
+  const onSelect = (item: any) => {
+      setCurrentValue(e => e = item);
+      onChange(item[valueField]); 
+      setVisible(false);
+  }
 
   const _renderTitle = () => {
     if (label) {
@@ -49,22 +81,22 @@ const Dropdown: React.FC<Props> = (props) => {
         setVisible(!visible);
       }}>
         <View style={styles.dropdown}>
-              <Text style={[labelStyle]}>
-                {value?.label || placeholder}
-              </Text>
-              <Image source={require('./icon/down.png')} style={[styles.icon, iconStyle]} />
+          <Text style={[labelStyle]}>
+            {currentValue && currentValue[labelField] || placeholder}
+          </Text>
+          <Image source={require('./icon/down.png')} style={[styles.icon, iconStyle]} />
         </View>
       </TouchableWithoutFeedback>
     )
   }
 
-  const renderItem = ({ item, index }: { item: Item; index: number }) => {
+  const renderItem = ({ item, index }: { item: any; index: number }) => {
     return (
-      <TouchableOpacity onPress={() => { onChange(item); setVisible(false) }}>
-        <View style={[styles.item, item.value === value?.value && { backgroundColor: '#F6F7F8' }]}>
+      <TouchableOpacity onPress={() => { onSelect(item) }}>
+        <View style={[styles.item, item[valueField] === (currentValue && currentValue[valueField]) && { backgroundColor: '#F6F7F8' }]}>
           <Text style={[labelStyle]}
-          >{item.label}</Text>
-          {item.value === value?.value &&  
+          >{item[labelField]}</Text>
+          {item[valueField] === (currentValue && currentValue[valueField]) &&
             <Image source={require('./icon/check.png')} style={[styles.icon, iconTickStyle]} />
           }
         </View>
@@ -107,10 +139,13 @@ const Dropdown: React.FC<Props> = (props) => {
   }
 
   return (
-    <View style={[styles.container, style]}>
-      {_renderTitle()}
-      {_renderDropdown()}
-      {_renderModal()}
+    <View>
+      <View style={[styles.container, style]}>
+        {_renderTitle()}
+        {_renderDropdown()}
+        {_renderModal()}
+      </View>
+      {textError && <Text style={[styles.textError, textErrorStyle]}>{textError}</Text>}
     </View>
   );
 };
@@ -183,5 +218,10 @@ const styles = StyleSheet.create({
   icon: {
     width: scale(24),
     height: scale(24),
+  },
+  textError: {
+    color: 'red',
+    fontSize: fontScale(14),
+    marginTop: scale(10)
   }
 });

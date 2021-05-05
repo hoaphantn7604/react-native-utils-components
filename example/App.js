@@ -178,6 +178,7 @@ const MainScreen = props => {
             label="Normal"
             placeholder="Placeholder"
             placeholderTextColor="gray"
+            textError="Error"
           />
 
           <CTextInput
@@ -219,12 +220,16 @@ const MainScreen = props => {
               {label: 'Item 7', value: '7'},
               {label: 'Item 8', value: '8'},
             ]}
+            labelField="label"
+            valueField="value"
             label="Title"
             placeholder="Select item"
             value={dropdown}
             onChange={item => {
               setDropdown(item);
+              console.log('selected', item);
             }}
+            textError="Error"
           />
         </View>
       </View>

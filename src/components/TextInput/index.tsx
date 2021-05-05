@@ -21,6 +21,8 @@ export interface Props {
   inputStyle?: StyleProp<TextStyle>;
   labelStyle?: StyleProp<TextStyle>;
   iconStyle?: StyleProp<ImageStyle>;
+  textErrorStyle?: StyleProp<TextStyle>;
+  textError?: string;
   placeholder?: string;
   placeholderTextColor?: string;
   value?: string;
@@ -78,6 +80,8 @@ const TextInputComponent: React.FC<Props> = (props) => {
     numeric,
     labelStyle,
     unitCurrency,
+    textErrorStyle,
+    textError,
     onChangeText,
     onBlur,
     onFocus,
@@ -148,37 +152,40 @@ const TextInputComponent: React.FC<Props> = (props) => {
   };
 
   return (
-    <View style={[styles.container, style]}>
-      {label && (
-        <Text style={[styles.label, labelStyle]}>
-          {label}
-        </Text>
-      )}
-      <View style={styles.textInput}>
-        {renderLeftIcon?.()}
-        {currency && (
-          <Text style={{marginRight: scale(3)}}>
-            {unitCurrency}
+    <View>
+      <View style={[styles.container, style]}>
+        {label && (
+          <Text style={[styles.label, labelStyle]}>
+            {label}
           </Text>
         )}
-        <TextInput
-          style={[{ flex: 1 }, inputStyle]}
-          placeholder={placeholder}
-          placeholderTextColor={placeholderTextColor}
-          autoCapitalize={autoCapitalize && autoCapitalize}
-          secureTextEntry={textEntry}
-          keyboardType={keyboardType && keyboardType}
-          multiline={multiline && multiline}
-          autoFocus={autoFocus && autoFocus}
-          editable={editable && editable}
-          maxLength={maxLength && maxLength}
-          value={text}
-          onChangeText={onChange}
-          onBlur={onBlur}
-          onFocus={onFocus}
-        />
-        {_renderRightIcon()}
+        <View style={styles.textInput}>
+          {renderLeftIcon?.()}
+          {currency && (
+            <Text style={{ marginRight: scale(3) }}>
+              {unitCurrency}
+            </Text>
+          )}
+          <TextInput
+            style={[{ flex: 1 }, inputStyle]}
+            placeholder={placeholder}
+            placeholderTextColor={placeholderTextColor}
+            autoCapitalize={autoCapitalize && autoCapitalize}
+            secureTextEntry={textEntry}
+            keyboardType={keyboardType && keyboardType}
+            multiline={multiline && multiline}
+            autoFocus={autoFocus && autoFocus}
+            editable={editable && editable}
+            maxLength={maxLength && maxLength}
+            value={text}
+            onChangeText={onChange}
+            onBlur={onBlur}
+            onFocus={onFocus}
+          />
+          {_renderRightIcon()}
+        </View>
       </View>
+      {textError && <Text style={[styles.textError, textErrorStyle]}>{textError}</Text>}
     </View>
   );
 };
@@ -210,5 +217,10 @@ const styles = StyleSheet.create({
   icon: {
     width: scale(24),
     height: scale(24),
+  },
+  textError: {
+    color: 'red',
+    fontSize: fontScale(14),
+    marginTop: scale(10)
   }
 });
