@@ -6,6 +6,8 @@ import {
   CStepProgress,
   CTooltipProgress,
   CProgress,
+  CTextInput,
+  CDropdown,
 } from 'react-native-utils-components';
 import {dimensionsScale} from 'react-native-utils-scale';
 
@@ -83,6 +85,7 @@ const recursiveData = [
 const MainScreen = props => {
   const [step, setStep] = useState(1);
   const [stage, setStage] = useState(2);
+  const [dropdown, setDropdown] = useState(null);
 
   return (
     <ScrollView>
@@ -165,7 +168,63 @@ const MainScreen = props => {
           <CTimer
             style={styles.timer}
             textStyle={styles.timerText}
-            start={true}
+            start={false}
+          />
+        </View>
+
+        <View style={styles.row}>
+          <CTextInput
+            style={{backgroundColor: '#F6F7F8'}}
+            label="Normal"
+            placeholder="Placeholder"
+            placeholderTextColor="gray"
+          />
+
+          <CTextInput
+            style={{backgroundColor: '#F6F7F8', marginTop: scale(10)}}
+            label="Password"
+            placeholder="Placeholder"
+            placeholderTextColor="gray"
+            secureTextEntry
+          />
+
+          <CTextInput
+            style={{backgroundColor: '#F6F7F8', marginTop: scale(10)}}
+            label="Currency"
+            placeholder="Placeholder"
+            placeholderTextColor="gray"
+            currency
+            unitCurrency="$"
+          />
+
+          <CTextInput
+            style={{backgroundColor: '#F6F7F8', marginTop: scale(10)}}
+            label="Numeric"
+            placeholder="Placeholder"
+            placeholderTextColor="gray"
+            numeric
+          />
+        </View>
+
+        <View style={styles.row}>
+          <CDropdown
+            style={{backgroundColor: '#F6F7F8'}}
+            data={[
+              {label: 'Item 1', value: '1'},
+              {label: 'Item 2', value: '2'},
+              {label: 'Item 3', value: '3'},
+              {label: 'Item 4', value: '4'},
+              {label: 'Item 5', value: '5'},
+              {label: 'Item 6', value: '6'},
+              {label: 'Item 7', value: '7'},
+              {label: 'Item 8', value: '8'},
+            ]}
+            label="Title"
+            placeholder="Select item"
+            value={dropdown}
+            onChange={item => {
+              setDropdown(item);
+            }}
           />
         </View>
       </View>
