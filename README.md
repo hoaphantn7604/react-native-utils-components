@@ -172,6 +172,8 @@
 ```js
     import { CDropdown } from 'react-native-utils-components';
 
+    const [dropdown, setDropdown] = useState(null);
+
     <CDropdown
         style={{backgroundColor: '#F6F7F8'}}
         data={[
@@ -212,7 +214,7 @@
 
     // Input password
     <CTextInput
-        style={{backgroundColor: '#F6F7F8', marginTop: scale(10)}}
+        style={{backgroundColor: '#F6F7F8'}}
         label="Password"
         placeholder="Placeholder"
         placeholderTextColor="gray"
@@ -221,7 +223,7 @@
 
     // Input currency
     <CTextInput
-        style={{backgroundColor: '#F6F7F8', marginTop: scale(10)}}
+        style={{backgroundColor: '#F6F7F8'}}
         label="Currency"
         placeholder="Placeholder"
         placeholderTextColor="gray"
@@ -231,7 +233,7 @@
 
     // Input numeric 
     <CTextInput
-        style={{backgroundColor: '#F6F7F8', marginTop: scale(10)}}
+        style={{backgroundColor: '#F6F7F8'}}
         label="Numeric"
         placeholder="Placeholder"
         placeholderTextColor="gray"
