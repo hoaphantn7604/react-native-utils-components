@@ -2,11 +2,7 @@
 
 ## Getting started
 
-`$ yarn add react-native-utils-components`
-
-## Dependencies
-
-    yarn add react-native-utils-scale
+`$ yarn add react-native-utils-components react-native-utils-scale`
 
 ## IOS Setup
     cd ios && pod install && cd ../
