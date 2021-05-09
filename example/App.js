@@ -98,12 +98,8 @@ const MainScreen = props => {
             childField="childs"
             textStyle={{color: 'black'}}
             iconColor="black"
-            buttonName="Continute"
-            buttonStyle={{backgroundColor: 'black'}}
-            buttonTextStyle={{color: 'white'}}
             selected={item => {
               console.log(`Selected ${item.length} item`);
-              alert(`Selected ${item.length} item`);
             }}
           />
         </View>

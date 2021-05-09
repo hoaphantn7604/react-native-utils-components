@@ -53,7 +53,7 @@ const CTooltipProgressComponent: React.FC<Props> = (props) => {
 
   const renderItem = (item: Item, index: number) => {
     return (
-      <View style={[index !== 0 && { flex: 1 }]}>
+      <View key={index} style={[index !== 0 && { flex: 1 }]}>
         <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
           {index !== 0 && (
             <View
@@ -107,7 +107,7 @@ const CTooltipProgressComponent: React.FC<Props> = (props) => {
 
   const renderText = (item: Item, index: number) => {
     return (
-      <View style={{ flex: 1 }}>
+      <View key={index} style={{ flex: 1 }}>
         {index === selectIndex && (
           <View
             style={[styles.tag, { backgroundColor: selectColor }, index === data.length - 1 && {}]}>

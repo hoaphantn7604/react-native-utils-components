@@ -58,6 +58,7 @@ const ProgressComponent: React.FC<Props> = (props) => {
         {data &&
           data.map((item, index) => (
             <View
+              key={index}
               style={[
                 { backgroundColor: item.color, width: `${item.percent}%` },
                 border && index === 0 && { borderTopLeftRadius: 5, borderBottomLeftRadius: 5 },
@@ -79,9 +80,9 @@ ProgressComponent.defaultProps = defaultProps;
 export default ProgressComponent;
 
 const styles = StyleSheet.create({
-  main:{
-     justifyContent: 'flex-end', 
-     minHeight: scale(44) 
+  main: {
+    justifyContent: 'flex-end',
+    minHeight: scale(44)
   },
   container: {
     width: '100%',

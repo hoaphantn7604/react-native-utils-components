@@ -1,7 +1,7 @@
 {
   "name": "react-native-utils-components",
   "title": "React Native Utils Components",
-  "version": "0.1.40",
+  "version": "0.1.41",
   "description": "Hierarchy, Progress, Tooltip Progress, Step Progress Components",
   "main": "index.ts",
   "scripts": {
@@ -15,6 +15,7 @@
   "keywords": [
     "react-native",
     "hierarchy",
+    "checkbox-tree",
     "progress",
     "tooltip-progress",
     "step-progress",

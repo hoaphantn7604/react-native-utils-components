@@ -8,7 +8,7 @@
     cd ios && pod install && cd ../
 
 ## Demo
-![](./document/demo1.png?raw=true "Demo")
+![](./document/demo.gif?raw=true "Demo")
 
 ## CHierarchy
 ```js
@@ -88,9 +88,9 @@
         childField="childs"
         textStyle={{color: 'black'}}
         iconColor="black"
-        buttonName="Continute"
-        buttonStyle={{backgroundColor: 'black'}}
-        buttonTextStyle={{color: 'white'}}
+        // buttonName="Continute"
+        // buttonStyle={{backgroundColor: 'black'}}
+        // buttonTextStyle={{color: 'white'}}
         selected={item => {
             console.log(`Selected ${item.length} item`);
             alert(`Selected ${item.length} item`);

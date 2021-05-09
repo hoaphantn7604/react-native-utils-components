@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, ViewStyle, Text, View, TouchableOpacity, FlatList, StyleProp, TextStyle } from 'react-native';
-import { dimensionsScale } from 'react-native-utils-scale';
+import { dimensionsScale, isIOS, isAndroid } from 'react-native-utils-scale';
 
 const { scale, fontScale } = dimensionsScale;
 
@@ -86,6 +86,13 @@ const HierarchyComponent: React.FC<Props> = (props) => {
     });
   };
 
+  useEffect(() => {
+    if(!props.buttonName){
+      props.selected(selectItem);
+    }
+    
+  }, [selectItem]);
+
   const renderList = (item: any, childs: any, index: number) => {
     if (!item.show) {
       item.show = false;
@@ -101,7 +108,7 @@ const HierarchyComponent: React.FC<Props> = (props) => {
               onPress={() => {
                 showChild(item);
               }}>
-              <Text style={[styles.showIcon, { color: iconColor }]}>{item.show ? '+' : '-'}</Text>
+              <Text style={[styles.showIcon, { color: iconColor }, isAndroid() && !item.show && {paddingLeft: scale(5)}]}>{item.show ? '+' : '-'}</Text>
             </TouchableOpacity>
           ) : <Text style={styles.showIcon}>{`  `}</Text>}
           <TouchableOpacity
@@ -114,7 +121,7 @@ const HierarchyComponent: React.FC<Props> = (props) => {
               }
             }}>
             <View style={styles.center}>
-              {item.tick ? <Text style={[styles.tick, { color: iconColor }]}>☑</Text> : <Text style={[styles.unTick, { color: iconColor }]}>☐</Text>}
+              {item.tick ? <Text style={[styles.tick, { color: iconColor }]}>☑</Text> : <Text style={[isIOS() ? styles.unTick : styles.tick, { color: iconColor }]}>☐</Text>}
               <Text style={[styles.name, textStyle]} numberOfLines={3}>{item[textField]}</Text>
             </View>
           </TouchableOpacity>
@@ -141,11 +148,11 @@ const HierarchyComponent: React.FC<Props> = (props) => {
         showsVerticalScrollIndicator={false}
         extraData={key}
       />
-      <TouchableOpacity style={[styles.btn, buttonStyle]} onPress={() => {
+      {props.buttonName ? <TouchableOpacity style={[styles.btn, buttonStyle]} onPress={() => {
         props.selected(selectItem);
       }}>
-        <Text style={[styles.btnName, buttonTextStyle]}>{props.buttonName ? props.buttonName : 'Button'}</Text>
-      </TouchableOpacity>
+        <Text style={[styles.btnName, buttonTextStyle]}>{props.buttonName}</Text>
+      </TouchableOpacity> : null}
     </View>
   );
 };
@@ -178,14 +185,14 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: fontScale(16),
-    flex:1
+    flex: 1
   },
   tick: {
-    marginHorizontal: scale(10),
+    marginHorizontal: scale(13),
     fontSize: scale(25),
   },
   unTick: {
-    marginHorizontal: scale(10),
+    marginHorizontal: scale(13),
     fontSize: scale(30),
     marginTop: 3
   },
