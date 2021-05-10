@@ -98,7 +98,7 @@ const MainScreen = props => {
             childField="childs"
             textStyle={{color: 'black'}}
             iconColor="black"
-            selected={item => {
+            onSelect={item => {
               console.log(`Selected ${item.length} item`);
             }}
           />

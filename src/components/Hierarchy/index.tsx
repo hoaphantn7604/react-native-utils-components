@@ -14,7 +14,7 @@ export interface Props {
   textField: string;
   childField: string;
   buttonName?: string;
-  selected: (data: any) => void;
+  onSelect: (data: any) => void;
 }
 
 const defaultProps = {
@@ -88,7 +88,7 @@ const HierarchyComponent: React.FC<Props> = (props) => {
 
   useEffect(() => {
     if(!props.buttonName){
-      props.selected(selectItem);
+      props.onSelect(selectItem);
     }
     
   }, [selectItem]);
@@ -149,7 +149,7 @@ const HierarchyComponent: React.FC<Props> = (props) => {
         extraData={key}
       />
       {props.buttonName ? <TouchableOpacity style={[styles.btn, buttonStyle]} onPress={() => {
-        props.selected(selectItem);
+        props.onSelect(selectItem);
       }}>
         <Text style={[styles.btnName, buttonTextStyle]}>{props.buttonName}</Text>
       </TouchableOpacity> : null}
