@@ -7,7 +7,7 @@ const { scale, fontScale } = dimensionsScale;
 export interface Props {
   style?: StyleProp<ViewStyle>;
   buttonStyle?: StyleProp<ViewStyle>;
-  buttonTextStyle: StyleProp<TextStyle>;
+  buttonTextStyle?: StyleProp<TextStyle>;
   textStyle: StyleProp<TextStyle>;
   iconColor: string;
   data: any[];
