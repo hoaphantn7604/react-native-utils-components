@@ -93,7 +93,6 @@
         // buttonTextStyle={{color: 'white'}}
         onSelect={item => {
             console.log(`Selected ${item.length} item`);
-            alert(`Selected ${item.length} item`);
         }}
     />
 ```
