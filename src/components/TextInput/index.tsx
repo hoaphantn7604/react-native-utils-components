@@ -4,17 +4,19 @@ import {
   ImageStyle, KeyboardTypeOptions,
   NativeSyntheticEvent,
   StyleProp,
-  StyleSheet,
-  TextInput,
+  Text, TextInput,
   TextInputFocusEventData,
   TextStyle,
   TouchableOpacity, View,
-  ViewStyle,
-  Text
+  ViewStyle
 } from 'react-native';
 import { dimensionsScale } from 'react-native-utils-scale';
+import { styles } from './styles';
 
-const { scale, fontScale } = dimensionsScale;
+const { scale } = dimensionsScale;
+const ic_eye = require('./icon/eye.png');
+const ic_uneye = require('./icon/uneye.png');
+const ic_close= require('./icon/close.png');
 
 export interface Props {
   style?: StyleProp<ViewStyle>;
@@ -138,13 +140,13 @@ const TextInputComponent: React.FC<Props> = (props) => {
       if (secureTextEntry) {
         return (
           <TouchableOpacity onPress={onChangeTextEntry}>
-            <Image source={textEntry ? require('./icon/eye.png') : require('./icon/uneye.png')} style={[styles.icon, iconStyle]} />
+            <Image source={textEntry ? ic_eye : ic_uneye} style={[styles.icon, iconStyle]} />
           </TouchableOpacity>
         );
       } else {
         return (
           <TouchableOpacity onPress={() => setText('')}>
-            <Image source={require('./icon/close.png')} style={[styles.icon, iconStyle]} />
+            <Image source={ic_close} style={[styles.icon, iconStyle]} />
           </TouchableOpacity>)
       }
     }
@@ -193,34 +195,3 @@ const TextInputComponent: React.FC<Props> = (props) => {
 TextInputComponent.defaultProps = defaultProps;
 
 export default TextInputComponent;
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'white',
-    borderRadius: scale(8),
-    padding: scale(12),
-    justifyContent: 'center',
-  },
-  textInput: {
-    fontSize: fontScale(16),
-    flexDirection: 'row',
-    alignItems: 'center',
-    height: scale(40),
-  },
-  label: {
-    marginBottom: scale(4),
-    fontSize: scale(15)
-  },
-  row: {
-    flexDirection: 'row',
-  },
-  icon: {
-    width: scale(24),
-    height: scale(24),
-  },
-  textError: {
-    color: 'red',
-    fontSize: fontScale(14),
-    marginTop: scale(10)
-  }
-});

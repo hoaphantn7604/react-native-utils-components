@@ -13,7 +13,7 @@
     "react": "17.0.1",
     "react-native": "0.64.0",
     "react-native-utils-components": "file:../",
-    "react-native-utils-scale": "^0.2.2"
+    "react-native-utils-scale": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.13.16",

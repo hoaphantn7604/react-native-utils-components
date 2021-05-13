@@ -1,6 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, StyleProp, ViewStyle } from 'react-native';
+import { Image, StyleProp, Text, TouchableOpacity, View, ViewStyle } from 'react-native';
 import { dimensionsScale } from 'react-native-utils-scale';
+import { styles } from './styles';
+const ic_check =  require('./icon/check.png');
 
 const { scale, fontScale } = dimensionsScale;
 
@@ -98,7 +100,7 @@ const StepProgress: React.FC<Props> = (props) => {
                     styles.icon,
                     { tintColor: index === selectIndex ? selectColor : activeColor },
                   ]}
-                  source={require('./icon/check.png')}
+                  source={ic_check}
                 />
               ) : <Text style={{ fontSize: fontScale(textSize), color: inActiveColor, fontWeight: 'bold' }}>{index + 1}</Text>}
             </View>
@@ -136,42 +138,3 @@ const StepProgress: React.FC<Props> = (props) => {
 StepProgress.defaultProps = defaultProps;
 
 export default StepProgress;
-
-const styles = StyleSheet.create({
-  container: {},
-  radius: {
-    width: scale(30),
-    height: scale(30),
-    borderRadius: scale(15),
-    borderWidth: scale(2),
-    backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  line: {
-    flex: 1,
-    height: scale(3),
-    marginTop: scale(15),
-  },
-  wrapTick: {
-    flexDirection: 'row',
-    justifyContent: 'space-between'
-  },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'center'
-  },
-  wrapText: {
-    flexDirection: 'row',
-    justifyContent: 'space-between'
-  },
-  text: {
-    marginTop: scale(10),
-    textAlign: 'center',
-    fontWeight: '500'
-  },
-  icon: {
-    width: scale(20),
-    height: scale(20),
-  },
-});

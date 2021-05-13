@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, ViewStyle, StyleProp, TextStyle } from 'react-native';
-import { dimensionsScale } from 'react-native-utils-scale';
+import { StyleProp, Text, TextStyle, View, ViewStyle } from 'react-native';
+import { styles } from './styles';
 
 export interface Props {
   style?: StyleProp<ViewStyle>;
@@ -40,7 +40,7 @@ const TimerComponent: React.FC<Props> = (props) => {
 
   useEffect(() => {
     if (props.start) {
-      if(interval){
+      if (interval) {
         clearInterval(interval);
       }
       hours = 0;
@@ -63,10 +63,3 @@ const TimerComponent: React.FC<Props> = (props) => {
 TimerComponent.defaultProps = defaulProps;
 
 export default TimerComponent;
-
-const styles = StyleSheet.create({
-  text: {
-    fontSize: 20 * dimensionsScale.fontScale(),
-    color: 'black',
-  },
-});
