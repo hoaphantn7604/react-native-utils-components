@@ -7,6 +7,7 @@ const { scale, fontScale } = dimensionsScale;
 
 export interface Props {
   style?: StyleProp<ViewStyle>;
+  tooltipStyle?: StyleProp<ViewStyle>;
   data: Item[];
   activeColor?: string;
   inActiveColor?: string;
@@ -24,6 +25,7 @@ export interface Item {
 
 const defaultProps = {
   style: {},
+  tooltipStyle: {},
   data: [
     { stage: 'S1', text: 'S1', status: false },
     { stage: 'S2', text: 'S2', status: false },
@@ -49,6 +51,7 @@ const CTooltipProgressComponent: React.FC<Props> = (props) => {
     selectIndex,
     textSize,
     selectColor,
+    tooltipStyle,
     onSelectIndex,
   } = props;
 
@@ -111,7 +114,7 @@ const CTooltipProgressComponent: React.FC<Props> = (props) => {
       <View key={index} style={{ flex: 1 }}>
         {index === selectIndex && (
           <View
-            style={[styles.tag, { backgroundColor: selectColor }, index === data.length - 1 && {}]}>
+            style={[styles.tag, { backgroundColor: selectColor }, index === data.length - 1 && {}, tooltipStyle]}>
             <Text style={styles.text}>{item.text}</Text>
           </View>
         )}

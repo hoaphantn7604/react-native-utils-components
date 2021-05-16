@@ -112,6 +112,7 @@
             {text: 'Step 3', status: false},
             {text: 'Step 4', status: false},
         ]}
+        renderIcon={require('./assets/check.png')}
         selectIndex={step}
         onSelectIndex={index => {
             setStep(index);
@@ -135,6 +136,7 @@
         activeColor="#32C5FF"
         inActiveColor="#C6CDD8"
         selectColor="#32C5FF"
+        tooltipStyle={{}}
         selectIndex={stage}
         onSelectIndex={index => {
             setStage(index);

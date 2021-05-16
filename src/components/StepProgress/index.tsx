@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, StyleProp, Text, TouchableOpacity, View, ViewStyle } from 'react-native';
 import { dimensionsScale } from 'react-native-utils-scale';
 import { styles } from './styles';
-const ic_check =  require('./icon/check.png');
+const ic_check = require('./icon/check.png');
 
 const { scale, fontScale } = dimensionsScale;
 
@@ -16,6 +16,7 @@ export interface Props {
   onSelectIndex?: (index: number) => void;
   selectColor?: string;
   textSize?: number;
+  renderIcon: any;
 }
 
 export interface Item {
@@ -40,6 +41,7 @@ const defaultProps = {
   selectIndex: 0,
   textSize: 16,
   onSelectIndex: (index: number) => { },
+  renderIcon: null
 };
 
 const StepProgress: React.FC<Props> = (props) => {
@@ -53,6 +55,7 @@ const StepProgress: React.FC<Props> = (props) => {
     textSize,
     selectColor,
     onSelectIndex,
+    renderIcon
   } = props;
 
   const renderItem = (item: Item, index: number) => {
@@ -94,15 +97,15 @@ const StepProgress: React.FC<Props> = (props) => {
                     index === selectIndex ? selectColor : item.status ? activeColor : inActiveColor,
                 },
               ]}>
-              {item.status ? (
+              {item.status ?
                 <Image
                   style={[
                     styles.icon,
                     { tintColor: index === selectIndex ? selectColor : activeColor },
                   ]}
-                  source={ic_check}
+                  source={renderIcon ? renderIcon : ic_check}
                 />
-              ) : <Text style={{ fontSize: fontScale(textSize), color: inActiveColor, fontWeight: 'bold' }}>{index + 1}</Text>}
+                : <Text style={{ fontSize: fontScale(textSize), color: inActiveColor, fontWeight: 'bold' }}>{index + 1}</Text>}
             </View>
           </TouchableOpacity>
         </View>
