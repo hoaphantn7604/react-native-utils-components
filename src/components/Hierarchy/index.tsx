@@ -88,7 +88,7 @@ const HierarchyComponent: React.FC<Props> = (props) => {
   };
 
   useEffect(() => {
-    if(!props.buttonName){
+    if(!props?.buttonName){
       props.onSelect(selectItem);
     }
     
@@ -149,7 +149,7 @@ const HierarchyComponent: React.FC<Props> = (props) => {
         showsVerticalScrollIndicator={false}
         extraData={key}
       />
-      {props.buttonName ? <TouchableOpacity style={[styles.btn, buttonStyle]} onPress={() => {
+      {props?.buttonName ? <TouchableOpacity style={[styles.btn, buttonStyle]} onPress={() => {
         props.onSelect(selectItem);
       }}>
         <Text style={[styles.btnName, buttonTextStyle]}>{props.buttonName}</Text>

@@ -52,7 +52,7 @@ export const styles = StyleSheet.create({
       height: scale(35)
     },
     title: {
-      marginVertical: scaleH(5),
+      marginVertical: scale(5),
       fontSize: scale(15)
     },
     list: {
