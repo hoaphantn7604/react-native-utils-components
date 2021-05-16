@@ -112,7 +112,7 @@
             {text: 'Step 3', status: false},
             {text: 'Step 4', status: false},
         ]}
-        renderIcon={require('./assets/check.png')}
+        iconTick={require('./assets/check.png')}
         selectIndex={step}
         onSelectIndex={index => {
             setStep(index);
@@ -187,6 +187,7 @@
         valueField="value"
         label="Title"
         placeholder="Select item"
+        iconTick={require('./assets/check.png')}
         value={dropdown}
         onChange={item => {
             setDropdown(item);
@@ -203,6 +204,12 @@
     // Input normal
     <CTextInput
         style={{backgroundColor: '#F6F7F8'}}
+        renderLeftIcon={() => (
+            <Image
+                style={{width: 20, height: 20, marginRight: 10}}
+                source={require('./assets/check.png')}
+            />
+        )}
         label="Normal"
         placeholder="Placeholder"
         placeholderTextColor="gray"
