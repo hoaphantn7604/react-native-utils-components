@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet, View, ScrollView, Text} from 'react-native';
+import {StyleSheet, View, ScrollView, Text, Image} from 'react-native';
 import {
   CHierarchy,
   CTimer,
@@ -173,6 +173,12 @@ const MainScreen = props => {
         <View style={styles.row}>
           <CTextInput
             style={{backgroundColor: '#F6F7F8'}}
+            renderLeftIcon={() => (
+              <Image
+                style={{width: 20, height: 20, marginRight: 10}}
+                source={require('./assets/check.png')}
+              />
+            )}
             label="Normal"
             placeholder="Placeholder"
             placeholderTextColor="gray"
@@ -250,16 +256,15 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   timer: {
-    backgroundColor: 'black',
     width: scale(100),
     height: scale(50),
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: scale(50),
-    borderWidth: scale(3),
-    borderColor: 'white',
+    borderColor: 'black',
+    borderWidth: scale(1),
   },
   timerText: {
-    color: 'white',
+    color: 'black',
   },
 });

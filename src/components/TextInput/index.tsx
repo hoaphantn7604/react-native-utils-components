@@ -180,6 +180,7 @@ const TextInputComponent: React.FC<Props> = (props) => {
             editable={editable && editable}
             maxLength={maxLength && maxLength}
             value={text}
+            autoCorrect={false}
             onChangeText={onChange}
             onBlur={onBlur}
             onFocus={onFocus}
