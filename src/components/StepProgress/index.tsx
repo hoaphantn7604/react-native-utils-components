@@ -16,7 +16,7 @@ export interface Props {
   onSelectIndex?: (index: number) => void;
   selectColor?: string;
   textSize?: number;
-  renderIcon: any;
+  iconTick: any;
 }
 
 export interface Item {
@@ -41,7 +41,7 @@ const defaultProps = {
   selectIndex: 0,
   textSize: 16,
   onSelectIndex: (index: number) => { },
-  renderIcon: null
+  iconTick: null
 };
 
 const StepProgress: React.FC<Props> = (props) => {
@@ -55,7 +55,7 @@ const StepProgress: React.FC<Props> = (props) => {
     textSize,
     selectColor,
     onSelectIndex,
-    renderIcon
+    iconTick
   } = props;
 
   const renderItem = (item: Item, index: number) => {
@@ -103,7 +103,7 @@ const StepProgress: React.FC<Props> = (props) => {
                     styles.icon,
                     { tintColor: index === selectIndex ? selectColor : activeColor },
                   ]}
-                  source={renderIcon ? renderIcon : ic_check}
+                  source={iconTick ? iconTick : ic_check}
                 />
                 : <Text style={{ fontSize: fontScale(textSize), color: inActiveColor, fontWeight: 'bold' }}>{index + 1}</Text>}
             </View>

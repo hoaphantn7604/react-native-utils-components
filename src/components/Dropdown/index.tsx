@@ -20,13 +20,15 @@ interface Props {
   placeholder?: string;
   labelField: string;
   valueField: string;
+  iconTick: any;
   onChange: (item: any) => void;
 }
 
 const defaultProps = {
   placeholder: 'Select item',
   data: [],
-  style: {}
+  style: {},
+  iconTick: null
 }
 
 const Dropdown: React.FC<Props> = (props) => {
@@ -47,14 +49,15 @@ const Dropdown: React.FC<Props> = (props) => {
     headerStyle,
     iconTickStyle,
     labelStyle,
-    placeholder
+    placeholder,
+    iconTick
   } = props;
 
   useEffect(() => {
     getValue();
   }, []);
 
-  const getValue = ()=> {
+  const getValue = () => {
     const getItem = data.filter(e => value === e[valueField]);
     if (getItem.length > 0) {
       setCurrentValue(e => e = getItem[0]);
@@ -62,9 +65,9 @@ const Dropdown: React.FC<Props> = (props) => {
   }
 
   const onSelect = (item: any) => {
-      setCurrentValue(e => e = item);
-      onChange(item[valueField]); 
-      setVisible(false);
+    setCurrentValue(e => e = item);
+    onChange(item[valueField]);
+    setVisible(false);
   }
 
   const _renderTitle = () => {
@@ -99,7 +102,7 @@ const Dropdown: React.FC<Props> = (props) => {
           <Text style={[labelStyle]}
           >{item[labelField]}</Text>
           {item[valueField] === (currentValue && currentValue[valueField]) &&
-            <Image source={ic_check} style={[styles.icon, iconTickStyle]} />
+            <Image source={iconTick ? iconTick : ic_check} style={[styles.icon, iconTickStyle]} />
           }
         </View>
       </TouchableOpacity>

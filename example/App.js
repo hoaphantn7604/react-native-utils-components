@@ -113,7 +113,7 @@ const MainScreen = props => {
               {text: 'Step 3', status: false},
               {text: 'Step 4', status: false},
             ]}
-            renderIcon={require('./assets/check.png')}
+            iconTick={require('./assets/check.png')}
             selectIndex={step}
             onSelectIndex={index => {
               setStep(index);
@@ -229,6 +229,7 @@ const MainScreen = props => {
             label="Title"
             placeholder="Select item"
             value={dropdown}
+            iconTick={require('./assets/check.png')}
             onChange={item => {
               setDropdown(item);
               console.log('selected', item);
