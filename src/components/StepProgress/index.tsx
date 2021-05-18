@@ -16,7 +16,7 @@ export interface Props {
   onSelectIndex?: (index: number) => void;
   selectColor?: string;
   textSize?: number;
-  iconTick: any;
+  iconTick?: any;
 }
 
 export interface Item {

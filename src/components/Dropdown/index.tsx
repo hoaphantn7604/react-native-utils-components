@@ -20,7 +20,7 @@ interface Props {
   placeholder?: string;
   labelField: string;
   valueField: string;
-  iconTick: any;
+  iconTick?: any;
   onChange: (item: any) => void;
 }
 
