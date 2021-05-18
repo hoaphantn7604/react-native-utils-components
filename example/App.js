@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
-import {StyleSheet, View, ScrollView, Text, Image} from 'react-native';
+import {StyleSheet, View, ScrollView, Text, Image, Button} from 'react-native';
 import {
   CHierarchy,
   CTimer,
+  CCountdown,
   CStepProgress,
   CTooltipProgress,
   CProgress,
@@ -86,6 +87,7 @@ const MainScreen = props => {
   const [step, setStep] = useState(1);
   const [stage, setStage] = useState(2);
   const [dropdown, setDropdown] = useState(null);
+  const [start, setStart] = useState(false);
 
   return (
     <ScrollView>
@@ -166,7 +168,33 @@ const MainScreen = props => {
           <CTimer
             style={styles.timer}
             textStyle={styles.timerText}
-            start={false}
+            start={start}
+            onTimes={seconds => {
+              console.log(seconds);
+            }}
+            onEnd={seconds => {
+              console.log(seconds);
+            }}
+          />
+        </View>
+
+        <View style={styles.row}>
+          <Text style={styles.title}>Countdown</Text>
+          <CCountdown
+            seconds={100}
+            style={styles.timer}
+            textStyle={styles.timerText}
+            start={start}
+            onTimes={seconds => {
+              console.log(seconds);
+            }}
+            onEnd={() => {
+              console.log('End');
+            }}
+          />
+          <Button
+            title={start ? 'Stop' : 'Start'}
+            onPress={() => setStart(!start)}
           />
         </View>
 

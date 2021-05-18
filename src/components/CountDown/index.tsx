@@ -5,16 +5,17 @@ import { styles } from './styles';
 export interface Props {
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
+  seconds: number;
   start: boolean;
   onTimes?: (seconds: number) => void
-  onEnd?: (seconds: number) => void
+  onEnd?: () => void
 }
 
 const defaulProps = {
   style: {},
   textStyle: {},
   onTimes: (seconds: number) => { },
-  onEnd: (seconds: number) => { }
+  onEnd: () => { }
 };
 
 let interval: any = null;
@@ -23,43 +24,44 @@ let minute = 0;
 let seconds = 0;
 let currentSeconds = 0;
 
-const TimerComponent: React.FC<Props> = (props) => {
+const CountdownComponent: React.FC<Props> = (props) => {
   const [key, setKey] = useState(Math.random());
 
   const timer = () => {
     interval = setInterval(() => {
-      currentSeconds = currentSeconds + 1;
-      if (seconds < 60) {
-        seconds = seconds + 1;
-      } else {
-        seconds = 0;
-        minute = minute + 1;
+      if (currentSeconds > 0) {
+        currentSeconds = currentSeconds - 1;
+        hours = ~~(currentSeconds / 3600);
+        minute = ~~((currentSeconds % 3600) / 60);
+        seconds = ~~currentSeconds % 60;
+        setKey(Math.random());
+        props.onTimes(currentSeconds);
       }
-      if (minute === 60) {
-        minute = 0;
-        hours = hours + 1;
+      if(currentSeconds == 0) {
+        props.onEnd();
+        clearInterval(interval);
       }
-      props.onTimes(currentSeconds);
-      setKey(Math.random());
     }, 1000);
-
   };
 
   useEffect(() => {
+    if (props.seconds) {
+      currentSeconds = props.seconds;
+      hours = ~~(currentSeconds / 3600);
+      minute = ~~((currentSeconds % 3600) / 60);
+      seconds = ~~currentSeconds % 60;
+      setKey(Math.random());
+    }
+  }, [])
+
+  useEffect(() => {
     if (props.start) {
-      currentSeconds = 0;
       if (interval) {
         clearInterval(interval);
       }
-      hours = 0;
-      minute = 0;
-      seconds = 0;
+
       timer();
     } else {
-      if (currentSeconds > 0) {
-        props.onEnd(currentSeconds);
-        currentSeconds = 0;
-      }
       clearInterval(interval);
     }
   }, [props.start]);
@@ -72,6 +74,6 @@ const TimerComponent: React.FC<Props> = (props) => {
   );
 };
 
-TimerComponent.defaultProps = defaulProps;
+CountdownComponent.defaultProps = defaulProps;
 
-export default TimerComponent;
+export default CountdownComponent;

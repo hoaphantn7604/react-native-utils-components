@@ -162,6 +162,30 @@
         style={styles.timer}
         textStyle={styles.timerText}
         start={true}
+        onTimes={seconds => {
+            console.log(seconds);
+        }}
+        onEnd={seconds => {
+            console.log(seconds);
+        }}
+    />
+```
+
+## CCountdown
+```js
+    import { CCountdown } from 'react-native-utils-components';
+    
+    <CCountdown
+        seconds={100}
+        style={styles.timer}
+        textStyle={styles.timerText}
+        start={true}
+        onTimes={seconds => {
+            console.log(seconds);
+        }}
+        onEnd={() => {
+            console.log('End');
+        }}
     />
 ```
 
@@ -244,3 +268,6 @@
         numeric
     />
 ```
+
+## Source code exampe
+https://github.com/hoaphantn7604/react-native-utils-components/tree/master/example
