@@ -4,7 +4,7 @@
 
 `$ yarn add react-native-utils-components react-native-utils-scale`
 
-## IOS Setup
+## Start IOS
     cd ios && pod install && cd ../
 
 ### Demo
@@ -19,10 +19,10 @@
 | childField         | String               | Yes       |                  |
 | onSelect           | ()=> void            | Yes       |                  |
 | buttonName         | String               | No        |                  |
-| style              | ViewStyle            | No        | {}               |
-| buttonStyle        | ViewStyle            | No        | {}               |
-| buttonTextStyle    | TextStyle            | No        | {}               |
-| textStyle          | TextStyle            | No        | {}               |
+| style              | ViewStyle            | No        |                  |
+| buttonStyle        | ViewStyle            | No        |                  |
+| buttonTextStyle    | TextStyle            | No        |                  |
+| textStyle          | TextStyle            | No        |                  |
 | iconColor          | String               | No        | black            |
 
 ```js
@@ -118,7 +118,7 @@
 | Props              | Params               | isRequire | default          |
 | ------------------ | -------------------- | --------- | ---------------- |
 | data               | Array                | Yes       |                  |
-| style              | ViewStyle            | No        | {}               |
+| style              | ViewStyle            | No        |                  |
 | activeColor        | String               | No        | #32C5FF          |
 | inActiveColor      | String               | No        | #C6CDD8          |
 | textColor          | String               | No        | #C6CDD8          |
@@ -133,8 +133,8 @@
 | Props              | Params               | isRequire | default          |
 | ------------------ | -------------------- | --------- | ---------------- |
 | data               | Array                | Yes       |                  |
-| style              | ViewStyle            | No        | {}               |
-| tooltipStyle       | ViewStyle            | No        | {}               |
+| style              | ViewStyle            | No        |                  |
+| tooltipStyle       | ViewStyle            | No        |                  |
 | activeColor        | String               | No        | #32C5FF          |
 | inActiveColor      | String               | No        | #C6CDD8          |
 | selectColor        | String               | No        | #FF9900          |
@@ -148,7 +148,7 @@
 | ------------------ | -------------------- | --------- | ---------------- |
 | data               | Array                | Yes       |                  |
 | percent            | Number               | Yes       |                  |
-| style              | ViewStyle            | No        | {}               |
+| style              | ViewStyle            | No        |                  |
 | height             | String               | No        | 6                |
 | border             | String               | No        | false            |
 
@@ -213,10 +213,10 @@
 | Props              | Params               | isRequire | default          |
 | ------------------ | -------------------- | --------- | ---------------- |
 | start              | Boolean              | Yes       | false            |
-| style              | ViewStyle            | No        | {}               |
-| textStyle          | TextStyle            | No        | {}               |
-| onTimes            | (seconds) => void    | No        | ()=>{}           |
-| onEnd              | (seconds) => void    | No        | ()=>{}           |
+| style              | ViewStyle            | No        |                  |
+| textStyle          | TextStyle            | No        |                  |
+| onTimes            | (seconds) => void    | No        |                  |
+| onEnd              | (seconds) => void    | No        |                  |
 
 ```js
     import { CTimer } from 'react-native-utils-components';
@@ -240,10 +240,10 @@
 | ------------------ | -------------------- | --------- | ---------------- |
 | seconds            | Number               | Yes       |                  |
 | start              | Boolean              | Yes       | false            |
-| style              | ViewStyle            | No        | {}               |
-| textStyle          | TextStyle            | No        | {}               |
-| onTimes            | (seconds) => void    | No        | ()=>{}           |
-| onEnd              | (seconds) => void    | No        | ()=>{}           |
+| style              | ViewStyle            | No        |                  |
+| textStyle          | TextStyle            | No        |                  |
+| onTimes            | (seconds) => void    | No        |                  |
+| onEnd              | (seconds) => void    | No        |                  |
 
 ```js
     import { CCountdown } from 'react-native-utils-components';
@@ -263,6 +263,24 @@
 ```
 
 ### CDropdown
+
+| Props              | Params               | isRequire | default          |
+| ------------------ | -------------------- | --------- | ---------------- |
+| data               | Array                | Yes       |                  |
+| labelField         | String               | Yes       |                  |
+| valueField         | String               | Yes       |                  |
+| onChange           | (item) => void       | Yes       |                  |
+| style              | ViewStyle            | No        |                  |
+| iconStyle          | ImageStyle           | No        |                  |
+| iconTickStyle      | ImageStyle           | No        |                  |
+| headerStyle        | ViewStyle            | No        |                  |
+| labelStyle         | TextStyle            | No        |                  |
+| textErrorStyle     | TextStyle            | No        |                  |
+| value              | Item                 | No        |                  |
+| label              | String               | No        |                  |
+| placeholder        |                      | No        |                  |
+| textError          |                      | No        |                  |
+| iconTick           | Path                 | No        |                  |
 
 ```js
     import { CDropdown } from 'react-native-utils-components';
