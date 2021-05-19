@@ -4,9 +4,9 @@
 
 `$ yarn add react-native-utils-components react-native-utils-scale`
 
-## Start IOS
-    cd ios && pod install && cd ../
-
+### Start IOS
+`$ cd ios && pod install`
+ 
 ### Demo
 ![](https://github.com/hoaphantn7604/file-upload/blob/master/document/component/demo.gif)
 
