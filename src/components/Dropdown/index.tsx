@@ -11,7 +11,7 @@ interface Props {
   iconStyle?: StyleProp<ImageStyle>;
   iconTickStyle?: StyleProp<ImageStyle>;
   headerStyle?: StyleProp<ViewStyle>;
-  labelStyle?: StyleProp<ViewStyle>;
+  labelStyle?: StyleProp<TextStyle>;
   textErrorStyle?: StyleProp<TextStyle>;
   data: any[];
   value?: any | null;

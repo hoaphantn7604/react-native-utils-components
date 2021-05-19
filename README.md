@@ -7,10 +7,24 @@
 ## IOS Setup
     cd ios && pod install && cd ../
 
-## Demo
+### Demo
 ![](https://github.com/hoaphantn7604/file-upload/blob/master/document/component/demo.gif)
 
-## CHierarchy
+### CHierarchy
+
+| Props              | Params               | isRequire | default          |
+| ------------------ | -------------------- | --------- | ---------------- |
+| data               | Array                | Yes       |                  |
+| textField          | String               | Yes       |                  |
+| childField         | String               | Yes       |                  |
+| onSelect           | ()=> void            | Yes       |                  |
+| buttonName         | String               | No        |                  |
+| style              | ViewStyle            | No        | {}               |
+| buttonStyle        | ViewStyle            | No        | {}               |
+| buttonTextStyle    | TextStyle            | No        | {}               |
+| textStyle          | TextStyle            | No        | {}               |
+| iconColor          | String               | No        | black            |
+
 ```js
     import { CHierarchy } from 'react-native-utils-components';
     const recursiveData = [
@@ -88,16 +102,56 @@
         childField="childs"
         textStyle={{color: 'black'}}
         iconColor="black"
-        // buttonName="Continute"
-        // buttonStyle={{backgroundColor: 'black'}}
-        // buttonTextStyle={{color: 'white'}}
+        buttonName="Continute"
+        buttonStyle={{backgroundColor: 'black'}}
+        buttonTextStyle={{color: 'white'}}
         onSelect={item => {
             console.log(`Selected ${item.length} item`);
         }}
     />
 ```
 
-## CStepProgress, CTooltipProgress, CProgress
+### CStepProgress, CTooltipProgress, CProgress
+
+#### CStepProgress
+
+| Props              | Params               | isRequire | default          |
+| ------------------ | -------------------- | --------- | ---------------- |
+| data               | Array                | Yes       |                  |
+| style              | ViewStyle            | No        | {}               |
+| activeColor        | String               | No        | #32C5FF          |
+| inActiveColor      | String               | No        | #C6CDD8          |
+| textColor          | String               | No        | #C6CDD8          |
+| selectColor        | String               | No        | #FF9900          |
+| textSize           | Number               | No        | 16               |
+| selectIndex        | Number               | No        | 0                |
+| onSelectIndex      | (index)=> Void       | No        |                  |
+| iconTick           | Path                 | No        |                  |
+
+#### CTooltipProgress
+
+| Props              | Params               | isRequire | default          |
+| ------------------ | -------------------- | --------- | ---------------- |
+| data               | Array                | Yes       |                  |
+| style              | ViewStyle            | No        | {}               |
+| tooltipStyle       | ViewStyle            | No        | {}               |
+| activeColor        | String               | No        | #32C5FF          |
+| inActiveColor      | String               | No        | #C6CDD8          |
+| selectColor        | String               | No        | #FF9900          |
+| textSize           | Number               | No        | 16               |
+| selectIndex        | Number               | No        | 0                |
+| onSelectIndex      | (index)=> Void       | No        |                  |
+
+#### CProgress
+
+| Props              | Params               | isRequire | default          |
+| ------------------ | -------------------- | --------- | ---------------- |
+| data               | Array                | Yes       |                  |
+| percent            | Number               | Yes       |                  |
+| style              | ViewStyle            | No        | {}               |
+| height             | String               | No        | 6                |
+| border             | String               | No        | false            |
+
 ```js
     import {
         CStepProgress,
@@ -154,7 +208,16 @@
     />
 ```
 
-## CTimer
+### CTimer
+
+| Props              | Params               | isRequire | default          |
+| ------------------ | -------------------- | --------- | ---------------- |
+| start              | Boolean              | Yes       | false            |
+| style              | ViewStyle            | No        | {}               |
+| textStyle          | TextStyle            | No        | {}               |
+| onTimes            | (seconds) => void    | No        | ()=>{}           |
+| onEnd              | (seconds) => void    | No        | ()=>{}           |
+
 ```js
     import { CTimer } from 'react-native-utils-components';
     
@@ -171,7 +234,17 @@
     />
 ```
 
-## CCountdown
+### CCountdown
+
+| Props              | Params               | isRequire | default          |
+| ------------------ | -------------------- | --------- | ---------------- |
+| seconds            | Number               | Yes       |                  |
+| start              | Boolean              | Yes       | false            |
+| style              | ViewStyle            | No        | {}               |
+| textStyle          | TextStyle            | No        | {}               |
+| onTimes            | (seconds) => void    | No        | ()=>{}           |
+| onEnd              | (seconds) => void    | No        | ()=>{}           |
+
 ```js
     import { CCountdown } from 'react-native-utils-components';
     
@@ -189,7 +262,8 @@
     />
 ```
 
-## CDropdown
+### CDropdown
+
 ```js
     import { CDropdown } from 'react-native-utils-components';
 
@@ -221,7 +295,7 @@
     />
 ```
 
-## CTextInput
+### CTextInput
 ```js
     import { CTextInput } from 'react-native-utils-components';
 
@@ -269,5 +343,5 @@
     />
 ```
 
-## Source code exampe
+### Source code exampe
 https://github.com/hoaphantn7604/react-native-utils-components/tree/master/example
