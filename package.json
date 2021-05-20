@@ -1,7 +1,7 @@
 {
   "name": "react-native-utils-components",
   "title": "React Native Utils Components",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Hierarchy, Progress, Tooltip Progress, Step Progress Components",
   "main": "index.ts",
   "scripts": {
