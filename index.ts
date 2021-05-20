@@ -6,5 +6,6 @@ import CTooltipProgress from './src/components/TooltipProgress';
 import CProgress from './src/components/Progress';
 import CDropdown from './src/components/Dropdown';
 import CTextInput from './src/components/TextInput';
+import CZoomView from './src/components/ZoomView';
 
-export { CTimer, CCountdown, CHierarchy, CStepProgress, CTooltipProgress, CProgress, CDropdown, CTextInput };
+export { CTimer, CCountdown, CHierarchy, CStepProgress, CTooltipProgress, CProgress, CDropdown, CTextInput, CZoomView };
