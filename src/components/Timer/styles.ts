@@ -1,9 +1,9 @@
 import {StyleSheet} from 'react-native';
-import { dimensionsScale } from 'react-native-utils-scale';
+import { useScale } from 'react-native-utils-toolkit';
 
 export const styles = StyleSheet.create({
     text: {
-      fontSize: 20 * dimensionsScale.fontScale(),
+      fontSize: useScale.fontScale(20),
       color: 'black',
     },
   });

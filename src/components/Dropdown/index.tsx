@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Easing } from 'react-native';
 import { FlatList, Image, ImageStyle, Modal, SafeAreaView, StyleProp, Text, TextStyle, TouchableOpacity, TouchableWithoutFeedback, View, ViewStyle, Animated } from 'react-native';
 import { styles } from './styles';
-import { dimensionsScale } from 'react-native-utils-scale';
+import { useScale } from 'react-native-utils-toolkit';
 
-const { scale } = dimensionsScale;
-
+const { scale } = useScale;
 
 const ic_check = require('./icon/check.png');
 const ic_down = require('./icon/down.png');

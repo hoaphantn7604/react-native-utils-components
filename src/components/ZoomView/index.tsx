@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Dimensions, ScrollView, StyleSheet, View, Button } from 'react-native';
-import { Text } from 'react-native-svg';
+import { Dimensions, ScrollView, View } from 'react-native';
 const { width, height } = Dimensions.get('window');
 
 export interface Props {

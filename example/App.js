@@ -10,9 +10,9 @@ import {
   CTextInput,
   CDropdown,
 } from 'react-native-utils-components';
-import {dimensionsScale} from 'react-native-utils-scale';
+import {useScale} from 'react-native-utils-toolkit';
 
-const {scale} = dimensionsScale;
+const {scale} = useScale;
 
 const recursiveData = [
   {
@@ -292,6 +292,7 @@ const styles = StyleSheet.create({
     borderRadius: scale(50),
     borderColor: 'black',
     borderWidth: scale(1),
+    marginBottom: 10,
   },
   timerText: {
     color: 'black',

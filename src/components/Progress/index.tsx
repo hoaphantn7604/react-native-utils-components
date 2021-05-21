@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { StyleProp, Text, View, ViewStyle } from 'react-native';
-import { dimensionsScale } from 'react-native-utils-scale';
+import { useScale } from 'react-native-utils-toolkit';
 import { styles } from './styles';
 
-const { scale } = dimensionsScale;
+const { scale } = useScale;
 
 export interface Props {
   style?: StyleProp<ViewStyle>;
@@ -21,7 +21,7 @@ const defaultProps = {
     { color: 'green', percent: 33.33 },
   ],
   border: false,
-  height: dimensionsScale.scale(6),
+  height: scale(6),
 
 };
 

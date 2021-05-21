@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, StyleProp, Text, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native';
-import { dimensionsScale, isAndroid, isIOS } from 'react-native-utils-scale';
+import { useScale, useDetectDevice } from 'react-native-utils-toolkit';
 import { styles } from './styles';
 
-const { scale } = dimensionsScale;
+const { scale } = useScale;
+const {isAndroid, isIOS} = useDetectDevice;
 
 export interface Props {
   style?: StyleProp<ViewStyle>;
@@ -109,7 +110,7 @@ const HierarchyComponent: React.FC<Props> = (props) => {
               onPress={() => {
                 showChild(item);
               }}>
-              <Text style={[styles.showIcon, { color: iconColor }, isAndroid() && !item.show && {paddingLeft: scale(5)}]}>{item.show ? '+' : '-'}</Text>
+              <Text style={[styles.showIcon, { color: iconColor }, isAndroid && !item.show && {paddingLeft: scale(5)}]}>{item.show ? '+' : '-'}</Text>
             </TouchableOpacity>
           ) : <Text style={styles.showIcon}>{`  `}</Text>}
           <TouchableOpacity
@@ -122,7 +123,7 @@ const HierarchyComponent: React.FC<Props> = (props) => {
               }
             }}>
             <View style={styles.center}>
-              {item.tick ? <Text style={[styles.tick, { color: iconColor }]}>☑</Text> : <Text style={[isIOS() ? styles.unTick : styles.tick, { color: iconColor }]}>☐</Text>}
+              {item.tick ? <Text style={[styles.tick, { color: iconColor }]}>☑</Text> : <Text style={[isIOS ? styles.unTick : styles.tick, { color: iconColor }]}>☐</Text>}
               <Text style={[styles.name, textStyle]} numberOfLines={3}>{item[textField]}</Text>
             </View>
           </TouchableOpacity>

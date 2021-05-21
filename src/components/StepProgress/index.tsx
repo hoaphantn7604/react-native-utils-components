@@ -1,10 +1,10 @@
 import React from 'react';
 import { Image, StyleProp, Text, TouchableOpacity, View, ViewStyle } from 'react-native';
-import { dimensionsScale } from 'react-native-utils-scale';
+import { useScale } from 'react-native-utils-toolkit';
 import { styles } from './styles';
 const ic_check = require('./icon/check.png');
 
-const { scale, fontScale } = dimensionsScale;
+const { scale, fontScale } = useScale;
 
 export interface Props {
   style?: StyleProp<ViewStyle>;

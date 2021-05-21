@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
-import { dimensionsScale } from 'react-native-utils-scale';
+import { useScale } from 'react-native-utils-toolkit';
 
-const { scale, fontScale } = dimensionsScale;
+const { scale } = useScale;
 
 export const styles = StyleSheet.create({
     container: {},

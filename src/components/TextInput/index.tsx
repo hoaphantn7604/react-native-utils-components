@@ -10,10 +10,10 @@ import {
   TouchableOpacity, View,
   ViewStyle
 } from 'react-native';
-import { dimensionsScale } from 'react-native-utils-scale';
+import { useScale } from 'react-native-utils-toolkit';
 import { styles } from './styles';
 
-const { scale } = dimensionsScale;
+const { scale } = useScale;
 const ic_eye = require('./icon/eye.png');
 const ic_uneye = require('./icon/uneye.png');
 const ic_close= require('./icon/close.png');
