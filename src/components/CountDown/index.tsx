@@ -1,15 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { StyleProp, Text, TextStyle, View, ViewStyle } from 'react-native';
+import { Text, View } from 'react-native';
 import { styles } from './styles';
-
-export interface Props {
-  style?: StyleProp<ViewStyle>;
-  textStyle?: StyleProp<TextStyle>;
-  seconds: number;
-  start: boolean;
-  onTimes?: (seconds: number) => void
-  onEnd?: () => void
-}
+import { CCountdown } from './type';
 
 const defaulProps = {
   style: {},
@@ -24,7 +16,7 @@ let minute = 0;
 let seconds = 0;
 let currentSeconds = 0;
 
-const CountdownComponent: React.FC<Props> = (props) => {
+const CountdownComponent: CCountdown = (props) => {
   const [key, setKey] = useState(Math.random());
 
   const timer = () => {
@@ -37,7 +29,7 @@ const CountdownComponent: React.FC<Props> = (props) => {
         setKey(Math.random());
         props.onTimes(currentSeconds);
       }
-      if(currentSeconds == 0) {
+      if (currentSeconds == 0) {
         props.onEnd();
         clearInterval(interval);
       }

@@ -1,32 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Easing } from 'react-native';
-import { FlatList, Image, ImageStyle, Modal, SafeAreaView, StyleProp, Text, TextStyle, TouchableOpacity, TouchableWithoutFeedback, View, ViewStyle, Animated } from 'react-native';
-import { styles } from './styles';
+import { Animated, Easing, FlatList, Image, Modal, SafeAreaView, Text, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
 import { useScale } from 'react-native-utils-toolkit';
+import { styles } from './styles';
+import { CDropdown } from './type';
 
 const { scale } = useScale;
 
 const ic_check = require('./icon/check.png');
 const ic_down = require('./icon/down.png');
 const ic_close = require('./icon/close.png');
-
-interface Props {
-  style?: StyleProp<ViewStyle>;
-  iconStyle?: StyleProp<ImageStyle>;
-  iconTickStyle?: StyleProp<ImageStyle>;
-  headerStyle?: StyleProp<ViewStyle>;
-  labelStyle?: StyleProp<ViewStyle>;
-  textErrorStyle?: StyleProp<TextStyle>;
-  data: any[];
-  value?: any | null;
-  textError?: string;
-  label?: string;
-  placeholder?: string;
-  labelField: string;
-  valueField: string;
-  iconTick?: any;
-  onChange: (item: any) => void;
-}
 
 const defaultProps = {
   placeholder: 'Select item',
@@ -35,7 +17,7 @@ const defaultProps = {
   iconTick: null
 }
 
-const Dropdown: React.FC<Props> = (props) => {
+const Dropdown: CDropdown = (props) => {
 
   const [visible, setVisible] = useState<boolean>(false);
   const [currentValue, setCurrentValue] = useState<any>(null);

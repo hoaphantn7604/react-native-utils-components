@@ -1,28 +1,11 @@
 import React from 'react';
-import { Image, StyleProp, Text, TouchableOpacity, View, ViewStyle } from 'react-native';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { useScale } from 'react-native-utils-toolkit';
 import { styles } from './styles';
+import { CStepProgress, Item } from './type';
+
 const ic_check = require('./icon/check.png');
-
 const { scale, fontScale } = useScale;
-
-export interface Props {
-  style?: StyleProp<ViewStyle>;
-  data: Item[];
-  activeColor?: string;
-  inActiveColor?: string;
-  textColor?: string;
-  selectIndex?: number;
-  onSelectIndex?: (index: number) => void;
-  selectColor?: string;
-  textSize?: number;
-  iconTick?: any;
-}
-
-export interface Item {
-  text: string;
-  status: boolean;
-}
 
 const defaultProps = {
   style: {},
@@ -44,7 +27,7 @@ const defaultProps = {
   iconTick: null
 };
 
-const StepProgress: React.FC<Props> = (props) => {
+const StepProgress: CStepProgress = (props) => {
   const {
     style,
     data,

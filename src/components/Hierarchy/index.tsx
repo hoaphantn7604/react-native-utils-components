@@ -1,23 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, StyleProp, Text, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native';
-import { useScale, useDetectDevice } from 'react-native-utils-toolkit';
+import { FlatList, Text, TouchableOpacity, View } from 'react-native';
+import { useDetectDevice, useScale } from 'react-native-utils-toolkit';
 import { styles } from './styles';
+import { CHierarchy } from './type';
 
 const { scale } = useScale;
 const {isAndroid, isIOS} = useDetectDevice;
-
-export interface Props {
-  style?: StyleProp<ViewStyle>;
-  buttonStyle?: StyleProp<ViewStyle>;
-  buttonTextStyle?: StyleProp<TextStyle>;
-  textStyle: StyleProp<TextStyle>;
-  iconColor: string;
-  data: any[];
-  textField: string;
-  childField: string;
-  buttonName?: string;
-  onSelect: (data: any) => void;
-}
 
 const defaultProps = {
   style: {},
@@ -29,7 +17,7 @@ const defaultProps = {
 
 let selectItem: any = [];
 
-const HierarchyComponent: React.FC<Props> = (props) => {
+const HierarchyComponent: CHierarchy = (props) => {
   const { data, textField, childField, style, textStyle, buttonStyle, iconColor, buttonTextStyle } = props;
 
   const [listData] = useState<any>(data);

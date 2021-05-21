@@ -1,14 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { StyleProp, Text, TextStyle, View, ViewStyle } from 'react-native';
+import { Text, View } from 'react-native';
 import { styles } from './styles';
-
-export interface Props {
-  style?: StyleProp<ViewStyle>;
-  textStyle?: StyleProp<TextStyle>;
-  start: boolean;
-  onTimes?: (seconds: number) => void
-  onEnd?: (seconds: number) => void
-}
+import { CTimer } from './type';
 
 const defaulProps = {
   style: {},
@@ -23,7 +16,7 @@ let minute = 0;
 let seconds = 0;
 let currentSeconds = 0;
 
-const TimerComponent: React.FC<Props> = (props) => {
+const TimerComponent: CTimer = (props) => {
   const [key, setKey] = useState(Math.random());
 
   const timer = () => {

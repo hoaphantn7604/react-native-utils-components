@@ -1,17 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { StyleProp, Text, View, ViewStyle } from 'react-native';
+import { Text, View } from 'react-native';
 import { useScale } from 'react-native-utils-toolkit';
 import { styles } from './styles';
+import { CProgress } from './type';
 
 const { scale } = useScale;
-
-export interface Props {
-  style?: StyleProp<ViewStyle>;
-  percent: number;
-  data: { color: string; percent: number }[];
-  border?: boolean;
-  height?: number;
-}
 
 const defaultProps = {
   style: {},
@@ -22,12 +15,11 @@ const defaultProps = {
   ],
   border: false,
   height: scale(6),
-
 };
 
 let iPercent = 100;
 
-const ProgressComponent: React.FC<Props> = (props) => {
+const ProgressComponent: CProgress = (props) => {
   const { percent, data, height, border, style } = props;
   const [controlColor, setControlColor] = useState<string>('black');
 

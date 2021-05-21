@@ -1,14 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { Dimensions, ScrollView, View } from 'react-native';
-const { width, height } = Dimensions.get('window');
+import { CZoomView } from './type';
 
-export interface Props {
-  maximumZoomScale?: number;
-  minimumZoomScale?: number;
-  zoomHeight?: number;
-  zoomWidth?: number;
-  autoZoom?: boolean;
-}
+const { width, height } = Dimensions.get('window');
 
 const defaultProps = {
   maximumZoomScale: 2,
@@ -18,7 +12,7 @@ const defaultProps = {
   zoomWidth: width,
 }
 
-const ZoomViewComponent: React.FC<Props> = (props) => {
+const ZoomViewComponent: CZoomView = (props) => {
   const { maximumZoomScale, minimumZoomScale, zoomHeight, zoomWidth, autoZoom } = props;
   const scrollRef = useRef<any>(null);
 

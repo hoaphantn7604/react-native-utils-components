@@ -1,27 +1,10 @@
 import React from 'react';
-import { StyleProp, Text, TouchableOpacity, View, ViewStyle } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import { useScale } from 'react-native-utils-toolkit';
 import { styles } from './styles';
+import { Item, CTooltipProgress } from './type';
 
 const { scale, fontScale } = useScale;
-
-export interface Props {
-  style?: StyleProp<ViewStyle>;
-  tooltipStyle?: StyleProp<ViewStyle>;
-  data: Item[];
-  activeColor?: string;
-  inActiveColor?: string;
-  selectIndex?: number;
-  onSelectIndex?: (index: number) => void;
-  selectColor?: string;
-  textSize?: number;
-}
-
-export interface Item {
-  stage: string;
-  text: string;
-  status: boolean;
-}
 
 const defaultProps = {
   style: {},
@@ -42,7 +25,7 @@ const defaultProps = {
   onSelectIndex: (index: number) => { },
 };
 
-const CTooltipProgressComponent: React.FC<Props> = (props) => {
+const CTooltipProgressComponent: CTooltipProgress = (props) => {
   const {
     style,
     data,

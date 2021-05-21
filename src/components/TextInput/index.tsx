@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import {
   Image,
-  ImageStyle, KeyboardTypeOptions,
   NativeSyntheticEvent,
-  StyleProp,
   Text, TextInput,
   TextInputFocusEventData,
-  TextStyle,
-  TouchableOpacity, View,
-  ViewStyle
+  TouchableOpacity, View
 } from 'react-native';
+import { CTextInput } from './type';
 import { useScale } from 'react-native-utils-toolkit';
 import { styles } from './styles';
 
@@ -17,35 +14,6 @@ const { scale } = useScale;
 const ic_eye = require('./icon/eye.png');
 const ic_uneye = require('./icon/uneye.png');
 const ic_close= require('./icon/close.png');
-
-export interface Props {
-  style?: StyleProp<ViewStyle>;
-  inputStyle?: StyleProp<TextStyle>;
-  labelStyle?: StyleProp<TextStyle>;
-  iconStyle?: StyleProp<ImageStyle>;
-  textErrorStyle?: StyleProp<TextStyle>;
-  textError?: string;
-  placeholder?: string;
-  placeholderTextColor?: string;
-  value?: string;
-  label?: string;
-  secureTextEntry?: boolean;
-  autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters';
-  keyboardType?: KeyboardTypeOptions;
-  multiline?: boolean;
-  autoFocus?: boolean;
-  editable?: boolean;
-  maxLength?: number;
-  showIcon?: boolean;
-  currency?: boolean;
-  numeric?: boolean;
-  unitCurrency?: string;
-  renderRightIcon?: () => JSX.Element | null | undefined;
-  renderLeftIcon?: () => JSX.Element | null | undefined;
-  onChangeText: (value: string) => void;
-  onBlur?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
-  onFocus?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
-}
 
 const defaultProps = {
   placeholderTextColor: '#000',
@@ -61,7 +29,7 @@ const defaultProps = {
   onFocus: (e: NativeSyntheticEvent<TextInputFocusEventData>) => { },
 };
 
-const TextInputComponent: React.FC<Props> = (props) => {
+const TextInputComponent: CTextInput = (props) => {
   const {
     style,
     placeholder,
