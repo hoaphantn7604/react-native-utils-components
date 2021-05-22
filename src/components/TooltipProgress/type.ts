@@ -13,9 +13,10 @@ interface Props {
 }
 
 export interface Item {
-  stage: string;
+  stage?: string;
   text: string;
   status: boolean;
+  icon?: any;
 }
 
 export type CTooltipProgress = React.FC<Props>

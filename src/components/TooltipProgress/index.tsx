@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, View, Image } from 'react-native';
 import { useScale } from 'react-native-utils-toolkit';
 import { styles } from './styles';
 import { Item, CTooltipProgress } from './type';
@@ -73,15 +73,21 @@ const CTooltipProgressComponent: CTooltipProgress = (props) => {
                     index === selectIndex ? selectColor : item.status ? activeColor : inActiveColor,
                 },
               ]}>
-              <Text
+              {item.icon ? <Image
+                style={[
+                  styles.icon,
+                  { tintColor: 'white'},
+                ]}
+                source={item.icon}
+              /> : <Text
                 style={[
                   {
                     fontSize: fontScale(textSize),
-                    color: item.status || index === selectIndex ? 'white' : 'gray',
+                    color: 'white',
                   },
                 ]}>
-                {item.stage}
-              </Text>
+                {item?.stage}
+              </Text>}
             </View>
             {index === selectIndex && (
               <View style={[styles.triangle, { borderBottomColor: selectColor }]} />
