@@ -6,6 +6,9 @@
 
 ### Start IOS
 `$ cd ios && pod install`
+
+### Source code example
+https://github.com/hoaphantn7604/react-native-utils-template-typescript
  
 ### Demo
 ![](https://github.com/hoaphantn7604/file-upload/blob/master/document/component/demo.gif)
@@ -360,6 +363,3 @@
         numeric
     />
 ```
-
-### Source code exampe
-https://github.com/hoaphantn7604/react-native-utils-components/tree/master/example
