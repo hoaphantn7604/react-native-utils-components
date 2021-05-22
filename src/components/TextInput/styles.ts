@@ -23,8 +23,8 @@ export const styles = StyleSheet.create({
       flexDirection: 'row',
     },
     icon: {
-      width: scale(24),
-      height: scale(24),
+      width: scale(20),
+      height: scale(20),
     },
     textError: {
       color: 'red',
