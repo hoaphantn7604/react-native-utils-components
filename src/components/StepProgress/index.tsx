@@ -35,7 +35,7 @@ const StepProgress: CStepProgress = (props) => {
     inActiveColor,
     textColor,
     selectIndex,
-    textSize,
+    textSize = 16,
     selectColor,
     onSelectIndex,
     iconTick
@@ -46,7 +46,7 @@ const StepProgress: CStepProgress = (props) => {
       <View key={index} style={
         [index !== 0 && { flex: 1 },
         index === 0 && { marginLeft: scale(25) },
-        index === data.length - 1 && { marginRight: scale(25) }
+        index === data.length - 1 && { marginRight: scale(25) },
         ]}>
         <View style={styles.row}>
           {index !== 0 && (
@@ -86,9 +86,15 @@ const StepProgress: CStepProgress = (props) => {
                     styles.icon,
                     { tintColor: index === selectIndex ? selectColor : activeColor },
                   ]}
-                  source={iconTick ? iconTick : ic_check}
+                  source={item.icon ? item.icon : iconTick ? iconTick : ic_check}
                 />
-                : <Text style={{ fontSize: fontScale(textSize), color: inActiveColor, fontWeight: 'bold' }}>{index + 1}</Text>}
+                : item.icon ? <Image
+                  style={[
+                    styles.icon,
+                    { tintColor: index === selectIndex ? selectColor : item.status ? activeColor : inActiveColor },
+                  ]}
+                  source={item.icon ? item.icon : iconTick ? iconTick : ic_check}
+                /> : <Text style={{ fontSize: fontScale(textSize), color: index === selectIndex ? selectColor : item.status ? activeColor : inActiveColor, fontWeight: 'bold' }}>{index + 1}</Text>}
             </View>
           </TouchableOpacity>
         </View>
@@ -97,15 +103,11 @@ const StepProgress: CStepProgress = (props) => {
   };
 
   const renderText = (item: Item, index: number) => {
-    return (
-      <View key={index} style={
-        [index !== 0 && { flex: 1, alignItems: 'flex-end' },
-        index === 0 && { marginLeft: scale(18) },
-        index === data.length - 1 && { marginRight: scale(18) }
-        ]}>
-        <Text style={[styles.text, { fontSize: fontScale(textSize), color: index === selectIndex ? selectColor : textColor }]}>{item.text}</Text>
-      </View>
-    );
+      return (
+        <View key={index} style={{width: scale(80)}}>
+          <Text style={[styles.text, { fontSize: fontScale(textSize), color: index === selectIndex ? selectColor : textColor }]}>{item?.text}</Text>
+        </View>
+      );
   };
 
   return (

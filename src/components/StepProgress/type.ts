@@ -1,8 +1,9 @@
 import { StyleProp, ViewStyle } from 'react-native';
 
 export interface Item {
-    text: string;
+    text?: string;
     status: boolean;
+    icon?: any;
 }
 
 export interface Props {

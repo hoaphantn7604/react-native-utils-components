@@ -12,6 +12,10 @@ import {
 } from 'react-native-utils-components';
 import {useScale} from 'react-native-utils-toolkit';
 
+const ic_step1 = require('./assets/step1.png');
+const ic_step2 = require('./assets/step2.png');
+const ic_step3 = require('./assets/step3.png');
+const ic_step4 = require('./assets/step4.png');
 const {scale} = useScale;
 
 const recursiveData = [
@@ -110,12 +114,31 @@ const MainScreen = props => {
           <Text style={styles.title}>Step Progress</Text>
           <CStepProgress
             data={[
-              {text: 'Step 1', status: true},
+              {text: 'Payment cart', status: true},
               {text: 'Step 2', status: true},
               {text: 'Step 3', status: false},
               {text: 'Step 4', status: false},
             ]}
             iconTick={require('./assets/check.png')}
+            selectIndex={step}
+            onSelectIndex={index => {
+              setStep(index);
+            }}
+            activeColor="#32C5FF"
+            inActiveColor="#C6CDD8"
+            selectColor="#32C5FF"
+            textColor="gray"
+            textSize={15}
+          />
+
+          <CStepProgress
+            style={{marginTop: 20}}
+            data={[
+              {text: 'Step 1', icon: ic_step1, status: true},
+              {text: 'Step 2', icon: ic_step2, status: true},
+              {text: 'Step 3', icon: ic_step3, status: false},
+              {text: 'Step 4', icon: ic_step4, status: false},
+            ]}
             selectIndex={step}
             onSelectIndex={index => {
               setStep(index);
