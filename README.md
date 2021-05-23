@@ -28,6 +28,7 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
 | textStyle          | TextStyle            | No        |                  |
 | iconColor          | String               | No        | black            |
 
+#### Example
 ```js
     import { CHierarchy } from 'react-native-utils-components';
     const recursiveData = [
@@ -155,6 +156,7 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
 | height             | String               | No        | 6                |
 | border             | String               | No        | false            |
 
+#### Example
 ```js
     import {
         CStepProgress,
@@ -169,7 +171,6 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
             {text: 'Step 3', status: false},
             {text: 'Step 4', status: false},
         ]}
-        iconTick={require('./assets/check.png')}
         selectIndex={step}
         onSelectIndex={index => {
             setStep(index);
@@ -193,7 +194,6 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
         activeColor="#32C5FF"
         inActiveColor="#C6CDD8"
         selectColor="#32C5FF"
-        tooltipStyle={{}}
         selectIndex={stage}
         onSelectIndex={index => {
             setStage(index);
@@ -221,6 +221,7 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
 | onTimes            | (seconds) => void    | No        |                  |
 | onEnd              | (seconds) => void    | No        |                  |
 
+#### Example
 ```js
     import { CTimer } from 'react-native-utils-components';
     
@@ -248,6 +249,7 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
 | onTimes            | (seconds) => void    | No        |                  |
 | onEnd              | (seconds) => void    | No        |                  |
 
+#### Example
 ```js
     import { CCountdown } from 'react-native-utils-components';
     
@@ -274,24 +276,26 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
 | valueField         | String               | Yes       |                  |
 | onChange           | (item) => void       | Yes       |                  |
 | style              | ViewStyle            | No        |                  |
-| iconStyle          | ImageStyle           | No        |                  |
-| iconTickStyle      | ImageStyle           | No        |                  |
-| headerStyle        | ViewStyle            | No        |                  |
 | labelStyle         | TextStyle            | No        |                  |
+| textStyle          | TextStyle            | No        |                  |
+| iconColor          | String               | No        |                  |
+| activeColor        | String               | No        |                  |
+| headerStyle        | ViewStyle            | No        |                  |
 | textErrorStyle     | TextStyle            | No        |                  |
 | value              | Item                 | No        |                  |
 | label              | String               | No        |                  |
 | placeholder        |                      | No        |                  |
 | textError          |                      | No        |                  |
-| iconTick           | Path                 | No        |                  |
+| renderLeftIcon     | () => JSX.Element    | No        |
+| renderTickIcon     | () => JSX.Element    | No        |                   |
 
+#### Example
 ```js
     import { CDropdown } from 'react-native-utils-components';
 
     const [dropdown, setDropdown] = useState(null);
 
     <CDropdown
-        style={{backgroundColor: '#F6F7F8'}}
         data={[
             {label: 'Item 1', value: '1'},
             {label: 'Item 2', value: '2'},
@@ -306,60 +310,26 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
         valueField="value"
         label="Title"
         placeholder="Select item"
-        iconTick={require('./assets/check.png')}
         value={dropdown}
         onChange={item => {
-            setDropdown(item);
-            console.log('selected', item);
+          setDropdown(item);
+          console.log('selected', item);
         }}
-        textError="Error"
     />
 ```
 
 ### CTextInput
+#### Example
 ```js
     import { CTextInput } from 'react-native-utils-components';
-
-    // Input normal
+    
     <CTextInput
-        style={{backgroundColor: '#F6F7F8'}}
-        renderLeftIcon={() => (
-            <Image
-                style={{width: 20, height: 20, marginRight: 10}}
-                source={require('./assets/check.png')}
-            />
-        )}
         label="Normal"
         placeholder="Placeholder"
         placeholderTextColor="gray"
-        textError="Error"
+        onChangeText={(text: string) => {
+          console.log(text);
+        }}
     />
-
-    // Input password
-    <CTextInput
-        style={{backgroundColor: '#F6F7F8'}}
-        label="Password"
-        placeholder="Placeholder"
-        placeholderTextColor="gray"
-        secureTextEntry
-    />
-
-    // Input currency
-    <CTextInput
-        style={{backgroundColor: '#F6F7F8'}}
-        label="Currency"
-        placeholder="Placeholder"
-        placeholderTextColor="gray"
-        currency
-        unitCurrency="$"
-    />
-
-    // Input numeric 
-    <CTextInput
-        style={{backgroundColor: '#F6F7F8'}}
-        label="Numeric"
-        placeholder="Placeholder"
-        placeholderTextColor="gray"
-        numeric
-    />
+    
 ```
