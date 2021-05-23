@@ -45,7 +45,6 @@ export const styles = StyleSheet.create({
       justifyContent: 'center',
     },
     dropdown: {
-      borderColor: '#E5E5E5',
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',

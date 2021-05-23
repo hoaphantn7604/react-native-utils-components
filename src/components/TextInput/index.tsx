@@ -16,6 +16,7 @@ const ic_uneye = require('./icon/uneye.png');
 const ic_close= require('./icon/close.png');
 
 const defaultProps = {
+  style: {},
   placeholderTextColor: '#000',
   placeholder: '',
   value: '',
@@ -23,7 +24,6 @@ const defaultProps = {
   currency: false,
   numeric: false,
   labelColor: 'gray',
-  unitCurrency: '$',
   onChangeText: (value: string) => { },
   onBlur: (e: NativeSyntheticEvent<TextInputFocusEventData>) => { },
   onFocus: (e: NativeSyntheticEvent<TextInputFocusEventData>) => { },
@@ -123,7 +123,7 @@ const TextInputComponent: CTextInput = (props) => {
 
   return (
     <View>
-      <View style={[styles.container, style]}>
+      <View style={[style]}>
         {label && (
           <Text style={[styles.label, labelStyle]}>
             {label}
@@ -131,7 +131,7 @@ const TextInputComponent: CTextInput = (props) => {
         )}
         <View style={styles.textInput}>
           {renderLeftIcon?.()}
-          {currency && (
+          {currency && unitCurrency && (
             <Text style={{ marginRight: scale(3) }}>
               {unitCurrency}
             </Text>

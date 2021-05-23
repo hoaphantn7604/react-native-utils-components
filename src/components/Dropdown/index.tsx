@@ -6,15 +6,14 @@ import { CDropdown } from './type';
 
 const { scale } = useScale;
 
-const ic_check = require('./icon/check.png');
 const ic_down = require('./icon/down.png');
 const ic_close = require('./icon/close.png');
 
 const defaultProps = {
   placeholder: 'Select item',
+  activeColor: '#F6F7F8',
   data: [],
   style: {},
-  iconTick: null
 }
 
 const Dropdown: CDropdown = (props) => {
@@ -32,13 +31,15 @@ const Dropdown: CDropdown = (props) => {
     labelField,
     valueField,
     textErrorStyle,
+    activeColor,
+    textStyle,
     textError,
-    iconStyle,
+    iconColor,
     headerStyle,
-    iconTickStyle,
     labelStyle,
     placeholder,
-    iconTick
+    renderTickIcon,
+    renderLeftIcon
   } = props;
 
   useEffect(() => {
@@ -63,10 +64,10 @@ const Dropdown: CDropdown = (props) => {
     }).start(() => { });
   }
 
-  useEffect(()=>{
-    if(visible){
+  useEffect(() => {
+    if (visible) {
       show();
-    }else{
+    } else {
       close();
     }
   }, [visible])
@@ -102,10 +103,11 @@ const Dropdown: CDropdown = (props) => {
     return (
       <TouchableWithoutFeedback onPress={showOrClose}>
         <View style={styles.dropdown}>
-          <Text style={[labelStyle]}>
+          {renderLeftIcon?.()}
+          <Text style={[{ flex: 1 }, textStyle]}>
             {currentValue && currentValue[labelField] || placeholder}
           </Text>
-          <Image source={ic_down} style={[styles.icon, iconStyle]} />
+          <Image source={ic_down} style={[styles.icon, { tintColor: iconColor }]} />
         </View>
       </TouchableWithoutFeedback>
     )
@@ -114,11 +116,11 @@ const Dropdown: CDropdown = (props) => {
   const renderItem = ({ item, index }: { item: any; index: number }) => {
     return (
       <TouchableOpacity onPress={() => onSelect(item)}>
-        <View style={[styles.item, item[valueField] === (currentValue && currentValue[valueField]) && { backgroundColor: '#F6F7F8' }]}>
-          <Text style={[labelStyle]}
+        <View style={[styles.item, item[valueField] === (currentValue && currentValue[valueField]) && { backgroundColor: activeColor }]}>
+          <Text style={[textStyle]}
           >{item[labelField]}</Text>
           {item[valueField] === (currentValue && currentValue[valueField]) &&
-            <Image source={iconTick ? iconTick : ic_check} style={[styles.icon, iconTickStyle]} />
+            renderTickIcon?.()
           }
         </View>
       </TouchableOpacity>
@@ -147,9 +149,9 @@ const Dropdown: CDropdown = (props) => {
             <View style={styles.modalContent}>
               <SafeAreaView>
                 <View style={[styles.header, headerStyle]}>
-                  <Text style={styles.headerTitle}>{label}</Text>
+                  <Text style={[styles.headerTitle, labelStyle]}>{label}</Text>
                   <TouchableOpacity style={styles.closeIcon} onPress={showOrClose}>
-                    <Image source={ic_close} style={[styles.icon, iconStyle]} />
+                    <Image source={ic_close} style={[styles.icon, { tintColor: iconColor }]} />
                   </TouchableOpacity>
                 </View>
                 {_renderList()}
@@ -164,7 +166,7 @@ const Dropdown: CDropdown = (props) => {
 
   return (
     <View>
-      <View style={[styles.container, style]}>
+      <View style={[style]}>
         {_renderTitle()}
         {_renderDropdown()}
         {_renderModal()}

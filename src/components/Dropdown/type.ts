@@ -2,11 +2,12 @@ import { ImageStyle, StyleProp, TextStyle, ViewStyle } from 'react-native';
 
 interface Props {
     style?: StyleProp<ViewStyle>;
-    iconStyle?: StyleProp<ImageStyle>;
-    iconTickStyle?: StyleProp<ImageStyle>;
+    labelStyle?: StyleProp<TextStyle>;
+    textStyle?: StyleProp<TextStyle>;
     headerStyle?: StyleProp<ViewStyle>;
-    labelStyle?: StyleProp<ViewStyle>;
     textErrorStyle?: StyleProp<TextStyle>;
+    iconColor?: string
+    activeColor?: string
     data: any[];
     value?: any | null;
     textError?: string;
@@ -14,8 +15,9 @@ interface Props {
     placeholder?: string;
     labelField: string;
     valueField: string;
-    iconTick?: any;
     onChange: (item: any) => void;
+    renderLeftIcon?: () => JSX.Element | null | undefined;
+    renderTickIcon?: () => JSX.Element | null | undefined;
   }
 
   export type CDropdown = React.FC<Props>
