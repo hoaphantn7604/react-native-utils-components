@@ -15,6 +15,7 @@ interface Props {
     placeholder?: string;
     labelField: string;
     valueField: string;
+    maxHeight?: number;
     onChange: (item: any) => void;
     renderLeftIcon?: () => JSX.Element | null | undefined;
     renderTickIcon?: () => JSX.Element | null | undefined;

@@ -38,6 +38,7 @@ const Dropdown: CDropdown = (props) => {
     headerStyle,
     labelStyle,
     placeholder,
+    maxHeight = 300,
     renderTickIcon,
     renderLeftIcon
   } = props;
@@ -48,7 +49,7 @@ const Dropdown: CDropdown = (props) => {
 
   const show = () => {
     Animated.timing(height, {
-      toValue: scale(300),
+      toValue: scale(maxHeight),
       duration: 200,
       easing: Easing.linear,
       useNativeDriver: false

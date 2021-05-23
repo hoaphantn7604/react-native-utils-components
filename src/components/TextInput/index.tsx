@@ -23,7 +23,6 @@ const defaultProps = {
   showIcon: true,
   currency: false,
   numeric: false,
-  labelColor: 'gray',
   onChangeText: (value: string) => { },
   onBlur: (e: NativeSyntheticEvent<TextInputFocusEventData>) => { },
   onFocus: (e: NativeSyntheticEvent<TextInputFocusEventData>) => { },

@@ -284,10 +284,11 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
 | textErrorStyle     | TextStyle            | No        |                  |
 | value              | Item                 | No        |                  |
 | label              | String               | No        |                  |
-| placeholder        |                      | No        |                  |
-| textError          |                      | No        |                  |
-| renderLeftIcon     | () => JSX.Element    | No        |
-| renderTickIcon     | () => JSX.Element    | No        |                   |
+| placeholder        | String               | No        |                  |
+| maxHeight          | Number               | No        |                  |
+| textError          | String               | No        |                  |
+| renderLeftIcon     | () => JSX.Element    | No        |                  |
+| renderTickIcon     | () => JSX.Element    | No        |                  |
 
 #### Example
 ```js
@@ -319,6 +320,34 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
 ```
 
 ### CTextInput
+| Props              | Params               | isRequire | default          |
+| ------------------ | -------------------- | --------- | ---------------- |
+| value              | String               | No        |                  |
+| label              | String               | No        |                  |
+| placeholder        | String               | No        |                  |
+|placeholderTextColor| String               | No        | #000             |
+| style              | ViewStyle            | No        |                  |
+| labelStyle         | TextStyle            | No        |                  |
+| inputStyle         | TextStyle            | No        |                  |
+| iconStyle          | ImageStyle           | No        |                  |
+| textErrorStyle     | TextStyle            | No        |                  |
+| TextStyle          | String               | No        |                  |
+| secureTextEntry    | String               | No        |                  |
+| autoCapitalize     | String               | No        |                  |
+| keyboardType       | KeyboardTypeOptions  | No        |                  |
+| multiline          | Boolean              | No        |                  |
+| autoFocus          | Boolean              | No        |                  |
+| editable           | Boolean              | No        |                  |
+| maxLength          | Number               | No        |                  |
+| showIcon           | Boolean              | No        | true             |
+| currency           | Boolean              | No        | false            |
+| unitCurrency       | String               | No        |                  |
+| numeric            | Boolean              | No        | false            |
+| onChangeText       | (value) => void      | Yes       |                  |
+| onBlur             | (e) => void          | No        |                  |
+| onFocus            | (e) => void          | No        |                  |
+| renderLeftIcon     | () => JSX.Element    | No        |                  |
+| renderRightIcon     | () => JSX.Element   | No        |                  |
 #### Example
 ```js
     import { CTextInput } from 'react-native-utils-components';
