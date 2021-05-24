@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   Animated,
   Easing,
@@ -36,6 +36,10 @@ const ModalComponent: CModal = props => {
   } = props;
   const [viewHeight] = useState(new Animated.Value(0));
   const [isShow, setIsShow] = useState<boolean>(visible);
+
+  useEffect(() => {
+    setIsShow(visible);
+  }, [visible])
 
   const onShow = () => {
     Animated.timing(viewHeight, {
