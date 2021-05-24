@@ -1,5 +1,12 @@
 import React, { useRef, useState } from 'react';
-import { Animated, Easing, Modal, PanResponder, View } from 'react-native';
+import {
+  Animated,
+  Easing,
+  Modal,
+  PanResponder,
+  View,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import { useDetectDevice, useScale } from 'react-native-utils-toolkit';
 import { styles } from './styles';
 import { CModal } from './type';
@@ -29,13 +36,26 @@ const ModalComponent: CModal = props => {
   } = props;
   const [viewHeight] = useState(new Animated.Value(0));
 
-  const show = () => {
+  const onShow = () => {
     Animated.timing(viewHeight, {
       toValue: height,
       duration: 200,
       easing: Easing.linear,
       useNativeDriver: false,
     }).start(() => {});
+  };
+
+  const onClose = () => {
+    Animated.timing(viewHeight, {
+      toValue: 0,
+      duration: 300,
+      easing: Easing.linear,
+      useNativeDriver: false,
+    }).start(() => {
+      if (onRequestClose) {
+        onRequestClose();
+      }
+    });
   };
 
   const panResponder = useRef(
@@ -63,16 +83,7 @@ const ModalComponent: CModal = props => {
         const { moveY } = gestureState;
         const getHeight = h - moveY;
         if (getHeight < height - 50) {
-          Animated.timing(viewHeight, {
-            toValue: 0,
-            duration: 300,
-            easing: Easing.linear,
-            useNativeDriver: false,
-          }).start(() => {
-            if (onRequestClose) {
-              onRequestClose();
-            }
-          });
+          onClose();
         } else {
           Animated.timing(viewHeight, {
             toValue: height,
@@ -91,7 +102,7 @@ const ModalComponent: CModal = props => {
       transparent={transparent}
       style={{ flex: 1 }}
       onShow={() => {
-        show();
+        onShow();
       }}>
       <View
         style={[
@@ -102,6 +113,9 @@ const ModalComponent: CModal = props => {
           },
           style,
         ]}>
+        <TouchableWithoutFeedback onPress={onClose}>
+          <View style={{ flex: 1 }} />
+        </TouchableWithoutFeedback>
         <Animated.View
           {...panResponder.panHandlers}
           style={[styles.header, headerStyle]}>
