@@ -11,7 +11,7 @@ export interface Props {
   supportedOrientations?: Array<
     'portrait' | 'portrait-upside-down' | 'landscape' | 'landscape-left' | 'landscape-right'
   >;
-  onRequestClose: () => void;
+  onRequestClose?: () => void;
   renderHeader?: () => JSX.Element;
 }
 

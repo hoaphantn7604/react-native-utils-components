@@ -382,6 +382,7 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
         transparent
         visible={true}
         supportedOrientations={['landscape', 'portrait']}
+        onRequestClose={() => {}}
     >
         <View/>
     </CModal>
