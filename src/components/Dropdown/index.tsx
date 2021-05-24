@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { Animated, Easing, FlatList, Image, Modal, SafeAreaView, Text, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
-import { useScale } from 'react-native-utils-toolkit';
+import {
+  FlatList,
+  Image,
+  Text,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View,
+  SafeAreaView
+} from 'react-native';
 import { styles } from './styles';
 import { CDropdown } from './type';
-
-const { scale } = useScale;
+import CModal from '../Modal';
 
 const ic_down = require('./icon/down.png');
-const ic_close = require('./icon/close.png');
 
 const defaultProps = {
   placeholder: 'Select item',
@@ -20,7 +25,6 @@ const Dropdown: CDropdown = (props) => {
 
   const [visible, setVisible] = useState<boolean>(false);
   const [currentValue, setCurrentValue] = useState<any>(null);
-  const [height] = useState(new Animated.Value(0));
 
   const {
     onChange,
@@ -38,7 +42,7 @@ const Dropdown: CDropdown = (props) => {
     headerStyle,
     labelStyle,
     placeholder,
-    maxHeight = 300,
+    maxHeight = 400,
     renderTickIcon,
     renderLeftIcon
   } = props;
@@ -46,32 +50,6 @@ const Dropdown: CDropdown = (props) => {
   useEffect(() => {
     getValue();
   }, []);
-
-  const show = () => {
-    Animated.timing(height, {
-      toValue: scale(maxHeight),
-      duration: 200,
-      easing: Easing.linear,
-      useNativeDriver: false
-    }).start(() => { });
-  }
-
-  const close = () => {
-    Animated.timing(height, {
-      toValue: 0,
-      duration: 200,
-      easing: Easing.linear,
-      useNativeDriver: false
-    }).start(() => { });
-  }
-
-  useEffect(() => {
-    if (visible) {
-      show();
-    } else {
-      close();
-    }
-  }, [visible])
 
   const showOrClose = () => {
     setVisible(!visible);
@@ -129,38 +107,34 @@ const Dropdown: CDropdown = (props) => {
   };
 
   const _renderList = () => {
-    return <Animated.View style={[{ height: height }]}>
-      <FlatList
-        data={data}
-        renderItem={renderItem}
-        keyExtractor={(item, index) => index.toString()}
-        showsVerticalScrollIndicator={false}
-      />
-    </Animated.View>
+    return <SafeAreaView><FlatList
+      data={data}
+      renderItem={renderItem}
+      keyExtractor={(item, index) => index.toString()}
+      showsVerticalScrollIndicator={false}
+    /></SafeAreaView>
+  }
+
+  const _header = () => {
+    return (
+      <View style={[styles.header, headerStyle]}>
+        <View style={styles.pan} />
+      </View>)
   }
 
   const _renderModal = () => {
     if (visible) {
-      return (
-        <Modal visible={visible} animationType={'none'} transparent>
-          <View style={styles.main}>
-            <TouchableOpacity style={{ flex: 1 }} onPress={showOrClose}>
-              <View style={{ flex: 1 }} />
-            </TouchableOpacity>
-            <View style={styles.modalContent}>
-              <SafeAreaView>
-                <View style={[styles.header, headerStyle]}>
-                  <Text style={[styles.headerTitle, labelStyle]}>{label}</Text>
-                  <TouchableOpacity style={styles.closeIcon} onPress={showOrClose}>
-                    <Image source={ic_close} style={[styles.icon, { tintColor: iconColor }]} />
-                  </TouchableOpacity>
-                </View>
-                {_renderList()}
-              </SafeAreaView>
-            </View>
-          </View>
-        </Modal>
-      )
+      return <CModal
+        transparent
+        visible={visible}
+        headerStyle={styles.header}
+        height={maxHeight}
+        onRequestClose={showOrClose}
+        renderHeader={() => _header()}
+        supportedOrientations={['landscape', 'portrait']}
+      >
+        {_renderList()}
+      </CModal>
     }
     return null
   }

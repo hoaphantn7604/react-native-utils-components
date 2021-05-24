@@ -362,3 +362,27 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
     />
     
 ```
+
+### CModal
+| Props              | Params               | isRequire | default          |
+| ------------------ | -------------------- | --------- | ---------------- |
+| visible            | Boolean              | Yes       |                  |
+| style              | ViewStyle            | No        |                  |
+| headerStyle        | ViewStyle            | No        |                  |
+| backgroundColor    | String               | No        |                  |
+| transparent        | Boolean              | No        |                  |
+| height             | Number               | No        |                  |
+|supportedOrientations| Array               | No        |                  |
+| onRequestClose     | () => void           | No        |                  |
+| renderHeader       | JSX.Element          | No        |                  |
+
+#### Example
+```js
+    <CModal
+        transparent
+        visible={true}
+        supportedOrientations={['landscape', 'portrait']}
+    >
+        <View/>
+    </CModal>
+```

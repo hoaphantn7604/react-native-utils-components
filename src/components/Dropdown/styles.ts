@@ -21,22 +21,21 @@ export const styles = StyleSheet.create({
       borderTopRightRadius: scale(16),
     },
     header: {
-      height: scale(50),
+      height: scale(40),
       width: '100%',
       borderTopLeftRadius: scale(16),
       borderTopRightRadius: scale(16),
       justifyContent: 'center',
       alignItems: 'center',
-      flexDirection: 'row',
-      paddingHorizontal: scale(8),
       borderBottomWidth: scale(0.3),
-      borderBottomColor: 'gray'
+      borderBottomColor: 'gray',
+      backgroundColor: 'white'
     },
-    headerTitle: {
-      textAlign: 'center',
-      flex: 1,
-      marginLeft: scale(45),
-      fontSize: scale(15)
+    pan:{
+      width: scale(40),
+      height: scale(6),
+      borderRadius: scale(6),
+      backgroundColor: '#DDDDDD'
     },
     closeIcon: {
       width: scale(45),

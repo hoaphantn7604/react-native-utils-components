@@ -7,11 +7,10 @@ import {
   View,
   TouchableWithoutFeedback,
 } from 'react-native';
-import { useDetectDevice, useScale } from 'react-native-utils-toolkit';
+import { useDetectDevice } from 'react-native-utils-toolkit';
 import { styles } from './styles';
 import { CModal } from './type';
 
-const { scale } = useScale;
 const { height: h } = useDetectDevice;
 
 const defaultProps = {
@@ -33,8 +32,10 @@ const ModalComponent: CModal = props => {
     backgroundColor,
     headerStyle,
     renderHeader,
+    supportedOrientations
   } = props;
   const [viewHeight] = useState(new Animated.Value(0));
+  const [isShow, setIsShow] = useState<boolean>(visible);
 
   const onShow = () => {
     Animated.timing(viewHeight, {
@@ -42,16 +43,17 @@ const ModalComponent: CModal = props => {
       duration: 200,
       easing: Easing.linear,
       useNativeDriver: false,
-    }).start(() => {});
+    }).start(() => { });
   };
 
   const onClose = () => {
     Animated.timing(viewHeight, {
       toValue: 0,
-      duration: 300,
+      duration: 200,
       easing: Easing.linear,
       useNativeDriver: false,
     }).start(() => {
+      setIsShow(false);
       if (onRequestClose) {
         onRequestClose();
       }
@@ -61,11 +63,9 @@ const ModalComponent: CModal = props => {
   const panResponder = useRef(
     PanResponder.create({
       onStartShouldSetPanResponder: (evt, gestureState) => {
-        console.log('onStartShouldSetPanResponder', gestureState);
         return true;
       },
       onPanResponderEnd: (evt, gestureState) => {
-        console.log('onPanResponderEnd', gestureState);
         return true;
       },
       onMoveShouldSetPanResponder: () => true,
@@ -77,7 +77,7 @@ const ModalComponent: CModal = props => {
           duration: 150,
           easing: Easing.linear,
           useNativeDriver: false,
-        }).start(() => {});
+        }).start(() => { });
       },
       onPanResponderRelease: (evt, gestureState) => {
         const { moveY } = gestureState;
@@ -87,10 +87,10 @@ const ModalComponent: CModal = props => {
         } else {
           Animated.timing(viewHeight, {
             toValue: height,
-            duration: 300,
+            duration: 200,
             easing: Easing.linear,
             useNativeDriver: false,
-          }).start(() => {});
+          }).start(() => { });
         }
       },
     }),
@@ -98,8 +98,9 @@ const ModalComponent: CModal = props => {
 
   return (
     <Modal
-      visible={visible}
+      visible={isShow}
       transparent={transparent}
+      supportedOrientations={supportedOrientations}
       style={{ flex: 1 }}
       onShow={() => {
         onShow();

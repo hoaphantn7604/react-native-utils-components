@@ -6,8 +6,11 @@ export interface Props {
   style?: StyleProp<ViewStyle>;
   headerStyle?: StyleProp<ViewStyle>;
   backgroundColor?: string;
-  height?: number;
   transparent?: boolean;
+  height?: number;
+  supportedOrientations?: Array<
+    'portrait' | 'portrait-upside-down' | 'landscape' | 'landscape-left' | 'landscape-right'
+  >;
   onRequestClose: () => void;
   renderHeader?: () => JSX.Element;
 }
