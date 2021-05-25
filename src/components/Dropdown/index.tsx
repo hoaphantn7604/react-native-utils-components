@@ -23,9 +23,6 @@ const defaultProps = {
 
 const Dropdown: CDropdown = (props) => {
 
-  const [visible, setVisible] = useState<boolean>(false);
-  const [currentValue, setCurrentValue] = useState<any>(null);
-
   const {
     onChange,
     data,
@@ -47,12 +44,25 @@ const Dropdown: CDropdown = (props) => {
     renderLeftIcon
   } = props;
 
+  const [visible, setVisible] = useState<boolean>(false);
+  const [currentValue, setCurrentValue] = useState<any>(null);
+
   useEffect(() => {
     getValue();
   }, []);
 
   const showOrClose = () => {
     setVisible(!visible);
+  }
+
+  const scrollToIndex = (ref: any) => {
+    const index = data.findIndex(e => value === e[valueField]);
+    if (index !== -1 && ref) {
+      setTimeout(() => {
+        ref.scrollToIndex({ index: index, animated: true })
+      }, 300);
+
+    }
   }
 
   const getValue = () => {
@@ -108,6 +118,7 @@ const Dropdown: CDropdown = (props) => {
 
   const _renderList = () => {
     return <SafeAreaView><FlatList
+      ref={(e) => scrollToIndex(e)}
       data={data}
       renderItem={renderItem}
       keyExtractor={(item, index) => index.toString()}
