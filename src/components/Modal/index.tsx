@@ -6,6 +6,7 @@ import {
   PanResponder,
   View,
   TouchableWithoutFeedback,
+  Dimensions
 } from 'react-native';
 import { useDetectDevice } from 'react-native-utils-toolkit';
 import { styles } from './styles';
@@ -75,6 +76,7 @@ const ModalComponent: CModal = props => {
       onMoveShouldSetPanResponder: () => true,
       onPanResponderMove: (evt, gestureState) => {
         const { moveY } = gestureState;
+        const h = Dimensions.get('screen').height;
         const getHeight = h - moveY;
         Animated.timing(viewHeight, {
           toValue: getHeight,
@@ -85,6 +87,7 @@ const ModalComponent: CModal = props => {
       },
       onPanResponderRelease: (evt, gestureState) => {
         const { moveY } = gestureState;
+        const h = Dimensions.get('screen').height;
         const getHeight = h - moveY;
         if (getHeight < height - 50) {
           onClose();
