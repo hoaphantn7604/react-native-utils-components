@@ -8,6 +8,7 @@ import CDropdown from './src/components/Dropdown';
 import CTextInput from './src/components/TextInput';
 import CZoomView from './src/components/ZoomView';
 import CModal from './src/components/Modal';
+import ResponseView from './src/components/ResponseView';
 
 export { 
     CTimer, 
@@ -19,5 +20,6 @@ export {
     CDropdown, 
     CTextInput, 
     CZoomView, 
-    CModal 
+    CModal,
+    ResponseView 
 };
