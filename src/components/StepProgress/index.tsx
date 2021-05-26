@@ -27,7 +27,7 @@ const defaultProps = {
   iconTick: null
 };
 
-const StepProgress: StepProgress = (props) => {
+const StepProgressComponent: StepProgress = (props) => {
   const {
     style,
     data,
@@ -123,6 +123,6 @@ const StepProgress: StepProgress = (props) => {
   );
 };
 
-StepProgress.defaultProps = defaultProps;
+StepProgressComponent.defaultProps = defaultProps;
 
 export default StepProgress;

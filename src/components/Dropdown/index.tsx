@@ -21,7 +21,7 @@ const defaultProps = {
   style: {},
 }
 
-const Dropdown: Dropdown = (props) => {
+const DropdownComponent: Dropdown = (props) => {
 
   const {
     onChange,
@@ -162,7 +162,7 @@ const Dropdown: Dropdown = (props) => {
   );
 };
 
-Dropdown.defaultProps = defaultProps;
+DropdownComponent.defaultProps = defaultProps;
 
 export default Dropdown;
 
