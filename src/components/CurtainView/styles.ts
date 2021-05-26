@@ -4,9 +4,11 @@ import { useScale } from 'react-native-utils-toolkit';
 const { scale } = useScale;
 
 export const styles = StyleSheet.create({
-  container: {},
+  containerTop: {},
+  containerBottom: {
+    justifyContent: 'flex-end',
+  },
   header: {
-    width: '100%',
     backgroundColor: '#BBBBBB',
     height: scale(40),
     justifyContent: 'center',

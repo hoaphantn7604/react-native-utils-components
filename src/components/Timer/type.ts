@@ -8,4 +8,4 @@ export interface Props {
   onEnd?: (seconds: number) => void
 }
 
-export type CTimer = React.FC<Props>
+export type Timer = React.FC<Props>

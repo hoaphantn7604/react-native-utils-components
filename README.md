@@ -13,7 +13,7 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
 ### Demo
 ![](https://github.com/hoaphantn7604/file-upload/blob/master/document/component/demo.gif)
 
-### CHierarchy
+### Hierarchy
 
 | Props              | Params               | isRequire | default          |
 | ------------------ | -------------------- | --------- | ---------------- |
@@ -30,7 +30,7 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
 
 #### Example
 ```js
-    import { CHierarchy } from 'react-native-utils-components';
+    import { Hierarchy } from 'react-native-utils-components';
     const recursiveData = [
         {
             shopReportName: 'HCM1',
@@ -100,7 +100,7 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
         },
     ];
 
-    <CHierarchy
+    <Hierarchy
         data={recursiveData}
         textField="shopCode"
         childField="childs"
@@ -115,9 +115,9 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
     />
 ```
 
-### CStepProgress, CTooltipProgress, CProgress
+### StepProgress, TooltipProgress, Progress
 
-#### CStepProgress
+#### StepProgress
 
 | Props              | Params               | isRequire | default          |
 | ------------------ | -------------------- | --------- | ---------------- |
@@ -132,7 +132,7 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
 | onSelectIndex      | (index)=> Void       | No        |                  |
 | iconTick           | Path                 | No        |                  |
 
-#### CTooltipProgress
+#### TooltipProgress
 
 | Props              | Params               | isRequire | default          |
 | ------------------ | -------------------- | --------- | ---------------- |
@@ -146,7 +146,7 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
 | selectIndex        | Number               | No        | 0                |
 | onSelectIndex      | (index)=> Void       | No        |                  |
 
-#### CProgress
+#### Progress
 
 | Props              | Params               | isRequire | default          |
 | ------------------ | -------------------- | --------- | ---------------- |
@@ -159,12 +159,12 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
 #### Example
 ```js
     import {
-        CStepProgress,
-        CTooltipProgress,
-        CProgress,
+        StepProgress,
+        TooltipProgress,
+        Progress,
     } from 'react-native-utils-components';
 
-    <CStepProgress
+    <StepProgress
         data={[
             {text: 'Step 1', status: true},
             {text: 'Step 2', status: true},
@@ -182,7 +182,7 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
         textSize={15}
     />
 
-    <CTooltipProgress
+    <TooltipProgress
         data={[
             {stage: 'S1', text: 'Hello S1', status: true},
             {stage: 'S2', text: 'Hello S2', status: true},
@@ -200,7 +200,7 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
         }}
     />
 
-    <CProgress
+    <Progress
         data={[
             {color: 'red', percent: 33.33},
             {color: 'gray', percent: 33.33},
@@ -211,7 +211,7 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
     />
 ```
 
-### CTimer
+### Timer
 
 | Props              | Params               | isRequire | default          |
 | ------------------ | -------------------- | --------- | ---------------- |
@@ -223,9 +223,9 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
 
 #### Example
 ```js
-    import { CTimer } from 'react-native-utils-components';
+    import { Timer } from 'react-native-utils-components';
     
-    <CTimer
+    <Timer
         style={styles.timer}
         textStyle={styles.timerText}
         start={true}
@@ -238,7 +238,7 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
     />
 ```
 
-### CCountdown
+### Countdown
 
 | Props              | Params               | isRequire | default          |
 | ------------------ | -------------------- | --------- | ---------------- |
@@ -251,9 +251,9 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
 
 #### Example
 ```js
-    import { CCountdown } from 'react-native-utils-components';
+    import { Countdown } from 'react-native-utils-components';
     
-    <CCountdown
+    <Countdown
         seconds={100}
         style={styles.timer}
         textStyle={styles.timerText}
@@ -267,7 +267,7 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
     />
 ```
 
-### CDropdown
+### Dropdown
 
 | Props              | Params               | isRequire | default          |
 | ------------------ | -------------------- | --------- | ---------------- |
@@ -292,11 +292,11 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
 
 #### Example
 ```js
-    import { CDropdown } from 'react-native-utils-components';
+    import { Dropdown } from 'react-native-utils-components';
 
     const [dropdown, setDropdown] = useState(null);
 
-    <CDropdown
+    <Dropdown
         data={[
             {label: 'Item 1', value: '1'},
             {label: 'Item 2', value: '2'},
@@ -319,7 +319,7 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
     />
 ```
 
-### CTextInput
+### TextInput
 | Props              | Params               | isRequire | default          |
 | ------------------ | -------------------- | --------- | ---------------- |
 | value              | String               | No        |                  |
@@ -350,9 +350,9 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
 | renderRightIcon     | () => JSX.Element   | No        |                  |
 #### Example
 ```js
-    import { CTextInput } from 'react-native-utils-components';
+    import { TextInput } from 'react-native-utils-components';
     
-    <CTextInput
+    <TextInput
         label="Normal"
         placeholder="Placeholder"
         placeholderTextColor="gray"
@@ -363,7 +363,7 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
     
 ```
 
-### CModal
+### Modal
 | Props              | Params               | isRequire | default          |
 | ------------------ | -------------------- | --------- | ---------------- |
 | visible            | Boolean              | Yes       |                  |
@@ -378,12 +378,31 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
 
 #### Example
 ```js
-    <CModal
+    import { Modal } from 'react-native-utils-components';
+
+    <Modal
         transparent
         visible={true}
         supportedOrientations={['landscape', 'portrait']}
         onRequestClose={() => {}}
     >
         <View/>
-    </CModal>
+    </Modal>
+```
+
+### CurtainView
+| Props              | Params               | isRequire | default          |
+| ------------------ | -------------------- | --------- | ---------------- |
+| style              | ViewStyle            | No        |                  |
+| maxHeight          | Number               | Yes       |                  |
+| position           | 'top' or 'bottom'    | No        | 'top'            |
+| renderHeader       | JSX.Element          | No        |                  |
+
+#### Example
+```js
+    import { CurtainView } from 'react-native-utils-components';
+    
+    <CurtainView maxHeight={400}>
+        <View style={{ flex: 1 }} />
+    </CurtainView>
 ```

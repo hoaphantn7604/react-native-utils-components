@@ -9,4 +9,4 @@ interface Props {
     onEnd?: () => void
 }
 
-export type CCountdown = React.FC<Props>
+export type Countdown = React.FC<Props>

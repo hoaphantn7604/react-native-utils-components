@@ -1,4 +1,4 @@
-import { ImageStyle, StyleProp, TextStyle, ViewStyle } from 'react-native';
+import { StyleProp, TextStyle, ViewStyle } from 'react-native';
 
 interface Props {
     style?: StyleProp<ViewStyle>;
@@ -21,4 +21,4 @@ interface Props {
     renderTickIcon?: () => JSX.Element | null | undefined;
   }
 
-  export type CDropdown = React.FC<Props>
+  export type Dropdown = React.FC<Props>

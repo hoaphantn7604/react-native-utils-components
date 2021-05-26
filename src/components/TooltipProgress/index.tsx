@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, TouchableOpacity, View, Image } from 'react-native';
 import { useScale } from 'react-native-utils-toolkit';
 import { styles } from './styles';
-import { Item, CTooltipProgress } from './type';
+import { Item, TooltipProgress } from './type';
 
 const { scale, fontScale } = useScale;
 
@@ -25,7 +25,7 @@ const defaultProps = {
   onSelectIndex: (index: number) => { },
 };
 
-const CTooltipProgressComponent: CTooltipProgress = (props) => {
+const CTooltipProgressComponent: TooltipProgress = (props) => {
   const {
     style,
     data,

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import { styles } from './styles';
-import { CCountdown } from './type';
+import { Countdown } from './type';
 
 const defaulProps = {
   style: {},
@@ -16,7 +16,7 @@ let minute = 0;
 let seconds = 0;
 let currentSeconds = 0;
 
-const CountdownComponent: CCountdown = (props) => {
+const CountdownComponent: Countdown = (props) => {
   const [key, setKey] = useState(Math.random());
 
   const timer = () => {

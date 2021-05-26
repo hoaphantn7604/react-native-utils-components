@@ -8,4 +8,4 @@ interface Props {
   height?: number;
 }
 
-export type CProgress = React.FC<Props>
+export type Progress = React.FC<Props>

@@ -6,4 +6,4 @@ interface Props {
   autoZoom?: boolean;
 }
 
-export type CZoomView = React.FC<Props>
+export type ZoomView = React.FC<Props>

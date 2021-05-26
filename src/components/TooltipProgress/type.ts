@@ -19,4 +19,4 @@ export interface Item {
   icon?: any;
 }
 
-export type CTooltipProgress = React.FC<Props>
+export type TooltipProgress = React.FC<Props>

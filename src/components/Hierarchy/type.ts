@@ -13,4 +13,4 @@ interface Props {
   onSelect: (data: any) => void;
 }
 
-export type CHierarchy = React.FC<Props>
+export type Hierarchy = React.FC<Props>

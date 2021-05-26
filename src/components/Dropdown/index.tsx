@@ -9,7 +9,7 @@ import {
   SafeAreaView
 } from 'react-native';
 import { styles } from './styles';
-import { CDropdown } from './type';
+import { Dropdown } from './type';
 import CModal from '../Modal';
 
 const ic_down = require('./icon/down.png');
@@ -21,7 +21,7 @@ const defaultProps = {
   style: {},
 }
 
-const Dropdown: CDropdown = (props) => {
+const Dropdown: Dropdown = (props) => {
 
   const {
     onChange,

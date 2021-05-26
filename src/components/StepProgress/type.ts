@@ -19,4 +19,4 @@ export interface Props {
   iconTick?: any;
 }
 
-export type CStepProgress = React.FC<Props>
+export type StepProgress = React.FC<Props>

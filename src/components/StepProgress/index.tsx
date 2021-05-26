@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { useScale } from 'react-native-utils-toolkit';
 import { styles } from './styles';
-import { CStepProgress, Item } from './type';
+import { StepProgress, Item } from './type';
 
 const ic_check = require('./icon/check.png');
 const { scale, fontScale } = useScale;
@@ -27,7 +27,7 @@ const defaultProps = {
   iconTick: null
 };
 
-const StepProgress: CStepProgress = (props) => {
+const StepProgress: StepProgress = (props) => {
   const {
     style,
     data,
