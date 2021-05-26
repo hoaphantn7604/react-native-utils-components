@@ -125,4 +125,4 @@ const StepProgressComponent: StepProgress = (props) => {
 
 StepProgressComponent.defaultProps = defaultProps;
 
-export default StepProgress;
+export default StepProgressComponent;

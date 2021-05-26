@@ -164,5 +164,5 @@ const DropdownComponent: Dropdown = (props) => {
 
 DropdownComponent.defaultProps = defaultProps;
 
-export default Dropdown;
+export default DropdownComponent;
 
