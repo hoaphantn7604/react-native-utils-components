@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
-  Animated,
   Modal,
   View
 } from 'react-native';
@@ -56,8 +55,10 @@ const ModalComponent: CModal = props => {
           headerStyle={headerStyle}
           renderHeader={renderHeader}
           onShow={(status) => {
-            if (onRequestClose) {
-              onRequestClose();
+            if(!status){
+              if (onRequestClose) {
+                onRequestClose();
+              }
             }
           }}
         >{props?.children}
