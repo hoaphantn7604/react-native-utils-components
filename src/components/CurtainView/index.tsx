@@ -92,7 +92,7 @@ const CurtainViewComponent: CurtainView = props => {
       <View style={[styles.containerTop, style]}>
         <Animated.View
           style={{
-            backgroundColor: '#DDDDDD',
+            backgroundColor: 'transparent',
             height: viewHeight,
           }}>
           {props?.children}
@@ -112,7 +112,7 @@ const CurtainViewComponent: CurtainView = props => {
         </Animated.View>
         <Animated.View
           style={{
-            backgroundColor: '#DDDDDD',
+            backgroundColor: 'transparent',
             height: viewHeight,
           }}>
           {props?.children}
