@@ -7,7 +7,7 @@ export interface Props {
   headerStyle?: StyleProp<ViewStyle>;
   backgroundColor?: string;
   transparent?: boolean;
-  height?: number;
+  maxHeight?: number;
   supportedOrientations?: Array<
     'portrait' | 'portrait-upside-down' | 'landscape' | 'landscape-left' | 'landscape-right'
   >;

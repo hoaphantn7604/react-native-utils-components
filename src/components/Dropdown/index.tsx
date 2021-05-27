@@ -139,7 +139,7 @@ const DropdownComponent: Dropdown = (props) => {
         transparent
         visible={visible}
         headerStyle={styles.header}
-        height={maxHeight}
+        maxHeight={maxHeight}
         onRequestClose={showOrClose}
         renderHeader={() => _header()}
         supportedOrientations={['landscape', 'portrait']}

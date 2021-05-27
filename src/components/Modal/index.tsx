@@ -26,7 +26,7 @@ const defaultProps = {
 const ModalComponent: CModal = props => {
   const {
     visible,
-    height = h / 2,
+    maxHeight = h / 2,
     onRequestClose,
     transparent,
     style,
@@ -44,7 +44,7 @@ const ModalComponent: CModal = props => {
 
   const onShow = () => {
     Animated.timing(viewHeight, {
-      toValue: height,
+      toValue: maxHeight,
       duration: 200,
       easing: Easing.linear,
       useNativeDriver: false,
@@ -89,11 +89,11 @@ const ModalComponent: CModal = props => {
         const { moveY } = gestureState;
         const h = Dimensions.get('screen').height;
         const getHeight = h - moveY;
-        if (getHeight < height - 50) {
+        if (getHeight < maxHeight - 50) {
           onClose();
         } else {
           Animated.timing(viewHeight, {
-            toValue: height,
+            toValue: maxHeight,
             duration: 200,
             easing: Easing.linear,
             useNativeDriver: false,
