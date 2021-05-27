@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       borderBottomWidth: scale(0.3),
-      borderBottomColor: 'gray',
+      borderBottomColor: '#DDDDDD',
       backgroundColor: 'white'
     },
     pan:{

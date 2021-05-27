@@ -1,30 +1,61 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Easing, PanResponder, View } from 'react-native';
 import { Animated } from 'react-native';
 import { styles } from './styles';
 import { CurtainView } from './type';
 
 const CurtainViewComponent: CurtainView = props => {
-  const { style, maxHeight = 200, renderHeader, position = 'top' } = props;
+  const { style, headerStyle, backgroundColor= 'transparent', maxHeight = 200, renderHeader, position = 'top', show = false, onShow } = props;
   const minHeight = 0;
   const [viewHeight] = useState(new Animated.Value(minHeight));
   let currentHeight = 0;
 
+  useEffect(() => {
+    if (show) {
+      checkshow(show);
+    }
+  }, [show])
+
+  const checkshow = (status: boolean) => {
+    Animated.timing(viewHeight, {
+      toValue: status ? maxHeight : minHeight,
+      duration: 300,
+      easing: Easing.linear,
+      useNativeDriver: false,
+    }).start(() => { currentHeight = status ? maxHeight : minHeight });
+  };
+
+  const handlerShow = (status: boolean) => {
+    if (onShow) {
+      onShow(status);
+    }
+  }
+
   const panResponder = useRef(
     PanResponder.create({
+      onStartShouldSetPanResponder: (evt, gestureState) => {
+        return true;
+      },
+      onPanResponderEnd: (evt, gestureState) => {
+        return true;
+      },
       onMoveShouldSetPanResponder: () => true,
       onPanResponderMove: (evt, gestureState) => {
         const { dy } = gestureState;
 
         if (position === 'top') {
           if (dy > 0) {
-            currentHeight = dy;
+            if (currentHeight < maxHeight) {
+              currentHeight = dy;
+            }
           } else {
             currentHeight = maxHeight + dy;
           }
         } else {
           if (dy < 0) {
-            currentHeight = minHeight - dy;
+            if (currentHeight < maxHeight) {
+              currentHeight = minHeight - dy;
+            }
           } else {
             currentHeight = maxHeight - dy;
           }
@@ -36,51 +67,56 @@ const CurtainViewComponent: CurtainView = props => {
             duration: 150,
             easing: Easing.linear,
             useNativeDriver: false,
-          }).start(() => {});
+          }).start(() => { });
         }
       },
       onPanResponderRelease: (evt, gestureState) => {
         const { dy } = gestureState;
-
-        if (position === 'top') {
-          if (dy > 0) {
-            Animated.timing(viewHeight, {
-              toValue: maxHeight,
-              duration: 300,
-              easing: Easing.linear,
-              useNativeDriver: false,
-            }).start(() => {
-              currentHeight = maxHeight;
-            });
+        if (dy !== 0) {
+          if (position === 'top') {
+            if (dy > 0) {
+              Animated.timing(viewHeight, {
+                toValue: maxHeight,
+                duration: 300,
+                easing: Easing.linear,
+                useNativeDriver: false,
+              }).start(() => {
+                currentHeight = maxHeight;
+                handlerShow(true);
+              });
+            } else {
+              Animated.timing(viewHeight, {
+                toValue: minHeight,
+                duration: 300,
+                easing: Easing.linear,
+                useNativeDriver: false,
+              }).start(() => {
+                currentHeight = minHeight;
+                handlerShow(false);
+              });
+            }
           } else {
-            Animated.timing(viewHeight, {
-              toValue: minHeight,
-              duration: 300,
-              easing: Easing.linear,
-              useNativeDriver: false,
-            }).start(() => {
-              currentHeight = minHeight;
-            });
-          }
-        } else {
-          if (dy < 0) {
-            Animated.timing(viewHeight, {
-              toValue: maxHeight,
-              duration: 300,
-              easing: Easing.linear,
-              useNativeDriver: false,
-            }).start(() => {
-              currentHeight = maxHeight;
-            });
-          } else {
-            Animated.timing(viewHeight, {
-              toValue: minHeight,
-              duration: 300,
-              easing: Easing.linear,
-              useNativeDriver: false,
-            }).start(() => {
-              currentHeight = minHeight;
-            });
+            if (dy < 0) {
+              Animated.timing(viewHeight, {
+                toValue: maxHeight,
+                duration: 300,
+                easing: Easing.linear,
+                useNativeDriver: false,
+              }).start(() => {
+                currentHeight = maxHeight;
+                handlerShow(true);
+              });
+            } else {
+              Animated.timing(viewHeight, {
+                toValue: minHeight,
+                duration: 300,
+                easing: Easing.linear,
+                useNativeDriver: false,
+              }).start(() => {
+                currentHeight = minHeight;
+                handlerShow(false);
+              });
+            }
           }
         }
       },
@@ -92,12 +128,12 @@ const CurtainViewComponent: CurtainView = props => {
       <View style={[styles.containerTop, style]}>
         <Animated.View
           style={{
-            backgroundColor: 'transparent',
+            backgroundColor: backgroundColor,
             height: viewHeight,
           }}>
           {props?.children}
         </Animated.View>
-        <Animated.View {...panResponder.panHandlers} style={styles.header}>
+        <Animated.View {...panResponder.panHandlers} style={[styles.header, headerStyle]}>
           {renderHeader ? renderHeader() : <View style={styles.pan} />}
         </Animated.View>
       </View>
@@ -106,13 +142,13 @@ const CurtainViewComponent: CurtainView = props => {
 
   const _renderBottom = () => {
     return (
-      <View style={[styles.containerBottom, style, { height: maxHeight }]}>
-        <Animated.View {...panResponder.panHandlers} style={styles.header}>
+      <View style={[styles.containerBottom, style]}>
+        <Animated.View {...panResponder.panHandlers} style={[styles.header, headerStyle]}>
           {renderHeader ? renderHeader() : <View style={styles.pan} />}
         </Animated.View>
         <Animated.View
           style={{
-            backgroundColor: 'transparent',
+            backgroundColor: backgroundColor,
             height: viewHeight,
           }}>
           {props?.children}

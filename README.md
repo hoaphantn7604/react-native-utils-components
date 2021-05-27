@@ -393,16 +393,19 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
 ### CurtainView
 | Props              | Params               | isRequire | default          |
 | ------------------ | -------------------- | --------- | ---------------- |
+| show               | Boolean              | No        | false            |
 | style              | ViewStyle            | No        |                  |
+| backgroundColor    | String               | No        | transparent      |
 | maxHeight          | Number               | Yes       |                  |
 | position           | 'top' or 'bottom'    | No        | 'top'            |
 | renderHeader       | JSX.Element          | No        |                  |
+| onShow             | (status)=> void      | No        |                  |
 
 #### Example
 ```js
     import { CurtainView } from 'react-native-utils-components';
     
-    <CurtainView maxHeight={400}>
+    <CurtainView maxHeight={400} backgroundColor='white'>
         <View style={{ flex: 1 }} />
     </CurtainView>
 ```
