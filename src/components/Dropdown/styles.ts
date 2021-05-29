@@ -51,7 +51,7 @@ export const styles = StyleSheet.create({
     },
     title: {
       marginVertical: scale(5),
-      fontSize: fontScale(15)
+      fontSize: fontScale(16)
     },
     list: {
       maxHeight: scale(300)
@@ -64,7 +64,7 @@ export const styles = StyleSheet.create({
     },
     textItem: {
       flex:1,
-      fontSize: fontScale(15)
+      fontSize: fontScale(16)
     },
     icon: {
       width: scale(24),

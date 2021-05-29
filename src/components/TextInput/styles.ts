@@ -10,10 +10,13 @@ export const styles = StyleSheet.create({
       justifyContent: 'center',
     },
     textInput: {
-      fontSize: fontScale(16),
       flexDirection: 'row',
       alignItems: 'center',
       height: scale(40),
+    },
+    input: {
+      fontSize: fontScale(16),
+      flex:1
     },
     label: {
       marginBottom: scale(4),

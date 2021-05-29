@@ -136,7 +136,7 @@ const TextInputComponent: CTextInput = (props) => {
             </Text>
           )}
           <TextInput
-            style={[{ flex: 1 }, inputStyle]}
+            style={[styles.input, inputStyle]}
             placeholder={placeholder}
             placeholderTextColor={placeholderTextColor}
             autoCapitalize={autoCapitalize && autoCapitalize}

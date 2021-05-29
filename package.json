@@ -1,8 +1,8 @@
 {
   "name": "react-native-utils-components",
   "title": "React Native Utils Components",
-  "version": "2.3.5",
-  "description": "Hierarchy, Progress, Tooltip Progress, Step Progress Components",
+  "version": "2.3.6",
+  "description": "Hierarchy, Tooltip Progress, Step Progress, TextInput, Dropdown, Modal, CurtainView, Timer, Countdown Components",
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

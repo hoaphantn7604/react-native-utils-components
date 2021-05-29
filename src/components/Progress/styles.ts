@@ -25,7 +25,7 @@ export const styles = StyleSheet.create({
     },
     control: {
       backgroundColor: 'black',
-      borderWidth: 2,
+      borderWidth: scale(2),
       borderColor: 'white',
       height: scale(30),
       width: scale(30),
@@ -37,7 +37,7 @@ export const styles = StyleSheet.create({
     },
     tick: {
       backgroundColor: 'black',
-      borderWidth: 2,
+      borderWidth: scale(2),
       borderColor: 'white',
       height: scale(10),
       width: scale(10),
@@ -48,14 +48,14 @@ export const styles = StyleSheet.create({
       height: 0,
       backgroundColor: 'transparent',
       borderStyle: 'solid',
-      borderTopWidth: 5,
-      borderRightWidth: 5,
+      borderTopWidth: scale(5),
+      borderRightWidth: scale(5),
       borderBottomWidth: 0,
-      borderLeftWidth: 5,
+      borderLeftWidth: scale(5),
       borderRightColor: 'transparent',
       borderBottomColor: 'transparent',
       borderLeftColor: 'transparent',
-      opacity: 0.5,
+      opacity: scale(0.5),
     },
   });
   
