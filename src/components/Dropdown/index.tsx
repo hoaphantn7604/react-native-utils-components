@@ -11,6 +11,9 @@ import {
 import { styles } from './styles';
 import { Dropdown } from './type';
 import CModal from '../Modal';
+import { useScale } from 'react-native-utils-toolkit';
+
+const { scale } = useScale;
 
 const ic_down = require('./icon/down.png');
 
@@ -39,7 +42,7 @@ const DropdownComponent: Dropdown = (props) => {
     headerStyle,
     labelStyle,
     placeholder,
-    maxHeight = 400,
+    maxHeight = scale(400),
     renderTickIcon,
     renderLeftIcon
   } = props;
@@ -93,7 +96,7 @@ const DropdownComponent: Dropdown = (props) => {
       <TouchableWithoutFeedback onPress={showOrClose}>
         <View style={styles.dropdown}>
           {renderLeftIcon?.()}
-          <Text style={[{ flex: 1 }, textStyle]}>
+          <Text style={[styles.textItem, textStyle]}>
             {currentValue && currentValue[labelField] || placeholder}
           </Text>
           <Image source={ic_down} style={[styles.icon, { tintColor: iconColor }]} />
@@ -106,7 +109,7 @@ const DropdownComponent: Dropdown = (props) => {
     return (
       <TouchableOpacity onPress={() => onSelect(item)}>
         <View style={[styles.item, item[valueField] === (currentValue && currentValue[valueField]) && { backgroundColor: activeColor }]}>
-          <Text style={[textStyle]}
+          <Text style={[styles.textItem, textStyle]}
           >{item[labelField]}</Text>
           {item[valueField] === (currentValue && currentValue[valueField]) &&
             renderTickIcon?.()

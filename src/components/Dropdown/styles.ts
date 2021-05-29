@@ -51,7 +51,7 @@ export const styles = StyleSheet.create({
     },
     title: {
       marginVertical: scale(5),
-      fontSize: scale(15)
+      fontSize: fontScale(15)
     },
     list: {
       maxHeight: scale(300)
@@ -61,6 +61,10 @@ export const styles = StyleSheet.create({
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center'
+    },
+    textItem: {
+      flex:1,
+      fontSize: fontScale(15)
     },
     icon: {
       width: scale(24),

@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
     },
     label: {
       marginBottom: scale(4),
-      fontSize: scale(15)
+      fontSize: fontScale(16)
     },
     row: {
       flexDirection: 'row',
