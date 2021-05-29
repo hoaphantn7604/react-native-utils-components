@@ -21,9 +21,9 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
 - [Timer](#timer)
 - [Countdown](#countdown)
 - [Dropdown](#dropdown)
-- [TextInput](#textInput)
+- [TextInput](#textinput)
 - [Modal](#modal)
-- [CurtainView](#curtainView)
+- [CurtainView](#curtainview)
 
 ### Hierarchy
 
