@@ -13,6 +13,18 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
 ### Demo
 ![](https://github.com/hoaphantn7604/file-upload/blob/master/document/component/demo.gif)
 
+## Components
+- [Hierarchy](#hierarchy)
+- [StepProgress](#stepprogress)
+- [TooltipProgress](#tooltipprogress)
+- [Progress](#progress)
+- [Timer](#timer)
+- [Countdown](#countdown)
+- [Dropdown](#dropdown)
+- [TextInput](#textInput)
+- [Modal](#modal)
+- [CurtainView](#curtainView)
+
 ### Hierarchy
 
 | Props              | Params               | isRequire | default          |
@@ -371,7 +383,7 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
 | headerStyle        | ViewStyle            | No        |                  |
 | backgroundColor    | String               | No        |                  |
 | transparent        | Boolean              | No        |                  |
-| height             | Number               | No        |                  |
+| maxHeight             | Number               | No        |                  |
 |supportedOrientations| Array               | No        |                  |
 | onRequestClose     | () => void           | No        |                  |
 | renderHeader       | JSX.Element          | No        |                  |
