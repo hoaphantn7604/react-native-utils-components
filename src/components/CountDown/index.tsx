@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useImperativeHandle, useState } from 'react';
 import { Text, View } from 'react-native';
 import { styles } from './styles';
-import { Countdown } from './type';
+import { Props } from './type';
 
 const defaulProps = {
   style: {},
@@ -16,8 +16,17 @@ let minute = 0;
 let seconds = 0;
 let currentSeconds = 0;
 
-const CountdownComponent: Countdown = (props) => {
+const CountdownComponent = React.forwardRef((props: Props, ref) => {
+  const { onEnd, onTimes } = props;
   const [key, setKey] = useState(Math.random());
+
+  useImperativeHandle(ref, () => {
+    return { start, pause, resume, stop };
+  });
+
+  useEffect(() => { 
+    return stop();
+  }, [])
 
   const timer = () => {
     interval = setInterval(() => {
@@ -26,17 +35,26 @@ const CountdownComponent: Countdown = (props) => {
         hours = ~~(currentSeconds / 3600);
         minute = ~~((currentSeconds % 3600) / 60);
         seconds = ~~currentSeconds % 60;
-        setKey(Math.random());
-        props.onTimes(currentSeconds);
+
+        if (onTimes) {
+          onTimes(currentSeconds);
+        }
+
       }
-      if (currentSeconds == 0) {
-        props.onEnd();
-        clearInterval(interval);
+      if (currentSeconds < 0) {
+        if (onEnd) {
+          onEnd();
+        }
+        clear();
       }
+      setKey(Math.random());
     }, 1000);
   };
 
   useEffect(() => {
+    initTime();
+  }, [])
+  const initTime = () => {
     if (props.seconds) {
       currentSeconds = props.seconds;
       hours = ~~(currentSeconds / 3600);
@@ -44,19 +62,42 @@ const CountdownComponent: Countdown = (props) => {
       seconds = ~~currentSeconds % 60;
       setKey(Math.random());
     }
-  }, [])
+  }
 
-  useEffect(() => {
-    if (props.start) {
-      if (interval) {
-        clearInterval(interval);
-      }
+  const start = () => {
+    initTime();
 
+    if (!interval) {
       timer();
-    } else {
-      clearInterval(interval);
     }
-  }, [props.start]);
+  }
+
+  const pause = () => {
+    if (interval) {
+      clear();
+    }
+  }
+
+  const resume = () => {
+    if (!interval) {
+      timer();
+    }
+  }
+
+  const stop = () => {
+    initTime();
+    clear();
+    if(onEnd){
+      onEnd();
+    }
+  }
+
+  const clear = () => {
+    if (interval) {
+      clearInterval(interval);
+      interval = null;
+    }
+  }
 
   return (
     <View style={props.style} key={key}>
@@ -64,7 +105,7 @@ const CountdownComponent: Countdown = (props) => {
         }${seconds}`}</Text>
     </View>
   );
-};
+});
 
 CountdownComponent.defaultProps = defaulProps;
 

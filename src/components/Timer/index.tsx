@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useImperativeHandle, useState } from 'react';
 import { Text, View } from 'react-native';
 import { styles } from './styles';
-import { Timer } from './type';
+import { Props } from './type';
 
 const defaulProps = {
   style: {},
@@ -16,8 +16,17 @@ let minute = 0;
 let seconds = 0;
 let currentSeconds = 0;
 
-const TimerComponent: Timer = (props) => {
+const TimerComponent = React.forwardRef((props: Props, ref) => {
+  const { onEnd, onTimes } = props;
   const [key, setKey] = useState(Math.random());
+
+  useImperativeHandle(ref, () => {
+    return { start, pause, resume, stop };
+  });
+
+  useEffect(() => { 
+    return stop();
+  }, [])
 
   const timer = () => {
     interval = setInterval(() => {
@@ -32,30 +41,55 @@ const TimerComponent: Timer = (props) => {
         minute = 0;
         hours = hours + 1;
       }
-      props.onTimes(currentSeconds);
+      if (onTimes) {
+        onTimes(currentSeconds);
+      }
       setKey(Math.random());
     }, 1000);
 
   };
 
-  useEffect(() => {
-    if (props.start) {
-      currentSeconds = 0;
-      if (interval) {
-        clearInterval(interval);
-      }
-      hours = 0;
-      minute = 0;
-      seconds = 0;
+  const init = () => {
+    currentSeconds = 0;
+    hours = 0;
+    minute = 0;
+    seconds = 0;
+  }
+
+  const start = () => {
+    init();
+
+    if (!interval) {
       timer();
-    } else {
-      if (currentSeconds > 0) {
-        props.onEnd(currentSeconds);
-        currentSeconds = 0;
-      }
-      clearInterval(interval);
     }
-  }, [props.start]);
+  }
+
+  const pause = () => {
+    clear();
+  }
+
+  const resume = () => {
+    if (!interval) {
+      timer();
+    }
+  }
+
+  const stop = () => {
+    if (onEnd) {
+      onEnd(currentSeconds);
+    }
+
+    init();
+    setKey(Math.random());
+    clear();
+  }
+
+  const clear = () => {
+    if (interval) {
+      clearInterval(interval);
+      interval = null;
+    }
+  }
 
   return (
     <View style={props.style} key={key}>
@@ -63,7 +97,7 @@ const TimerComponent: Timer = (props) => {
         }${seconds}`}</Text>
     </View>
   );
-};
+});
 
 TimerComponent.defaultProps = defaulProps;
 

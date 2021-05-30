@@ -227,7 +227,10 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
 
 | Props              | Params               | isRequire | default          |
 | ------------------ | -------------------- | --------- | ---------------- |
-| start              | Boolean              | Yes       | false            |
+| start              | ref.start()          | Yes       |                  |
+| pause              | ref.pause()          | Yes       |                  |
+| resume             | ref.resume()         | Yes       |                  |
+| stop               | ref.stop()           | Yes       |                  |
 | style              | ViewStyle            | No        |                  |
 | textStyle          | TextStyle            | No        |                  |
 | onTimes            | (seconds) => void    | No        |                  |
@@ -237,10 +240,9 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
 ```js
     import { Timer } from 'react-native-utils-components';
     
+    const ref = useRef(null);
     <Timer
-        style={styles.timer}
-        textStyle={styles.timerText}
-        start={true}
+        ref={ref}
         onTimes={seconds => {
             console.log(seconds);
         }}
@@ -254,8 +256,11 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
 
 | Props              | Params               | isRequire | default          |
 | ------------------ | -------------------- | --------- | ---------------- |
+| start              | ref.start()          | Yes       |                  |
+| pause              | ref.pause()          | Yes       |                  |
+| resume             | ref.resume()         | Yes       |                  |
+| stop               | ref.stop()           | Yes       |                  |
 | seconds            | Number               | Yes       |                  |
-| start              | Boolean              | Yes       | false            |
 | style              | ViewStyle            | No        |                  |
 | textStyle          | TextStyle            | No        |                  |
 | onTimes            | (seconds) => void    | No        |                  |
@@ -265,11 +270,10 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
 ```js
     import { Countdown } from 'react-native-utils-components';
     
+    const ref = useRef(null);
     <Countdown
+        ref={ref}
         seconds={100}
-        style={styles.timer}
-        textStyle={styles.timerText}
-        start={true}
         onTimes={seconds => {
             console.log(seconds);
         }}
