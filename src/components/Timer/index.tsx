@@ -25,8 +25,8 @@ const TimerComponent = React.forwardRef((props: Props, ref) => {
   });
 
   useEffect(() => {
-    () => {
-      return stop();
+    return () => {
+      stop();
     }
   }, [])
 
@@ -56,6 +56,8 @@ const TimerComponent = React.forwardRef((props: Props, ref) => {
     hours = 0;
     minute = 0;
     seconds = 0;
+    clear();
+    setKey(Math.random());
   }
 
   const start = () => {
