@@ -24,10 +24,6 @@ const CountdownComponent = React.forwardRef((props: Props, ref) => {
     return { start, pause, resume, stop };
   });
 
-  useEffect(() => { 
-    return stop();
-  }, [])
-
   const timer = () => {
     interval = setInterval(() => {
       if (currentSeconds > 0) {
@@ -41,7 +37,7 @@ const CountdownComponent = React.forwardRef((props: Props, ref) => {
         }
 
       }
-      if (currentSeconds < 0) {
+      if (currentSeconds <= 0) {
         if (onEnd) {
           onEnd();
         }
@@ -52,20 +48,25 @@ const CountdownComponent = React.forwardRef((props: Props, ref) => {
   };
 
   useEffect(() => {
-    initTime();
+    init();
+    () => {
+      return stop();
+    }
   }, [])
-  const initTime = () => {
+
+  const init = () => {
     if (props.seconds) {
       currentSeconds = props.seconds;
       hours = ~~(currentSeconds / 3600);
       minute = ~~((currentSeconds % 3600) / 60);
       seconds = ~~currentSeconds % 60;
-      setKey(Math.random());
     }
+    setKey(Math.random());
   }
 
+
   const start = () => {
-    initTime();
+    init();
 
     if (!interval) {
       timer();
@@ -73,9 +74,7 @@ const CountdownComponent = React.forwardRef((props: Props, ref) => {
   }
 
   const pause = () => {
-    if (interval) {
-      clear();
-    }
+    clear();
   }
 
   const resume = () => {
@@ -85,11 +84,12 @@ const CountdownComponent = React.forwardRef((props: Props, ref) => {
   }
 
   const stop = () => {
-    initTime();
-    clear();
-    if(onEnd){
+    if (onEnd) {
       onEnd();
     }
+
+    init();
+    clear();
   }
 
   const clear = () => {

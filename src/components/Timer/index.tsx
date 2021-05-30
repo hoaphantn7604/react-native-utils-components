@@ -24,8 +24,10 @@ const TimerComponent = React.forwardRef((props: Props, ref) => {
     return { start, pause, resume, stop };
   });
 
-  useEffect(() => { 
-    return stop();
+  useEffect(() => {
+    () => {
+      return stop();
+    }
   }, [])
 
   const timer = () => {
