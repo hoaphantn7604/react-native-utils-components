@@ -19,6 +19,7 @@ https://github.com/hoaphantn7604/react-native-utils-template-typescript
 - [Timer](documents/Timer.md)
 - [Countdown](documents/Countdown.md)
 - [Dropdown](documents/Dropdown.md)
+- [MultiSelect](documents/MultiSelect.md)
 - [TextInput](documents/TextInput.md)
 - [Modal](documents/Modal.md)
 - [CurtainView](documents/CurtainView.md)
