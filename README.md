@@ -4,6 +4,11 @@
 ```js
 yarn add react-native-utils-components react-native-utils-toolkit
 ```
+or
+
+```js
+npm i react-native-utils-components react-native-utils-toolkit
+```
 
 ### Start IOS
 `$ cd ios && pod install`
