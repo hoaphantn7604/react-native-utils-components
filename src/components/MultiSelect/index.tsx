@@ -221,7 +221,9 @@ const MultiSelectComponent: MultiSelect = (props) => {
               onPress={() => unSelect(e)}
             >
               <Text style={[{ fontSize: fontScale(12), color: 'gray' }, selectedTextStyle]}>{e[labelField]}</Text>
-              <Text style={styles.selectedTextItem}>x</Text>
+              <View style={styles.selectedTextItem}>
+                <Text style={{ color: 'gray', fontSize: fontScale(14) }}>x</Text>
+              </View>
             </TouchableOpacity>
           )
         })}
