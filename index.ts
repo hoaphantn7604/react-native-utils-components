@@ -9,6 +9,7 @@ import TextInput from './src/components/TextInput';
 import ZoomView from './src/components/ZoomView';
 import Modal from './src/components/Modal';
 import CurtainView from './src/components/CurtainView';
+import MultiSelect from './src/components/MultiSelect';
 
 export { 
     Timer, 
@@ -17,7 +18,8 @@ export {
     StepProgress, 
     TooltipProgress, 
     Progress, 
-    Dropdown, 
+    Dropdown,
+    MultiSelect, 
     TextInput, 
     ZoomView, 
     Modal,

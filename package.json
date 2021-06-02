@@ -1,7 +1,7 @@
 {
   "name": "react-native-utils-components",
   "title": "React Native Utils Components",
-  "version": "2.4.5",
+  "version": "2.4.6",
   "description": "Hierarchy, Tooltip Progress, Step Progress, TextInput, Dropdown, Modal, CurtainView, Timer, Countdown Components",
   "main": "index.ts",
   "scripts": {
@@ -24,6 +24,7 @@
     "timer",
     "countdown",
     "dropdown",
+    "multi-select",
     "input-currency",
     "input-password",
     "input-numeric",
