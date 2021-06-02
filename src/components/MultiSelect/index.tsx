@@ -222,7 +222,7 @@ const MultiSelectComponent: MultiSelect = (props) => {
             >
               <Text style={[{ fontSize: fontScale(12), color: 'gray' }, selectedTextStyle]}>{e[labelField]}</Text>
               <View style={styles.selectedTextItem}>
-                <Text style={{ color: 'gray', fontSize: fontScale(14) }}>x</Text>
+                <Text style={{ color: 'gray', fontSize: fontScale(12) }}>X</Text>
               </View>
             </TouchableOpacity>
           )
