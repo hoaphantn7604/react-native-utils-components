@@ -74,6 +74,13 @@ export const styles = StyleSheet.create({
       color: 'red',
       fontSize: fontScale(14),
       marginTop: scale(10)
-    }
+    },
+    input: {
+      borderWidth: scale(0.5),
+      borderColor: '#DDDDDD',
+      borderRadius: scale(12),
+      margin: scale(8),
+      paddingHorizontal: scale(8),
+    },
   });
   

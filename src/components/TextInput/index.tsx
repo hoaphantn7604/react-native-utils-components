@@ -112,7 +112,7 @@ const TextInputComponent: CTextInput = (props) => {
         );
       } else {
         return (
-          <TouchableOpacity onPress={() => setText('')}>
+          <TouchableOpacity onPress={() => onChange('')}>
             <Image source={ic_close} style={[styles.icon, iconStyle]} />
           </TouchableOpacity>)
       }

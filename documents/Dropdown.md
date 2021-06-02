@@ -16,6 +16,9 @@
 | activeColor        | String               | No        |                  |
 | headerStyle        | ViewStyle            | No        |                  |
 | textErrorStyle     | TextStyle            | No        |                  |
+| search             | Boolean              | No        | false            |
+| searchStyle        | ViewStyle            | No        |                  |
+| searchPlaceholder  | String               | No        |                  |
 | value              | Item                 | No        |                  |
 | label              | String               | No        |                  |
 | placeholder        | String               | No        |                  |
@@ -104,6 +107,8 @@
                     iconColor={'#F4A460'}
                     textErrorStyle={{ color: '#F4A460' }}
                     data={data}
+                    search
+                    searchPlaceholder="Search"
                     labelField="label"
                     valueField="value"
                     label="Title"

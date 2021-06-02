@@ -11,6 +11,7 @@ import {
 import { styles } from './styles';
 import { Dropdown } from './type';
 import CModal from '../Modal';
+import CInput from '../TextInput';
 import { useScale } from 'react-native-utils-toolkit';
 
 const { scale } = useScale;
@@ -41,14 +42,19 @@ const DropdownComponent: Dropdown = (props) => {
     iconColor,
     headerStyle,
     labelStyle,
+    searchStyle,
+    searchPlaceholder,
     placeholder,
     maxHeight = scale(400),
+    search = false,
     renderTickIcon,
     renderLeftIcon
   } = props;
 
   const [visible, setVisible] = useState<boolean>(false);
   const [currentValue, setCurrentValue] = useState<any>(null);
+  const [textSearch, setTextSearch] = useState<string>('');
+  const [listData, setListData] = useState<any[]>(data);
 
   useEffect(() => {
     getValue();
@@ -59,13 +65,14 @@ const DropdownComponent: Dropdown = (props) => {
   }
 
   const scrollToIndex = (ref: any) => {
-    const index = data.findIndex(e => value === e[valueField]);
-    if (index !== -1 && ref) {
-      setTimeout(() => {
-        ref.scrollToIndex({ index: index, animated: true })
-      }, 300);
-
-    }
+    if(textSearch.length === 0){
+      const index = data.findIndex(e => value === e[valueField]);
+      if (index !== -1 && ref) {
+        setTimeout(() => {
+          ref.scrollToIndex({ index: index, animated: true })
+        }, 300);
+      }
+    }  
   }
 
   const getValue = () => {
@@ -76,6 +83,7 @@ const DropdownComponent: Dropdown = (props) => {
   }
 
   const onSelect = (item: any) => {
+    onSearch('');
     setCurrentValue((e: any) => e = item);
     onChange(item[valueField]);
     setVisible(false);
@@ -119,14 +127,38 @@ const DropdownComponent: Dropdown = (props) => {
     );
   };
 
+  const onSearch = (text: string) => {
+    setTextSearch(text);
+    if (text.length > 0) {
+      const dataSearch = data.filter(e => {
+        const item = e[labelField].toLowerCase().replace(' ', '');
+        const key = text.toLowerCase().replace(' ', '');
+        
+        return item.indexOf(key) >= 0
+      });
+      setListData(dataSearch);
+    } else {
+      setListData(data);
+    }
+  }
+
   const _renderList = () => {
-    return <SafeAreaView><FlatList
-      ref={(e) => scrollToIndex(e)}
-      data={data}
-      renderItem={renderItem}
-      keyExtractor={(item, index) => index.toString()}
-      showsVerticalScrollIndicator={false}
-    /></SafeAreaView>
+    return <SafeAreaView style={{ flex: 1 }}>
+      {search && <CInput
+        style={[styles.input, searchStyle]}
+        placeholder={searchPlaceholder}
+        onChangeText={onSearch}
+        placeholderTextColor="gray"
+        iconStyle={{ tintColor: 'gray' }}
+      />}
+      <FlatList
+        ref={(e) => scrollToIndex(e)}
+        data={listData}
+        renderItem={renderItem}
+        keyExtractor={(item, index) => index.toString()}
+        showsVerticalScrollIndicator={false}
+      />
+    </SafeAreaView>
   }
 
   const _header = () => {

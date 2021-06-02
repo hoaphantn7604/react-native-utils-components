@@ -6,6 +6,7 @@ interface Props {
     textStyle?: StyleProp<TextStyle>;
     headerStyle?: StyleProp<ViewStyle>;
     textErrorStyle?: StyleProp<TextStyle>;
+    searchStyle?: StyleProp<TextStyle>;
     iconColor?: string
     activeColor?: string
     data: any[];
@@ -16,6 +17,8 @@ interface Props {
     labelField: string;
     valueField: string;
     maxHeight?: number;
+    search?: boolean;
+    searchPlaceholder?: string
     onChange: (item: any) => void;
     renderLeftIcon?: () => JSX.Element | null | undefined;
     renderTickIcon?: () => JSX.Element | null | undefined;
