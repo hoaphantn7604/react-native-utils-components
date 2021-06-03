@@ -29,6 +29,7 @@ npm i react-native-utils-components react-native-utils-toolkit
 - [TextInput](documents/TextInput.md)
 - [Modal](documents/Modal.md)
 - [CurtainView](documents/CurtainView.md)
+- [Checkbox](documents/Checkbox.md)
 
 ## Images
 ![](https://github.com/hoaphantn7604/file-upload/blob/master/document/component/hierarchy.png)
@@ -40,3 +41,4 @@ npm i react-native-utils-components react-native-utils-toolkit
 ![](https://github.com/hoaphantn7604/file-upload/blob/master/document/component/textinput.png)
 ![](https://github.com/hoaphantn7604/file-upload/blob/master/document/component/modal.png)
 ![](https://github.com/hoaphantn7604/file-upload/blob/master/document/component/curtainview.png)
+![](https://github.com/hoaphantn7604/file-upload/blob/master/document/component/checkbox.png)

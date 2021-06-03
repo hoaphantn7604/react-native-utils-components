@@ -10,6 +10,7 @@ import ZoomView from './src/components/ZoomView';
 import Modal from './src/components/Modal';
 import CurtainView from './src/components/CurtainView';
 import MultiSelect from './src/components/MultiSelect';
+import Checkbox from './src/components/Checkbox';
 
 export { 
     Timer, 
@@ -23,5 +24,6 @@ export {
     TextInput, 
     ZoomView, 
     Modal,
-    CurtainView
+    CurtainView,
+    Checkbox
 };
