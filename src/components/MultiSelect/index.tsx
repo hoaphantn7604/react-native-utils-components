@@ -21,6 +21,7 @@ const ic_down = require('./icon/down.png');
 const defaultProps = {
   placeholder: 'Select item',
   activeColor: '#F6F7F8',
+  backgroundColor: 'white',
   data: [],
   style: {},
 }
@@ -39,6 +40,7 @@ const MultiSelectComponent: MultiSelect = (props) => {
     selectedStyle,
     selectedTextStyle,
     activeColor,
+    backgroundColor,
     textStyle,
     textError,
     iconColor,
@@ -186,6 +188,7 @@ const MultiSelectComponent: MultiSelect = (props) => {
         transparent
         visible={visible}
         headerStyle={styles.header}
+        backgroundColor={backgroundColor}
         maxHeight={maxHeight}
         onRequestClose={showOrClose}
         renderHeader={() => _header()}

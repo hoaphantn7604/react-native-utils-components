@@ -9,6 +9,7 @@ interface Props {
     searchStyle?: StyleProp<TextStyle>; 
     selectedStyle?: StyleProp<ViewStyle>;
     selectedTextStyle?: StyleProp<TextStyle>; 
+    backgroundColor?: string;
     iconColor?: string
     activeColor?: string
     data: any[];

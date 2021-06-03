@@ -15,7 +15,7 @@ const defaultProps = {
   height: h / 2,
   styles: {},
   headerStyle: {},
-  backgroundColor: 'rgba(0,0,0,0.4)',
+  backgroundColor: 'white',
 };
 
 const ModalComponent: CModal = props => {
@@ -43,13 +43,13 @@ const ModalComponent: CModal = props => {
           {
             flex: 1,
             justifyContent: 'flex-end',
-            backgroundColor: backgroundColor,
+            backgroundColor: 'rgba(0,0,0,0.4)',
           },
           style,
         ]}>
         <CurtainView
           position='bottom'
-          backgroundColor='white'
+          backgroundColor={backgroundColor}
           maxHeight={maxHeight}
           show={visible}
           headerStyle={headerStyle}

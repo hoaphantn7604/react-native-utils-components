@@ -7,6 +7,7 @@ interface Props {
     headerStyle?: StyleProp<ViewStyle>;
     textErrorStyle?: StyleProp<TextStyle>;
     searchStyle?: StyleProp<TextStyle>;
+    backgroundColor?: string;
     iconColor?: string
     activeColor?: string
     data: any[];

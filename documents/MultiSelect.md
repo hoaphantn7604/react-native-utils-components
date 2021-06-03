@@ -10,6 +10,7 @@
 | valueField         | String               | Yes       |                  |
 | onChange           | (item) => void       | Yes       |                  |
 | style              | ViewStyle            | No        |                  |
+| backgroundColor    | String               | No        |                  |
 | labelStyle         | TextStyle            | No        |                  |
 | textStyle          | TextStyle            | No        |                  |
 | iconColor          | String               | No        |                  |

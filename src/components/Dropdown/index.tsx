@@ -21,6 +21,7 @@ const ic_down = require('./icon/down.png');
 const defaultProps = {
   placeholder: 'Select item',
   activeColor: '#F6F7F8',
+  backgroundColor: 'white',
   data: [],
   style: {},
 }
@@ -37,6 +38,7 @@ const DropdownComponent: Dropdown = (props) => {
     valueField,
     textErrorStyle,
     activeColor,
+    backgroundColor,
     textStyle,
     textError,
     iconColor,
@@ -172,6 +174,7 @@ const DropdownComponent: Dropdown = (props) => {
     if (visible) {
       return <CModal
         transparent
+        backgroundColor={backgroundColor}
         visible={visible}
         headerStyle={styles.header}
         maxHeight={maxHeight}
