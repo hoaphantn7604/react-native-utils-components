@@ -10,6 +10,8 @@ or
 npm i react-native-utils-components react-native-utils-toolkit
 ```
 
+[react-native-utils-toolkit](https://www.npmjs.com/package/react-native-utils-toolkit) for flexible UI on many different screen sizes.
+
 ### Start IOS
 `$ cd ios && pod install`
 
