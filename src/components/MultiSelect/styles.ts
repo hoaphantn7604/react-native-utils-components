@@ -95,13 +95,8 @@ export const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   selectedTextItem: {
-    marginLeft: scale(5),
-    borderWidth: scale(0.5),
-    width: scale(16),
-    height: scale(16),
-    borderRadius: scale(8),
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderColor: 'gray',
+    marginLeft: scale(5), 
+    color: 'gray', 
+    fontSize: fontScale(16)
   }
 });

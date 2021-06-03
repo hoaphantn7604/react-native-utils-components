@@ -129,7 +129,7 @@ const MultiSelectComponent: MultiSelect = (props) => {
   const renderItem = ({ item, index }: { item: any; index: number }) => {
     return (
       <TouchableOpacity onPress={() => onSelect(item)}>
-        <View style={[styles.item, checkSelected(item) && { backgroundColor: activeColor }]}>
+        <View style={[styles.item, checkSelected(item) && { backgroundColor: activeColor, marginBottom: scale(0.5) }]}>
           <Text style={[styles.textItem, textStyle]}
           >{item[labelField]}</Text>
           {checkSelected(item) &&
@@ -224,9 +224,7 @@ const MultiSelectComponent: MultiSelect = (props) => {
               onPress={() => unSelect(e)}
             >
               <Text style={[{ fontSize: fontScale(12), color: 'gray' }, selectedTextStyle]}>{e[labelField]}</Text>
-              <View style={styles.selectedTextItem}>
-                <Text style={{ color: 'gray', fontSize: fontScale(12) }}>X</Text>
-              </View>
+              <Text style={[styles.selectedTextItem, selectedTextStyle]}>ⓧ</Text>
             </TouchableOpacity>
           )
         })}
