@@ -52,7 +52,8 @@ const MultiSelectComponent: MultiSelect = (props) => {
     maxHeight = scale(400),
     search = false,
     renderTickIcon,
-    renderLeftIcon
+    renderLeftIcon,
+    renderHeader
   } = props;
 
   const [visible, setVisible] = useState<boolean>(false);
@@ -191,7 +192,7 @@ const MultiSelectComponent: MultiSelect = (props) => {
         backgroundColor={backgroundColor}
         maxHeight={maxHeight}
         onRequestClose={showOrClose}
-        renderHeader={() => _header()}
+        renderHeader={() => renderHeader ? renderHeader(): _header()}
         supportedOrientations={['landscape', 'portrait']}
       >
         {_renderList()}

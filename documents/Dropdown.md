@@ -27,6 +27,7 @@
 | textError          | String               | No        |                  |
 | renderLeftIcon     | () => JSX.Element    | No        |                  |
 | renderTickIcon     | () => JSX.Element    | No        |                  |
+| renderHeader       | JSX.Element          | No        |                  |
 
 #### Example
 ```js

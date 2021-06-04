@@ -50,7 +50,8 @@ const DropdownComponent: Dropdown = (props) => {
     maxHeight = scale(400),
     search = false,
     renderTickIcon,
-    renderLeftIcon
+    renderLeftIcon,
+    renderHeader
   } = props;
 
   const [visible, setVisible] = useState<boolean>(false);
@@ -179,7 +180,7 @@ const DropdownComponent: Dropdown = (props) => {
         headerStyle={styles.header}
         maxHeight={maxHeight}
         onRequestClose={showOrClose}
-        renderHeader={() => _header()}
+        renderHeader={() => renderHeader ? renderHeader() : _header()}
         supportedOrientations={['landscape', 'portrait']}
       >
         {_renderList()}

@@ -25,6 +25,7 @@ interface Props {
     onChange: (item: any) => void;
     renderLeftIcon?: () => JSX.Element | null | undefined;
     renderTickIcon?: () => JSX.Element | null | undefined;
+    renderHeader?: () => JSX.Element;
   }
 
   export type MultiSelect = React.FC<Props>
