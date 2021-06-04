@@ -5,7 +5,7 @@ import { styles } from './styles';
 import { CurtainView } from './type';
 
 const CurtainViewComponent: CurtainView = props => {
-  const { style, headerStyle, backgroundColor= 'transparent', maxHeight = 200, renderHeader, position = 'top', show = false, onShow } = props;
+  const { style, headerStyle, backgroundColor= 'transparent', maxHeight = 180, renderHeader, position = 'top', show = false, onShow } = props;
   const minHeight = 0;
   const [viewHeight] = useState(new Animated.Value(minHeight));
   let currentHeight = 0;
@@ -19,7 +19,7 @@ const CurtainViewComponent: CurtainView = props => {
   const checkshow = (status: boolean) => {
     Animated.timing(viewHeight, {
       toValue: status ? maxHeight : minHeight,
-      duration: 300,
+      duration: 180,
       easing: Easing.linear,
       useNativeDriver: false,
     }).start(() => { currentHeight = status ? maxHeight : minHeight });
@@ -64,7 +64,7 @@ const CurtainViewComponent: CurtainView = props => {
         if (currentHeight < maxHeight && currentHeight > 0) {
           Animated.timing(viewHeight, {
             toValue: currentHeight,
-            duration: 150,
+            duration: 80,
             easing: Easing.linear,
             useNativeDriver: false,
           }).start(() => { });
@@ -77,7 +77,7 @@ const CurtainViewComponent: CurtainView = props => {
             if (dy > 0) {
               Animated.timing(viewHeight, {
                 toValue: maxHeight,
-                duration: 300,
+                duration: 180,
                 easing: Easing.linear,
                 useNativeDriver: false,
               }).start(() => {
@@ -87,7 +87,7 @@ const CurtainViewComponent: CurtainView = props => {
             } else {
               Animated.timing(viewHeight, {
                 toValue: minHeight,
-                duration: 300,
+                duration: 180,
                 easing: Easing.linear,
                 useNativeDriver: false,
               }).start(() => {
@@ -99,7 +99,7 @@ const CurtainViewComponent: CurtainView = props => {
             if (dy < 0) {
               Animated.timing(viewHeight, {
                 toValue: maxHeight,
-                duration: 300,
+                duration: 180,
                 easing: Easing.linear,
                 useNativeDriver: false,
               }).start(() => {
@@ -109,7 +109,7 @@ const CurtainViewComponent: CurtainView = props => {
             } else {
               Animated.timing(viewHeight, {
                 toValue: minHeight,
-                duration: 300,
+                duration: 180,
                 easing: Easing.linear,
                 useNativeDriver: false,
               }).start(() => {
