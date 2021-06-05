@@ -1,7 +1,7 @@
 {
   "name": "react-native-utils-components",
   "title": "React Native Utils Components",
-  "version": "2.5.1",
+  "version": "2.5.2",
   "description": "React Native UIKit",
   "main": "index.ts",
   "scripts": {

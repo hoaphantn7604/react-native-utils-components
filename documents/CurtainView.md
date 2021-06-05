@@ -9,7 +9,7 @@
 | style              | ViewStyle            | No        |                  |
 | backgroundColor    | String               | No        | transparent      |
 | maxHeight          | Number               | Yes       |                  |
-| position           | 'top' | 'bottom'     | No        | 'top'            |
+| position           | 'top' or 'bottom'    | No        | 'top'            |
 | renderHeader       | () => JSX.Element    | No        |                  |
 | onShow             | (status)=> void      | No        |                  |
 

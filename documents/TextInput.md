@@ -31,7 +31,7 @@
 | onBlur             | (e) => void          | No        |                  |
 | onFocus            | (e) => void          | No        |                  |
 | renderLeftIcon     | () => JSX.Element    | No        |                  |
-| renderRightIcon     | () => JSX.Element   | No        |                  |
+| renderRightIcon    | () => JSX.Element    | No        |                  |
 
 #### Example
 ```js

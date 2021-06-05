@@ -9,7 +9,7 @@
 | fontFamily         | String               | No        |                  |
 | labelStyle         | TextStyle            | No        |                  |
 | label              | String               | No        |                  |
-| type               | 'checkbox' | 'radio' | No        |                  |
+| type               | 'checkbox' or 'radio'| No        |                  |
 | check              | Boolean              | No        |                  |
 | size               | Number               | No        |                  |
 | color              | String               | No        |                  |
