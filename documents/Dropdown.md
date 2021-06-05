@@ -11,21 +11,21 @@
 | onChange           | (item) => void       | Yes       |                  |
 | style              | ViewStyle            | No        |                  |
 | fontFamily         | String               | No        |                  |
-| backgroundColor    | String               | No        |                  |
 | labelStyle         | TextStyle            | No        |                  |
 | textStyle          | TextStyle            | No        |                  |
 | iconColor          | String               | No        |                  |
 | activeColor        | String               | No        |                  |
+| backgroundColor    | String               | No        |                  |
 | headerStyle        | ViewStyle            | No        |                  |
-| textErrorStyle     | TextStyle            | No        |                  |
-| search             | Boolean              | No        | false            |
-| searchStyle        | ViewStyle            | No        |                  |
-| searchPlaceholder  | String               | No        |                  |
 | value              | Item                 | No        |                  |
 | label              | String               | No        |                  |
 | placeholder        | String               | No        |                  |
 | maxHeight          | Number               | No        |                  |
+| search             | Boolean              | No        | false            |
+| searchStyle        | ViewStyle            | No        |                  |
+| searchPlaceholder  | String               | No        |                  |
 | textError          | String               | No        |                  |
+| textErrorStyle     | TextStyle            | No        |                  |
 | renderLeftIcon     | () => JSX.Element    | No        |                  |
 | renderTickIcon     | () => JSX.Element    | No        |                  |
 | renderHeader       | () => JSX.Element    | No        |                  |

@@ -13,6 +13,7 @@
 | textColor          | String               | No        | #C6CDD8          |
 | selectColor        | String               | No        | #FF9900          |
 | textSize           | Number               | No        | 16               |
+| fontFamily         | String               | No        |                  |
 | selectIndex        | Number               | No        | 0                |
 | onSelectIndex      | (index)=> Void       | No        |                  |
 | iconTick           | Path                 | No        |                  |
@@ -28,6 +29,7 @@
 | inActiveColor      | String               | No        | #C6CDD8          |
 | selectColor        | String               | No        | #FF9900          |
 | textSize           | Number               | No        | 16               |
+| fontFamily         | String               | No        |                  |
 | selectIndex        | Number               | No        | 0                |
 | onSelectIndex      | (index)=> Void       | No        |                  |
 
