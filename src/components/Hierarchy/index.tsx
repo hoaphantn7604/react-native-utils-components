@@ -18,7 +18,17 @@ const defaultProps = {
 let selectItem: any = [];
 
 const HierarchyComponent: Hierarchy = (props) => {
-  const { data, textField, childField, style, textStyle, buttonStyle, iconColor, buttonTextStyle } = props;
+  const { 
+    data, 
+    textField, 
+    childField, 
+    style, 
+    textStyle, 
+    fontFamily, 
+    buttonStyle,
+    buttonTextStyle, 
+    iconColor, 
+  } = props;
 
   const [listData] = useState<any>(data);
   const [key, setKey] = useState(Math.random());
@@ -83,6 +93,16 @@ const HierarchyComponent: Hierarchy = (props) => {
     
   }, [selectItem]);
 
+  const font = () => {
+    if (fontFamily) {
+      return {
+        fontFamily: fontFamily
+      }
+    } else {
+      return {}
+    }
+  }
+
   const renderList = (item: any, childs: any, index: number) => {
     if (!item.show) {
       item.show = false;
@@ -112,7 +132,7 @@ const HierarchyComponent: Hierarchy = (props) => {
             }}>
             <View style={styles.center}>
               {item.tick ? <Text style={[styles.tick, { color: iconColor }]}>☑</Text> : <Text style={[isIOS ? styles.unTick : styles.tick, { color: iconColor }]}>☐</Text>}
-              <Text style={[styles.name, textStyle]} numberOfLines={3}>{item[textField]}</Text>
+              <Text style={[styles.name, textStyle, font()]} numberOfLines={3}>{item[textField]}</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -141,7 +161,7 @@ const HierarchyComponent: Hierarchy = (props) => {
       {props?.buttonName ? <TouchableOpacity style={[styles.btn, buttonStyle]} onPress={() => {
         props.onSelect(selectItem);
       }}>
-        <Text style={[styles.btnName, buttonTextStyle]}>{props.buttonName}</Text>
+        <Text style={[styles.btnName, buttonTextStyle, font()]}>{props.buttonName}</Text>
       </TouchableOpacity> : null}
     </View>
   );

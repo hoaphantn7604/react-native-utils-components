@@ -11,6 +11,7 @@
 | stop               | ref.stop()           | Yes       |                  |
 | seconds            | Number               | Yes       |                  |
 | style              | ViewStyle            | No        |                  |
+| fontFamily         | String               | No        |                  |
 | textStyle          | TextStyle            | No        |                  |
 | onTimes            | (seconds) => void    | No        |                  |
 | onEnd              | (seconds) => void    | No        |                  |

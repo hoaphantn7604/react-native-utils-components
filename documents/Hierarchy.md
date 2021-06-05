@@ -12,6 +12,7 @@
 | onSelect           | ()=> void            | Yes       |                  |
 | buttonName         | String               | No        |                  |
 | style              | ViewStyle            | No        |                  |
+| fontFamily         | String               | No        |                  |
 | buttonStyle        | ViewStyle            | No        |                  |
 | buttonTextStyle    | TextStyle            | No        |                  |
 | textStyle          | TextStyle            | No        |                  |

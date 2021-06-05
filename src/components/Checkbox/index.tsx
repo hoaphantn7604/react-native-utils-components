@@ -25,7 +25,27 @@ const defaultProps = {
 };
 
 const CheckComponent: Checkbox = (props) => {
-  const { style, size = 25, type= 'checkbox', color, check, onPress, label, labelStyle } = props;
+  const {
+    style,
+    size = 25,
+    type = 'checkbox',
+    color,
+    check,
+    label,
+    labelStyle,
+    fontFamily,
+    onPress,
+  } = props;
+
+  const font = () => {
+    if (fontFamily) {
+      return {
+        fontFamily: fontFamily
+      }
+    } else {
+      return {}
+    }
+  }
 
   return (
     <TouchableWithoutFeedback onPress={onPress}>
@@ -38,7 +58,7 @@ const CheckComponent: Checkbox = (props) => {
           }}
           source={type === 'checkbox' ? check ? checkbox_check : checkbox_uncheck : check ? radio_check : radio_uncheck}
         />
-        {label && <Text style={[styles.text, { fontSize: fontScale(size - 5), color: color }, labelStyle]}>{label}</Text>}
+        {label && <Text style={[styles.text, { fontSize: fontScale(size - 5), color: color }, labelStyle, font()]}>{label}</Text>}
       </View>
     </TouchableWithoutFeedback>
   );

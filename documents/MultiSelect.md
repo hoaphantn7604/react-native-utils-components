@@ -10,6 +10,7 @@
 | valueField         | String               | Yes       |                  |
 | onChange           | (item) => void       | Yes       |                  |
 | style              | ViewStyle            | No        |                  |
+| fontFamily         | String               | No        |                  |
 | backgroundColor    | String               | No        |                  |
 | labelStyle         | TextStyle            | No        |                  |
 | textStyle          | TextStyle            | No        |                  |
@@ -29,7 +30,7 @@
 | textError          | String               | No        |                  |
 | renderLeftIcon     | () => JSX.Element    | No        |                  |
 | renderTickIcon     | () => JSX.Element    | No        |                  |
-| renderHeader       | JSX.Element          | No        |                  |
+| renderHeader       | () => JSX.Element   | No        |                  |
 
 #### Example
 ```js

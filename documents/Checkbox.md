@@ -6,6 +6,7 @@
 | Props              | Params               | isRequire | default          |
 | ------------------ | -------------------- | --------- | ---------------- |
 | style              | ViewStyle            | No        |                  |
+| fontFamily         | String               | No        |                  |
 | labelStyle         | TextStyle            | No        |                  |
 | label              | String               | No        |                  |
 | type               | 'checkbox' | 'radio' | No        |                  |

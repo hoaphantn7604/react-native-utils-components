@@ -8,6 +8,7 @@ export interface Item {
 
 export interface Props {
   style?: StyleProp<ViewStyle>;
+  fontFamily?: string;
   data: Item[];
   activeColor?: string;
   inActiveColor?: string;

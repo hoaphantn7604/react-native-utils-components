@@ -8,7 +8,8 @@ interface Props {
     textErrorStyle?: StyleProp<TextStyle>;
     searchStyle?: StyleProp<TextStyle>; 
     selectedStyle?: StyleProp<ViewStyle>;
-    selectedTextStyle?: StyleProp<TextStyle>; 
+    selectedTextStyle?: StyleProp<TextStyle>;
+    fontFamily?: string; 
     backgroundColor?: string;
     iconColor?: string
     activeColor?: string

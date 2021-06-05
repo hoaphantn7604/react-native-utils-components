@@ -41,6 +41,7 @@ const MultiSelectComponent: MultiSelect = (props) => {
     selectedTextStyle,
     activeColor,
     backgroundColor,
+    fontFamily,
     textStyle,
     textError,
     iconColor,
@@ -65,6 +66,16 @@ const MultiSelectComponent: MultiSelect = (props) => {
   useEffect(() => {
     getValue();
   }, []);
+
+  const font = () => {
+    if (fontFamily) {
+      return {
+        fontFamily: fontFamily
+      }
+    } else {
+      return {}
+    }
+  }
 
   const showOrClose = () => {
     setVisible(!visible);
@@ -101,7 +112,7 @@ const MultiSelectComponent: MultiSelect = (props) => {
   const _renderTitle = () => {
     if (label) {
       return (
-        <Text style={[styles.title, labelStyle]}>
+        <Text style={[styles.title, labelStyle, font()]}>
           {label}
         </Text>
       )
@@ -113,7 +124,7 @@ const MultiSelectComponent: MultiSelect = (props) => {
       <TouchableWithoutFeedback onPress={showOrClose}>
         <View style={styles.dropdown}>
           {renderLeftIcon?.()}
-          <Text style={[styles.textItem, textStyle]}>
+          <Text style={[styles.textItem, textStyle, font()]}>
             {placeholder}
           </Text>
           <Image source={ic_down} style={[styles.icon, { tintColor: iconColor }]} />
@@ -131,7 +142,7 @@ const MultiSelectComponent: MultiSelect = (props) => {
     return (
       <TouchableOpacity onPress={() => onSelect(item)}>
         <View style={[styles.item, checkSelected(item) && { backgroundColor: activeColor, marginBottom: scale(0.5) }]}>
-          <Text style={[styles.textItem, textStyle]}
+          <Text style={[styles.textItem, textStyle, font()]}
           >{item[labelField]}</Text>
           {checkSelected(item) &&
             renderTickIcon?.()
@@ -160,6 +171,7 @@ const MultiSelectComponent: MultiSelect = (props) => {
     return <SafeAreaView style={{ flex: 1 }}>
       {search && <CInput
         style={[styles.input, searchStyle]}
+        inputStyle={font()}
         placeholder={searchPlaceholder}
         onChangeText={onSearch}
         placeholderTextColor="gray"
@@ -224,7 +236,7 @@ const MultiSelectComponent: MultiSelect = (props) => {
               style={[styles.selectedItem, selectedStyle]}
               onPress={() => unSelect(e)}
             >
-              <Text style={[{ fontSize: fontScale(12), color: 'gray' }, selectedTextStyle]}>{e[labelField]}</Text>
+              <Text style={[{ fontSize: fontScale(12), color: 'gray' }, selectedTextStyle, font()]}>{e[labelField]}</Text>
               <Text style={[styles.selectedTextItem, selectedTextStyle]}>ⓧ</Text>
             </TouchableOpacity>
           )
@@ -239,7 +251,7 @@ const MultiSelectComponent: MultiSelect = (props) => {
         {_renderDropdown()}
         {_renderModal()}
       </View>
-      {textError && <Text style={[styles.textError, textErrorStyle]}>{textError}</Text>}
+      {textError && <Text style={[styles.textError, textErrorStyle, font()]}>{textError}</Text>}
       {_renderItemSelected()}
     </View>
   );

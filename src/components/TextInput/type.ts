@@ -14,6 +14,7 @@ interface Props {
   iconStyle?: StyleProp<ImageStyle>;
   textErrorStyle?: StyleProp<TextStyle>;
   textError?: string;
+  fontFamily?: string;
   placeholder?: string;
   placeholderTextColor?: string;
   value?: string;

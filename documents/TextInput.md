@@ -10,6 +10,7 @@
 | placeholder        | String               | No        |                  |
 |placeholderTextColor| String               | No        | #000             |
 | style              | ViewStyle            | No        |                  |
+| fontFamily         | String               | No        |                  |
 | labelStyle         | TextStyle            | No        |                  |
 | inputStyle         | TextStyle            | No        |                  |
 | iconStyle          | ImageStyle           | No        |                  |

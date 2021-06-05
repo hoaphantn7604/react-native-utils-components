@@ -3,6 +3,7 @@ import { StyleProp, ViewStyle } from 'react-native';
 interface Props {
   style?: StyleProp<ViewStyle>;
   tooltipStyle?: StyleProp<ViewStyle>;
+  fontFamily?: string;
   data: Item[];
   activeColor?: string;
   inActiveColor?: string;

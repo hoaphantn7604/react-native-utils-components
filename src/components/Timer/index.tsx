@@ -17,7 +17,7 @@ let seconds = 0;
 let currentSeconds = 0;
 
 const TimerComponent = React.forwardRef((props: Props, ref) => {
-  const { onEnd, onTimes } = props;
+  const { style, textStyle, fontFamily, onEnd, onTimes } = props;
   const [key, setKey] = useState(Math.random());
 
   useImperativeHandle(ref, () => {
@@ -95,9 +95,19 @@ const TimerComponent = React.forwardRef((props: Props, ref) => {
     }
   }
 
+  const font = () => {
+    if (fontFamily) {
+      return {
+        fontFamily: fontFamily
+      }
+    } else {
+      return {}
+    }
+  }
+
   return (
-    <View style={props.style} key={key}>
-      <Text style={[styles.text, props.textStyle]}>{`${hours}:${minute.toString().length === 1 ? '0' : ''}${minute}:${seconds.toString().length === 1 ? '0' : ''
+    <View style={style} key={key}>
+      <Text style={[styles.text, textStyle, font()]}>{`${hours}:${minute.toString().length === 1 ? '0' : ''}${minute}:${seconds.toString().length === 1 ? '0' : ''
         }${seconds}`}</Text>
     </View>
   );

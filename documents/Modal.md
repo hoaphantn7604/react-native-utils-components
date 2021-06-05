@@ -13,7 +13,7 @@
 | maxHeight          | Number               | No        |                  |
 |supportedOrientations| Array               | No        |                  |
 | onRequestClose     | () => void           | No        |                  |
-| renderHeader       | JSX.Element          | No        |                  |
+| renderHeader       | () => JSX.Element    | No        |                  |
 
 #### Example
 ```js

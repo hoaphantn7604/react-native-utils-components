@@ -39,6 +39,7 @@ const DropdownComponent: Dropdown = (props) => {
     textErrorStyle,
     activeColor,
     backgroundColor,
+    fontFamily,
     textStyle,
     textError,
     iconColor,
@@ -62,6 +63,16 @@ const DropdownComponent: Dropdown = (props) => {
   useEffect(() => {
     getValue();
   }, []);
+
+  const font = () => {
+    if (fontFamily) {
+      return {
+        fontFamily: fontFamily
+      }
+    } else {
+      return {}
+    }
+  }
 
   const showOrClose = () => {
     setVisible(!visible);
@@ -107,7 +118,7 @@ const DropdownComponent: Dropdown = (props) => {
       <TouchableWithoutFeedback onPress={showOrClose}>
         <View style={styles.dropdown}>
           {renderLeftIcon?.()}
-          <Text style={[styles.textItem, textStyle]}>
+          <Text style={[styles.textItem, textStyle, font()]}>
             {currentValue && currentValue[labelField] || placeholder}
           </Text>
           <Image source={ic_down} style={[styles.icon, { tintColor: iconColor }]} />
@@ -120,7 +131,7 @@ const DropdownComponent: Dropdown = (props) => {
     return (
       <TouchableOpacity onPress={() => onSelect(item)}>
         <View style={[styles.item, item[valueField] === (currentValue && currentValue[valueField]) && { backgroundColor: activeColor }]}>
-          <Text style={[styles.textItem, textStyle]}
+          <Text style={[styles.textItem, textStyle, font()]}
           >{item[labelField]}</Text>
           {item[valueField] === (currentValue && currentValue[valueField]) &&
             renderTickIcon?.()
@@ -149,6 +160,7 @@ const DropdownComponent: Dropdown = (props) => {
     return <SafeAreaView style={{ flex: 1 }}>
       {search && <CInput
         style={[styles.input, searchStyle]}
+        inputStyle={font()}
         placeholder={searchPlaceholder}
         onChangeText={onSearch}
         placeholderTextColor="gray"
@@ -196,7 +208,7 @@ const DropdownComponent: Dropdown = (props) => {
         {_renderDropdown()}
         {_renderModal()}
       </View>
-      {textError && <Text style={[styles.textError, textErrorStyle]}>{textError}</Text>}
+      {textError && <Text style={[styles.textError, textErrorStyle, font()]}>{textError}</Text>}
     </View>
   );
 };

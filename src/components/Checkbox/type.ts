@@ -1,13 +1,15 @@
 import { StyleProp, TextStyle, ViewStyle } from "react-native";
 
 interface Props {
-  check?: boolean;
+
   style?: StyleProp<ViewStyle>;
   labelStyle?: StyleProp<TextStyle>;
-  size?: number;
+  fontFamily?: string;
   type?: 'checkbox' | 'radio';
-  color?: string;
   label?: string;
+  check?: boolean;
+  size?: number;
+  color?: string;
   onPress?: () => void;
 }
 

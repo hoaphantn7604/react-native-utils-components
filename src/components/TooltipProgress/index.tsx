@@ -28,6 +28,7 @@ const defaultProps = {
 const CTooltipProgressComponent: TooltipProgress = (props) => {
   const {
     style,
+    fontFamily,
     data,
     activeColor,
     inActiveColor,
@@ -37,6 +38,16 @@ const CTooltipProgressComponent: TooltipProgress = (props) => {
     tooltipStyle,
     onSelectIndex,
   } = props;
+
+  const font = () => {
+    if (fontFamily) {
+      return {
+        fontFamily: fontFamily
+      }
+    } else {
+      return {}
+    }
+  }
 
   const renderItem = (item: Item, index: number) => {
     return (
@@ -76,7 +87,7 @@ const CTooltipProgressComponent: TooltipProgress = (props) => {
               {item.icon ? <Image
                 style={[
                   styles.icon,
-                  { tintColor: 'white'},
+                  { tintColor: 'white' },
                 ]}
                 source={item.icon}
               /> : <Text
@@ -85,6 +96,7 @@ const CTooltipProgressComponent: TooltipProgress = (props) => {
                     fontSize: fontScale(textSize),
                     color: 'white',
                   },
+                  font()
                 ]}>
                 {item?.stage}
               </Text>}
@@ -104,7 +116,7 @@ const CTooltipProgressComponent: TooltipProgress = (props) => {
         {index === selectIndex && (
           <View
             style={[styles.tag, { backgroundColor: selectColor }, index === data.length - 1 && {}, tooltipStyle]}>
-            <Text style={styles.text}>{item.text}</Text>
+            <Text style={[styles.text, { fontSize: fontScale(textSize) }, font()]}>{item.text}</Text>
           </View>
         )}
       </View>

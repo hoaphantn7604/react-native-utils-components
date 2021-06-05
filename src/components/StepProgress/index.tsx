@@ -30,6 +30,7 @@ const defaultProps = {
 const StepProgressComponent: StepProgress = (props) => {
   const {
     style,
+    fontFamily,
     data,
     activeColor,
     inActiveColor,
@@ -40,6 +41,16 @@ const StepProgressComponent: StepProgress = (props) => {
     onSelectIndex,
     iconTick
   } = props;
+
+  const font = () => {
+    if (fontFamily) {
+      return {
+        fontFamily: fontFamily
+      }
+    } else {
+      return {}
+    }
+  }
 
   const renderItem = (item: Item, index: number) => {
     return (
@@ -94,7 +105,7 @@ const StepProgressComponent: StepProgress = (props) => {
                     { tintColor: index === selectIndex ? selectColor : item.status ? activeColor : inActiveColor },
                   ]}
                   source={item.icon ? item.icon : iconTick ? iconTick : ic_check}
-                /> : <Text style={{ fontSize: fontScale(textSize), color: index === selectIndex ? selectColor : item.status ? activeColor : inActiveColor, fontWeight: 'bold' }}>{index + 1}</Text>}
+                /> : <Text style={[{ fontSize: fontScale(textSize), color: index === selectIndex ? selectColor : item.status ? activeColor : inActiveColor, fontWeight: 'bold' }, font()]}>{index + 1}</Text>}
             </View>
           </TouchableOpacity>
         </View>
@@ -105,7 +116,7 @@ const StepProgressComponent: StepProgress = (props) => {
   const renderText = (item: Item, index: number) => {
       return (
         <View key={index} style={{width: scale(80)}}>
-          <Text style={[styles.text, { fontSize: fontScale(textSize), color: index === selectIndex ? selectColor : textColor }]}>{item?.text}</Text>
+          <Text style={[styles.text, { fontSize: fontScale(textSize), color: index === selectIndex ? selectColor : textColor }, font()]}>{item?.text}</Text>
         </View>
       );
   };

@@ -5,6 +5,7 @@ interface Props {
   buttonStyle?: StyleProp<ViewStyle>;
   buttonTextStyle?: StyleProp<TextStyle>;
   textStyle: StyleProp<TextStyle>;
+  fontFamily?: string;
   iconColor: string;
   data: any[];
   textField: string;

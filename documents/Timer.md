@@ -10,6 +10,7 @@
 | resume             | ref.resume()         | Yes       |                  |
 | stop               | ref.stop()           | Yes       |                  |
 | style              | ViewStyle            | No        |                  |
+| fontFamily         | String               | No        |                  |
 | textStyle          | TextStyle            | No        |                  |
 | onTimes            | (seconds) => void    | No        |                  |
 | onEnd              | (seconds) => void    | No        |                  |

@@ -31,6 +31,7 @@ const defaultProps = {
 const TextInputComponent: CTextInput = (props) => {
   const {
     style,
+    fontFamily,
     placeholder,
     value,
     label,
@@ -120,23 +121,33 @@ const TextInputComponent: CTextInput = (props) => {
     return null;
   };
 
+  const font = () => {
+    if (fontFamily) {
+      return {
+        fontFamily: fontFamily
+      }
+    } else {
+      return {}
+    }
+  }
+
   return (
     <View>
       <View style={[style]}>
         {label && (
-          <Text style={[styles.label, labelStyle]}>
+          <Text style={[styles.label, labelStyle, font()]}>
             {label}
           </Text>
         )}
         <View style={styles.textInput}>
           {renderLeftIcon?.()}
           {currency && unitCurrency && (
-            <Text style={{ marginRight: scale(3) }}>
+            <Text style={[{ marginRight: scale(3) }, font()]}>
               {unitCurrency}
             </Text>
           )}
           <TextInput
-            style={[styles.input, inputStyle]}
+            style={[styles.input, inputStyle, font()]}
             placeholder={placeholder}
             placeholderTextColor={placeholderTextColor}
             autoCapitalize={autoCapitalize && autoCapitalize}
@@ -155,7 +166,7 @@ const TextInputComponent: CTextInput = (props) => {
           {_renderRightIcon()}
         </View>
       </View>
-      {textError && <Text style={[styles.textError, textErrorStyle]}>{textError}</Text>}
+      {textError && <Text style={[styles.textError, textErrorStyle, font()]}>{textError}</Text>}
     </View>
   );
 };
