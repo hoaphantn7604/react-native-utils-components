@@ -5,11 +5,9 @@ import { PropsImage } from './type';
 const resolveAssetSource = Image.resolveAssetSource;
 
 const CImage: PropsImage = props => {
-  const { style, onSize, background, resizeMode } = props;
-  const ImageComponent: any = background ? ImageBackground : Image;
+  const { style, onSize, background } = props;
   const [autoWidth, setAutoWidth] = useState<number | null>(null);
   const [autoHeight, setAutoHeight] = useState<number | null>(null);
-  const [image, setImage] = useState(<ImageComponent />);
   const mounted = useRef(false);
 
   useEffect(() => {
@@ -23,22 +21,6 @@ const CImage: PropsImage = props => {
   useEffect(() => {
     onProps(props);
   });
-
-  useEffect(() => {
-    setImage(
-      <ImageComponent
-        {...props}
-        style={[
-          style,
-          {
-            width: autoWidth,
-            height: autoHeight,
-          },
-        ]}
-        resizeMode={resizeMode}
-      />,
-    );
-  }, [props, autoHeight, autoWidth]);
 
   const onProps = (localProps: any) => {
     const { source } = localProps;
@@ -85,12 +67,21 @@ const CImage: PropsImage = props => {
     }
   };
 
-  return image;
+  if (autoWidth && autoHeight) {
+    if (background) {
+      return <ImageBackground
+        {...props}
+        style={[style, { width: autoWidth, height: autoHeight }]}
+      />;
+    }
+    return <Image {...props} style={[style, { width: autoWidth, height: autoHeight }]} />
+  }
+  return null;
 };
 
 CImage.defaultProps = {
   background: false,
-  onSize: size => {},
+  onSize: size => { },
 };
 
 export default CImage;
