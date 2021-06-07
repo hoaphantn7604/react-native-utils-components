@@ -11,6 +11,7 @@ import Modal from './src/components/Modal';
 import CurtainView from './src/components/CurtainView';
 import MultiSelect from './src/components/MultiSelect';
 import Checkbox from './src/components/Checkbox';
+import Image from './src/components/Image';
 
 export { 
     Timer, 
@@ -25,5 +26,6 @@ export {
     ZoomView, 
     Modal,
     CurtainView,
-    Checkbox
+    Checkbox,
+    Image
 };

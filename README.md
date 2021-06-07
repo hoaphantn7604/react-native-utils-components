@@ -32,6 +32,7 @@ npm i react-native-utils-components react-native-utils-toolkit
 - [Modal](documents/Modal.md)
 - [CurtainView](documents/CurtainView.md)
 - [Checkbox](documents/Checkbox.md)
+- [Image](documents/Image.md)
 
 ## Images
 ![](https://github.com/hoaphantn7604/file-upload/blob/master/document/component/hierarchy.png)

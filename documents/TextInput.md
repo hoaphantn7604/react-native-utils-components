@@ -7,29 +7,17 @@
 | ------------------ | -------------------- | --------- | ---------------- |
 | value              | String               | No        |                  |
 | label              | String               | No        |                  |
-| placeholder        | String               | No        |                  |
-|placeholderTextColor| String               | No        | #000             |
 | style              | ViewStyle            | No        |                  |
 | fontFamily         | String               | No        |                  |
 | labelStyle         | TextStyle            | No        |                  |
 | inputStyle         | TextStyle            | No        |                  |
 | iconStyle          | ImageStyle           | No        |                  |
 | textErrorStyle     | TextStyle            | No        |                  |
-| TextStyle          | String               | No        |                  |
-| secureTextEntry    | String               | No        |                  |
-| autoCapitalize     | String               | No        |                  |
-| keyboardType       | KeyboardTypeOptions  | No        |                  |
-| multiline          | Boolean              | No        |                  |
-| autoFocus          | Boolean              | No        |                  |
-| editable           | Boolean              | No        |                  |
-| maxLength          | Number               | No        |                  |
 | showIcon           | Boolean              | No        | true             |
-| currency           | Boolean              | No        | false            |
+| currency           | Boolean              | No        |                  |
 | unitCurrency       | String               | No        |                  |
-| numeric            | Boolean              | No        | false            |
-| onChangeText       | (value) => void      | Yes       |                  |
-| onBlur             | (e) => void          | No        |                  |
-| onFocus            | (e) => void          | No        |                  |
+| numeric            | Boolean              | No        |                  |
+| onChangeText       | (text) => void       | Yes       |                  |
 | renderLeftIcon     | () => JSX.Element    | No        |                  |
 | renderRightIcon    | () => JSX.Element    | No        |                  |
 

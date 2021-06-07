@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {
   Image,
-  NativeSyntheticEvent,
   Text, TextInput,
-  TextInputFocusEventData,
   TouchableOpacity, View
 } from 'react-native';
 import { CTextInput } from './type';
@@ -17,33 +15,22 @@ const ic_close= require('./icon/close.png');
 
 const defaultProps = {
   style: {},
-  placeholderTextColor: '#000',
-  placeholder: '',
   value: '',
   showIcon: true,
   currency: false,
   numeric: false,
-  onChangeText: (value: string) => { },
-  onBlur: (e: NativeSyntheticEvent<TextInputFocusEventData>) => { },
-  onFocus: (e: NativeSyntheticEvent<TextInputFocusEventData>) => { },
 };
 
 const TextInputComponent: CTextInput = (props) => {
   const {
-    style,
     fontFamily,
-    placeholder,
+    style,
     value,
     label,
     secureTextEntry,
-    autoCapitalize,
-    keyboardType,
-    multiline,
-    autoFocus,
-    editable,
-    maxLength,
+    placeholderTextColor = '#000',
+    placeholder = '',
     showIcon,
-    placeholderTextColor,
     inputStyle,
     iconStyle,
     currency,
@@ -52,9 +39,7 @@ const TextInputComponent: CTextInput = (props) => {
     unitCurrency,
     textErrorStyle,
     textError,
-    onChangeText,
-    onBlur,
-    onFocus,
+    onChangeText = (value: string) => {},
     renderLeftIcon,
     renderRightIcon,
   } = props;
@@ -135,38 +120,30 @@ const TextInputComponent: CTextInput = (props) => {
     <View>
       <View style={[style]}>
         {label && (
-          <Text style={[styles.label, labelStyle, font()]}>
+          <Text style={[styles.label, labelStyle]}>
             {label}
           </Text>
         )}
         <View style={styles.textInput}>
           {renderLeftIcon?.()}
           {currency && unitCurrency && (
-            <Text style={[{ marginRight: scale(3) }, font()]}>
+            <Text style={{ marginRight: scale(3) }}>
               {unitCurrency}
             </Text>
           )}
           <TextInput
+            {...props}
             style={[styles.input, inputStyle, font()]}
+            secureTextEntry={textEntry}
+            value={text}
             placeholder={placeholder}
             placeholderTextColor={placeholderTextColor}
-            autoCapitalize={autoCapitalize && autoCapitalize}
-            secureTextEntry={textEntry}
-            keyboardType={keyboardType && keyboardType}
-            multiline={multiline && multiline}
-            autoFocus={autoFocus && autoFocus}
-            editable={editable && editable}
-            maxLength={maxLength && maxLength}
-            value={text}
-            autoCorrect={false}
             onChangeText={onChange}
-            onBlur={onBlur}
-            onFocus={onFocus}
           />
           {_renderRightIcon()}
         </View>
       </View>
-      {textError && <Text style={[styles.textError, textErrorStyle, font()]}>{textError}</Text>}
+      {textError && <Text style={[styles.textError, textErrorStyle]}>{textError}</Text>}
     </View>
   );
 };

@@ -1,7 +1,7 @@
 {
   "name": "react-native-utils-components",
   "title": "React Native Utils Components",
-  "version": "2.5.2",
+  "version": "2.5.4",
   "description": "React Native UIKit",
   "main": "index.ts",
   "scripts": {
@@ -34,7 +34,8 @@
     "modal",
     "curtain-view",
     "checkbox",
-    "radio-button"
+    "radio-button",
+    "image-auto-size"
   ],
   "author": {
     "name": "Hoa Phan",
