@@ -1,4 +1,4 @@
-import { ImageProps } from 'react-native';
+import { ImageBackgroundProps } from 'react-native';
 import React from 'react';
 
 interface onSize {
@@ -6,7 +6,7 @@ interface onSize {
   height: number;
 }
 
-interface Props extends ImageProps {
+interface Props extends ImageBackgroundProps {
   height?: number;
   width?: number;
   background?: boolean;
