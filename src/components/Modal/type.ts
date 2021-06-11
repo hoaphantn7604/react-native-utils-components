@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyleProp, ViewStyle } from 'react-native';
+import { StyleProp, ModalProps, ViewStyle } from 'react-native';
 
-export interface Props {
+export interface Props extends ModalProps {
   visible: boolean;
   style?: StyleProp<ViewStyle>;
   headerStyle?: StyleProp<ViewStyle>;

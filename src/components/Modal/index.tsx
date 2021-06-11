@@ -33,9 +33,8 @@ const ModalComponent: CModal = props => {
 
   return (
     <Modal
+      {...props}
       visible={visible}
-      transparent={transparent}
-      supportedOrientations={supportedOrientations}
       style={{ flex: 1 }}
     >
       <View
