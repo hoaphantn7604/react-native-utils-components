@@ -12,8 +12,12 @@ import CurtainView from './src/components/CurtainView';
 import MultiSelect from './src/components/MultiSelect';
 import Checkbox from './src/components/Checkbox';
 import Image from './src/components/Image';
+import Text from './src/components/Text';
+import Button from './src/components/Button';
 
-export { 
+export {
+    Text,
+    Button, 
     Timer, 
     Countdown, 
     Hierarchy, 
