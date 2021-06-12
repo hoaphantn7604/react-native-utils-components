@@ -4,6 +4,7 @@ import { useScale } from 'react-native-utils-toolkit';
 import { styles } from './styles';
 import { ButtonProps } from './type';
 import Text from '../Text';
+import { COLORS } from '../setup';
 const { scale } = useScale;
 
 const defaultProps = {
@@ -12,7 +13,7 @@ const defaultProps = {
   textColor: '',
   fontSize: null,
   border: false,
-  onPress: () => {},
+  onPress: () => { },
 };
 
 const ButtonComponent: ButtonProps = props => {
@@ -33,7 +34,7 @@ const ButtonComponent: ButtonProps = props => {
           styles.container,
           {
             borderColor:
-              textColor === '' ? 'gray' : textColor,
+              textColor === '' ? COLORS.BUTTON_TEXT : textColor,
             borderWidth: scale(0.4),
           },
           style,
@@ -42,7 +43,7 @@ const ButtonComponent: ButtonProps = props => {
           style={[
             styles.text,
             {
-              color: textColor === '' ? 'gray' : textColor,
+              color: textColor === '' ? COLORS.BUTTON_TEXT : textColor,
             },
             fontSize && { fontSize: scale(fontSize) },
           ]}>
@@ -56,13 +57,13 @@ const ButtonComponent: ButtonProps = props => {
       onPress={onPress}
       style={[
         styles.container,
-        { backgroundColor: bgColor === '' ? 'white' : bgColor },
+        { backgroundColor: bgColor === '' ? COLORS.BUTTON : bgColor },
         style,
       ]}>
       <Text
         style={[
           styles.text,
-          { color: textColor === '' ? 'gray' : textColor },
+          { color: textColor === '' ? COLORS.BUTTON_TEXT : textColor },
           fontSize && { fontSize: scale(fontSize) },
         ]}>
         {title}

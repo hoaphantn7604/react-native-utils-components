@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, TouchableWithoutFeedback } from 'react-native';
 import { useScale } from 'react-native-utils-toolkit';
 import { PropsText } from './type';
+import { COLORS } from '../setup';
 const { fontScale } = useScale;
 
 const defaultProps = {
@@ -27,7 +28,7 @@ const TextComponent: PropsText = props => {
           style={[
             {
               fontSize: fontScale(FONTSIZE),
-              color: !color ? 'black' : color,
+              color: !color ? COLORS.TEXT : color,
             },
             bold && { fontWeight: 'bold' },
             style,
@@ -44,7 +45,7 @@ const TextComponent: PropsText = props => {
         style={[
           {
             fontSize: fontScale(FONTSIZE),
-            color: !color ? 'black' : color,
+            color: !color ? COLORS.TEXT : color,
           },
           bold && { fontWeight: 'bold' },
           style,
