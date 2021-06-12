@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import {
   FlatList,
   Image,
-  Text,
   TouchableOpacity,
   TouchableWithoutFeedback,
   View,
   SafeAreaView
 } from 'react-native';
+import Text from '../Text';
 import { styles } from './styles';
 import { MultiSelect } from 'react-native-utils-components/src/components/MultiSelect/type';
 import CModal from 'react-native-utils-components/src/components/Modal';

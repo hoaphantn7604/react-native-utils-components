@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, Text, TouchableOpacity, View } from 'react-native';
+import { FlatList, TouchableOpacity, View } from 'react-native';
+import Text from '../Text';
 import { useDetectDevice, useScale } from 'react-native-utils-toolkit';
 import { styles } from './styles';
 import { Hierarchy } from './type';

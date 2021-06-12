@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Text,
   TouchableWithoutFeedback,
   View,
   Image
@@ -8,6 +7,7 @@ import {
 import { Checkbox } from './type';
 import { useScale } from 'react-native-utils-toolkit';
 import { styles } from './styles';
+import Text from '../Text';
 
 const { scale, fontScale } = useScale;
 const checkbox_check = require('./icon/checkbox-check.png');

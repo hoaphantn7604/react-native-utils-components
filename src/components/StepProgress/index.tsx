@@ -1,5 +1,6 @@
 import React from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { Image, TouchableOpacity, View } from 'react-native';
+import Text from '../Text';
 import { useScale } from 'react-native-utils-toolkit';
 import { styles } from './styles';
 import { StepProgress, Item } from './type';

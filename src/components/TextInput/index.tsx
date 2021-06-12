@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Image,
-  Text, TextInput,
+  Image, TextInput,
   TouchableOpacity, View
 } from 'react-native';
+import Text from '../Text';
 import { CTextInput } from './type';
 import { useScale } from 'react-native-utils-toolkit';
 import { styles } from './styles';
