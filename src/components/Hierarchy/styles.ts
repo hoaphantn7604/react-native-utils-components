@@ -13,7 +13,6 @@ export const styles = StyleSheet.create({
     rowItem: {
       flexDirection: 'row',
       marginHorizontal: scale(5),
-      marginVertical: scale(4),
       alignItems: 'center',
     },
     center: {

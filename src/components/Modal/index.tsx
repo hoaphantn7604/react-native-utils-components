@@ -23,12 +23,10 @@ const ModalComponent: CModal = props => {
     visible,
     maxHeight = h / 2,
     onRequestClose,
-    transparent,
     style,
     backgroundColor,
     headerStyle,
     renderHeader,
-    supportedOrientations
   } = props;
 
   return (
